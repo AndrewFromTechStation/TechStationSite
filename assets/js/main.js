@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.querySelectorAll('.nav__links a');
+    const navToggle = document.getElementById('ts-nav-toggle');
+    const navLinks = document.querySelectorAll('.ts-nav__links a');
 
     navLinks.forEach((link) => {
         link.addEventListener('click', () => {
@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const accordions = document.querySelectorAll('.accordion__item');
+    const accordions = document.querySelectorAll('.ts-accordion__item');
 
     accordions.forEach((item) => {
-        const trigger = item.querySelector('.accordion__trigger');
-        const content = item.querySelector('.accordion__content');
+        const trigger = item.querySelector('.ts-accordion__trigger');
+        const content = item.querySelector('.ts-accordion__content');
 
         if (trigger.getAttribute('aria-expanded') === 'true') {
             content.style.display = 'block';
