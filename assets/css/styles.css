@@ -34,6 +34,7 @@ body.ts-page {
 }
 
 .ts-page a {
+
     color: inherit;
     text-decoration: none;
 }
@@ -50,6 +51,7 @@ body.ts-page {
 }
 
 .ts-container {
+
     width: var(--container-width);
     margin: 0 auto;
 }
@@ -840,5 +842,6 @@ body.ts-page {
 
     .ts-footer__bottom {
         flex-direction: column;
+
     }
 }

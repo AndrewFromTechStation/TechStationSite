@@ -25,5 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger.setAttribute('aria-expanded', String(!isExpanded));
             content.style.display = isExpanded ? 'none' : 'block';
         });
+
     });
 });
