@@ -1,0 +1,13 @@
+<svg width="520" height="360" viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blog-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#556B2F" />
+      <stop offset="100%" stop-color="#F6C445" />
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="488" height="328" rx="36" fill="url(#blog-bg)" />
+  <rect x="72" y="72" width="360" height="56" rx="20" fill="rgba(255,255,255,0.8)" />
+  <rect x="72" y="148" width="300" height="32" rx="16" fill="rgba(255,255,255,0.6)" />
+  <rect x="72" y="200" width="260" height="24" rx="12" fill="rgba(255,255,255,0.4)" />
+  <text x="72" y="280" font-family="'Manrope', sans-serif" font-size="48" font-weight="700" fill="#2D2A26">Статья ${i}</text>
+</svg>
