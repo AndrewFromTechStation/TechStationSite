@@ -1,0 +1,35 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="integration-bg" x1="30" y1="20" x2="138" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7D87A" />
+      <stop offset="1" stop-color="#F2A25C" />
+    </linearGradient>
+    <linearGradient id="integration-line" x1="28" y1="32" x2="136" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4C5F2B" />
+      <stop offset="1" stop-color="#7B8C45" />
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="url(#integration-bg)" opacity="0.2" />
+  <circle cx="80" cy="80" r="54" fill="#FCF7E6" />
+  <path
+    d="M108 68C108 53.6406 96.3594 42 82 42C71.2077 42 61.6612 48.4438 57.7309 58.2247"
+    stroke="url(#integration-line)"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M52 92C52 106.359 63.6406 118 78 118C88.7923 118 98.3388 111.556 102.269 101.775"
+    stroke="url(#integration-line)"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="54" cy="60" r="12" fill="#F7D87A" stroke="#4C5F2B" stroke-width="4" />
+  <circle cx="108" cy="58" r="12" fill="#F2A25C" stroke="#4C5F2B" stroke-width="4" />
+  <circle cx="106" cy="100" r="12" fill="#F7D87A" stroke="#4C5F2B" stroke-width="4" />
+  <circle cx="54" cy="102" r="12" fill="#F2A25C" stroke="#4C5F2B" stroke-width="4" />
+  <circle cx="80" cy="80" r="18" fill="#FCF7E6" stroke="#4C5F2B" stroke-width="4" />
+  <path d="M72 80H88" stroke="#4C5F2B" stroke-width="4" stroke-linecap="round" />
+  <path d="M80 72V88" stroke="#4C5F2B" stroke-width="4" stroke-linecap="round" />
+</svg>
