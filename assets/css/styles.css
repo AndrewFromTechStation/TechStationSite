@@ -384,10 +384,10 @@ body.ts-page {
 .ts-hero__orb--metric {
     background: rgba(255, 255, 255, 0.94);
     color: var(--color-olive-dark);
-    width: 66%;
+    width: 60%;
     aspect-ratio: 1;
     top: 60%;
-    left: 26%;
+    left: 48%;
     padding: 2.3rem 2rem;
     animation-duration: 9s;
     z-index: 2;
@@ -544,7 +544,7 @@ body.ts-page {
     display: grid;
     grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
     gap: clamp(1.25rem, 3vw, 2rem);
-    align-items: center;
+    align-items: flex-start;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.45s ease, transform 0.45s ease;
