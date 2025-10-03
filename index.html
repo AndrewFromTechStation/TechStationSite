@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-RPA: Технологии, которые ведут ваш бизнес в будущее</title>
+    <meta name="description" content="Technostation: AI-RPA — роботы, которые подстраиваются под ваши процессы, устраняя рутину и помогая бизнесу расти." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="ts-page">
+    <header class="ts-hero" id="ts-home" data-animate="hero">
+        <div class="ts-hero__overlay"></div>
+        <div class="ts-container">
+            <nav class="ts-nav" aria-label="Главная навигация">
+                <a class="ts-logo" href="#ts-home">Technostation: AI-RPA</a>
+                <input id="ts-nav-toggle" class="ts-nav__checkbox" type="checkbox" aria-hidden="true" />
+                <label for="ts-nav-toggle" class="ts-nav__toggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="ts-nav__links">
+                    <li><a href="#ts-services">Услуги</a></li>
+                    <li><a href="#ts-portfolio">Портфолио</a></li>
+                    <li><a href="#ts-pricing">Цены</a></li>
+                    <li><a href="#ts-faq">FAQ</a></li>
+                    <li><a href="#ts-contact">Контакты</a></li>
+                </ul>
+                <a class="ts-nav__cta" href="#ts-contact">Связаться с нами</a>
+            </nav>
+            <div class="ts-hero__content">
+                <div class="ts-hero__text" data-animate="fade-up">
+                    <h1>Инновационные решения для роботизации рутинных задач</h1>
+                    <p>
+                        Мы внедряем интеллектуальные RPA-решения, которые помогут вашему бизнесу ускорить процессы и минимизировать ошибки,
+                        без необходимости менять вашу инфраструктуру.
+                    </p>
+                    <div class="ts-hero__actions">
+                        <a class="ts-button ts-button--primary" href="https://ai-rpa.ru/assets/ai-6.mp4" target="_blank" rel="noopener">Смотреть видео</a>
+                        <a class="ts-button ts-button--outline" href="https://ai-rpa.ru/kalkulyator-effektivnosti.html" target="_blank" rel="noopener">Рассчитать эффективность внедрения RPA</a>
+                    </div>
+                </div>
+                <div class="ts-hero__media" aria-hidden="true" data-animate="fade-left">
+                    <div class="ts-hero__orb ts-hero__orb--label">Technostation</div>
+                    <div class="ts-hero__orb ts-hero__orb--metric">
+                        <strong>9+</strong>
+                        <span>лет опыта команды</span>
+                    </div>
+                    <div class="ts-hero__orb ts-hero__orb--metric ts-hero__orb--accent">
+                        <strong>223+</strong>
+                        <span>завершённых проектов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="ts-services" id="ts-services" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Наши услуги</h2>
+                </div>
+
+                <div class="ts-services__layout" data-animate="fade-up">
+                    <div class="ts-services__list" role="tablist" aria-label="Услуги Technostation">
+                        <button
+                            class="ts-services__item is-active"
+                            data-index="01"
+                            type="button"
+                            role="tab"
+                            id="service-tab-integration"
+                            aria-controls="service-integration"
+                            aria-selected="true"
+                            data-service-target="service-integration"
+                        >
+                            <span class="ts-services__item-label">Интеграция с бизнес-системами</span>
+                        </button>
+                        <button
+                            class="ts-services__item"
+                            data-index="02"
+                            type="button"
+                            role="tab"
+                            id="service-tab-optimization"
+                            aria-controls="service-optimization"
+                            aria-selected="false"
+                            data-service-target="service-optimization"
+                        >
+                            <span class="ts-services__item-label">Оптимизация и улучшение существующих роботов</span>
+                        </button>
+                        <button
+                            class="ts-services__item"
+                            data-index="03"
+                            type="button"
+                            role="tab"
+                            id="service-tab-support"
+                            aria-controls="service-support"
+                            aria-selected="false"
+                            data-service-target="service-support"
+                        >
+                            <span class="ts-services__item-label">Техническая поддержка и сопровождение</span>
+                        </button>
+                        <button
+                            class="ts-services__item"
+                            data-index="04"
+                            type="button"
+                            role="tab"
+                            id="service-tab-implementation"
+                            aria-controls="service-implementation"
+                            aria-selected="false"
+                            data-service-target="service-implementation"
+                        >
+                            <span class="ts-services__item-label">Внедрение RPA</span>
+                        </button>
+                        <button
+                            class="ts-services__item"
+                            data-index="05"
+                            type="button"
+                            role="tab"
+                            id="service-tab-discovery"
+                            aria-controls="service-discovery"
+                            aria-selected="false"
+                            data-service-target="service-discovery"
+                        >
+                            <span class="ts-services__item-label">Исследование процессов для роботизации</span>
+                        </button>
+                        <button
+                            class="ts-services__item"
+                            data-index="06"
+                            type="button"
+                            role="tab"
+                            id="service-tab-development"
+                            aria-controls="service-development"
+                            aria-selected="false"
+                            data-service-target="service-development"
+                        >
+                            <span class="ts-services__item-label">Разработка RPA-решений</span>
+                        </button>
+                    </div>
+
+                    <div class="ts-services__detail">
+                        <article
+                            class="ts-services__panel is-active"
+                            id="service-integration"
+                            role="tabpanel"
+                            aria-labelledby="service-tab-integration"
+                        >
+                            <div class="ts-services__panel-media">
+                                <img src="assets/images/service-integration.svg" alt="Интеграция с бизнес-системами" />
+                            </div>
+                            <div class="ts-services__panel-content">
+                                <h3>Интеграция с бизнес-системами</h3>
+                                <p>
+                                    Интегрируем наши решения с вашими внутренними системами для обеспечения полного взаимодействия, автоматизации и обмена данными между различными бизнес-системами.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-services__panel"
+                            id="service-optimization"
+                            role="tabpanel"
+                            aria-labelledby="service-tab-optimization"
+                            hidden
+                        >
+                            <div class="ts-services__panel-media">
+                                <img src="assets/images/service-optimization.svg" alt="Оптимизация и улучшение существующих роботов" />
+                            </div>
+                            <div class="ts-services__panel-content">
+                                <h3>Оптимизация и улучшение существующих роботов</h3>
+                                <p>
+                                    Анализируем работу существующих роботов, выявляем слабые места и проводим их улучшение для повышения скорости работы, снижения ошибок и увеличения общей эффективности.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-services__panel"
+                            id="service-support"
+                            role="tabpanel"
+                            aria-labelledby="service-tab-support"
+                            hidden
+                        >
+                            <div class="ts-services__panel-media">
+                                <img src="assets/images/service-support.svg" alt="Техническая поддержка и сопровождение" />
+                            </div>
+                            <div class="ts-services__panel-content">
+                                <h3>Техническая поддержка и сопровождение</h3>
+                                <p>
+                                    Обеспечиваем поддержку в режиме реального времени, адаптацию под новые требования бизнеса, а также мониторинг эффективности работы роботов. Сопровождение и внесение изменений в функционал роботов осуществляется на договорной основе, что позволяет вам получить своевременную помощь и качественное обслуживание по прозрачным условиям.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-services__panel"
+                            id="service-implementation"
+                            role="tabpanel"
+                            aria-labelledby="service-tab-implementation"
+                            hidden
+                        >
+                            <div class="ts-services__panel-media">
+                                <img src="assets/images/service-implementation.svg" alt="Внедрение RPA" />
+                            </div>
+                            <div class="ts-services__panel-content">
+                                <h3>Внедрение RPA</h3>
+                                <p>
+                                    Внедряем роботов, которые обеспечивают бесперебойную работу в существующей системе, минимизируя риск сбоев и ошибок, при этом повышая производительность.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-services__panel"
+                            id="service-discovery"
+                            role="tabpanel"
+                            aria-labelledby="service-tab-discovery"
+                            hidden
+                        >
+                            <div class="ts-services__panel-media">
+                                <img src="assets/images/service-discovery.svg" alt="Исследование процессов для роботизации" />
+                            </div>
+                            <div class="ts-services__panel-content">
+                                <h3>Исследование процессов для роботизации</h3>
+                                <p>
+                                    Наша команда проводит глубокий анализ текущих процессов, чтобы выявить те операции, которые будут наиболее оптимальными для автоматизации и снижения затрат, улучшения скорости работы и повышения точности выполнения задач.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-services__panel"
+                            id="service-development"
+                            role="tabpanel"
+                            aria-labelledby="service-tab-development"
+                            hidden
+                        >
+                            <div class="ts-services__panel-media">
+                                <img src="assets/images/service-development.svg" alt="Разработка RPA-решений" />
+                            </div>
+                            <div class="ts-services__panel-content">
+                                <h3>Разработка RPA-решений</h3>
+                                <p>
+                                    Разрабатываем роботов, которые интегрируются в текущие процессы без необходимости изменения инфраструктуры. Решения ориентированы на точное выполнение задач, избавляя сотрудников от рутинных операций.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-metrics" aria-label="Ключевые показатели" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-metrics__wrapper">
+                    <div class="ts-metrics__visual" aria-hidden="true" data-animate="float">
+                        <img src="assets/images/robot-mascot.svg" alt="Робот-помощник AI-RPA" />
+                        <div class="ts-metrics__glow"></div>
+                    </div>
+                    <div class="ts-metrics__stats">
+                        <article data-animate="counter" data-animate-delay="0">
+                            <h3><span class="ts-counter" data-counter-target="9" data-counter-suffix="+">0</span></h3>
+                            <p>Годы опыта команды</p>
+                        </article>
+                        <article data-animate="counter" data-animate-delay="0.1">
+                            <h3><span class="ts-counter" data-counter-target="223" data-counter-suffix="+">0</span></h3>
+                            <p>Завершенных проектов</p>
+                        </article>
+                        <article data-animate="counter" data-animate-delay="0.2">
+                            <h3><span class="ts-counter" data-counter-target="28" data-counter-suffix="+">0</span></h3>
+                            <p>Довольных клиентов</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-overview" id="overview" data-animate="section">
+            <div class="ts-container ts-grid ts-grid--overview">
+                <div class="ts-overview__media" aria-hidden="true" data-animate="parallax">
+                    <img src="assets/images/overview-illustration.svg" alt="AI RPA" />
+                </div>
+                <div class="ts-overview__content" data-animate="fade-up">
+                    <h2>AI RPA: Превратите рутину в результат</h2>
+                    <p>Уникальные алгоритмы и быстрая адаптация под бизнес-процессы клиентов</p>
+                    <ul>
+                        <li>Быстрое внедрение</li>
+                        <li>Высокая надежность и отказоустойчивость</li>
+                        <li>Минимизация ошибок в рутинных операциях</li>
+                        <li>Опыт работы с компаниями разных масштабов из разных отраслей</li>
+                        <li>Опыт международных проектов</li>
+                        <li>Быстрое развитие вашего бизнеса</li>
+                        <li>Гибкость в адаптации решений</li>
+                        <li>Поддержка на всех этапах</li>
+                        <li>Команда опытных экспертов по бизнес-процессам</li>
+                        <li>Довольные и мотивированные сотрудники</li>
+                        <li>Комплексный подход</li>
+                        <li>Работа на месте или дистанционно</li>
+                        <li>Соответствие стандартам безопасности</li>
+                        <li>Поддержка почти любых операционных систем, включая российские</li>
+                        <li>Собственные ноу-хау и уникальные решения</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-portfolio" id="ts-portfolio">
+            <div class="ts-container">
+                <div class="ts-section-header">
+                    <h2>Наше портфолио</h2>
+                </div>
+                <div class="ts-portfolio__layout">
+                    <div class="ts-portfolio__list" role="tablist" aria-label="Кейсы Technostation">
+                        <button
+                            class="ts-portfolio__item is-active"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-1"
+                            aria-controls="portfolio-case-1"
+                            aria-selected="true"
+                            tabindex="0"
+                            data-case-target="portfolio-case-1"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 1</span>
+                            <span class="ts-portfolio__item-title">Межфилиальные процессы международной корпорации</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-2"
+                            aria-controls="portfolio-case-2"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-2"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 2</span>
+                            <span class="ts-portfolio__item-title">Обработка заказов интернет-магазина</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-3"
+                            aria-controls="portfolio-case-3"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-3"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 3</span>
+                            <span class="ts-portfolio__item-title">Оптимизация бухгалтерии</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-4"
+                            aria-controls="portfolio-case-4"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-4"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 4</span>
+                            <span class="ts-portfolio__item-title">Роботизация HR-процессов</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-5"
+                            aria-controls="portfolio-case-5"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-5"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 5</span>
+                            <span class="ts-portfolio__item-title">Административные процессы в строительстве</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-6"
+                            aria-controls="portfolio-case-6"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-6"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 6</span>
+                            <span class="ts-portfolio__item-title">Обработка актов сверки</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-7"
+                            aria-controls="portfolio-case-7"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-7"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 7</span>
+                            <span class="ts-portfolio__item-title">Поиск тендеров и подготовка документов</span>
+                        </button>
+                    </div>
+
+
+                    <div class="ts-portfolio__detail">
+                        <article
+                            class="ts-portfolio__panel is-active"
+                            id="portfolio-case-1"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-1"
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 1</span>
+                                    <h3>Роботизация межфилиальных процессов в международной производственной корпорации</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-1.svg" alt="Роботизация межфилиальных процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Сократили время внутренних процессов на 65%, снизили операционные расходы на 15% и адаптировали роботов под локальные требования 24 стран.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Международная корпорация в сфере электроники и бытовой техники.</li>
+                                                <li>Присутствие в более чем 150 странах.</li>
+                                                <li>Около 400&nbsp;000 сотрудников, 10&nbsp;000 из которых задействованы в автоматизированных процессах.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Ускорить согласования и обмен данными между 24 филиалами.</li>
+                                                <li>Повысить прозрачность и управляемость внутренних процессов.</li>
+                                                <li>Учесть локальные особенности рынков и законодательства.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>AI RPA-робот для коммуникации между филиалами и обработки документов.</li>
+                                                <li>Многоязычные сценарии с учётом локальных требований.</li>
+                                                <li>Интеграция с корпоративными ERP и CRM системами.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сокращение длительности процессов на 65%.</li>
+                                                <li>Уменьшение операционных затрат на 15%.</li>
+                                                <li>ROI достигнут за 10 месяцев, точность обработки документов — 98%.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    Корпорация укрепила контроль над глобальными процессами, сохранив единую инфраструктуру и снизив нагрузку на сотрудников.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-2"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-2"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 2</span>
+                                    <h3>Роботизация обработки заказов в интернет-магазине</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-2.svg" alt="Роботизация обработки заказов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Подняли продажи на 25%, сократили время обработки заказов на 70% и окупили проект за два месяца.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Интернет-магазин строительных материалов и инструментов.</li>
+                                                <li>Команда из 15 сотрудников.</li>
+                                                <li>Автоматизация охватила отдел продаж из 4 специалистов.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Синхронизировать остатки и цены на маркетплейсах.</li>
+                                                <li>Предоставлять актуальную отчётность в начале рабочего дня.</li>
+                                                <li>Снизить ручные трудозатраты и связанные с ними ошибки.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>RPA-робот, синхронизирующий данные по товарам в реальном времени.</li>
+                                                <li>Автоматическое формирование ежедневных отчётов и уведомлений.</li>
+                                                <li>Контроль актуальности цен для ключевых площадок.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Рост продаж на 25% и ускорение обработки заказов на 70%.</li>
+                                                <li>Снижение операционных затрат на 20%.</li>
+                                                <li>Возврат инвестиций за 2 месяца.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    Магазин стал оперативно реагировать на изменения рынка и поддерживать высокий уровень сервиса без расширения штата.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-3"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-3"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 3</span>
+                                    <h3>Оптимизация бухгалтерских процессов в финансовой компании</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-3.svg" alt="Оптимизация бухгалтерских процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Сократили подготовку отчётности на 65%, снизили ошибки на 95% и увеличили клиентскую базу на 40% без найма новых сотрудников.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Финансовая компания с командой около 100 человек.</li>
+                                                <li>Автоматизация охватила 30 специалистов бухгалтерского отдела.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сократить сроки подготовки финансовой отчётности и деклараций.</li>
+                                                <li>Минимизировать ошибки и исключить штрафные риски.</li>
+                                                <li>Повысить производительность без расширения штата.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>AI RPA-робот для ввода данных из первичных документов.</li>
+                                                <li>Автоматические проверки на соответствие нормативам.</li>
+                                                <li>Генерация отчётности и деклараций в установленные сроки.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сокращение времени подготовки отчётности на 65%.</li>
+                                                <li>Снижение операционных затрат на 25%.</li>
+                                                <li>ROI достигнут за 13 месяцев, ошибки сократились на 95%.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    Компания расширила портфель клиентов и усилила качество сервиса, не увеличивая штат бухгалтеров.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-4"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-4"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 4</span>
+                                    <h3>Роботизация HR-процессов в крупной компании</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-4.svg" alt="Роботизация HR-процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Сократили цикл найма на 40%, снизили затраты на 25% и повысили удовлетворённость кандидатов на 30%.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Крупная розничная компания с более чем 5&nbsp;000 сотрудниками.</li>
+                                                <li>Автоматизация охватила 80 HR-специалистов.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Автоматизировать отбор резюме и назначение интервью.</li>
+                                                <li>Сократить время обработки заявок кандидатов.</li>
+                                                <li>Оптимизировать затраты на HR-процессы.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>AI RPA-робот для анализа резюме и формирования short list.</li>
+                                                <li>Интеграция с HRIS и автоматическая рассылка приглашений.</li>
+                                                <li>Уведомления кандидатам о статусе заявки.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сокращение времени найма на 40%.</li>
+                                                <li>Снижение затрат на HR на 25%.</li>
+                                                <li>ROI достигнут за 9 месяцев, удовлетворённость кандидатов выросла на 30%.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    HR-команда сосредоточилась на стратегических задачах, а кандидаты получают быстрые и персонализированные ответы.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-5"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-5"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 5</span>
+                                    <h3>Роботизация административных процессов в строительной компании</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-5.svg" alt="Роботизация административных процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Сократили задержки проектов на 15%, снизили операционные затраты на 20% и увеличили производительность на 25%.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Строительная компания с более чем 3&nbsp;000 сотрудниками.</li>
+                                                <li>Автоматизация охватила 50 проект-менеджеров, инженеров и администраторов.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Автоматизировать обработку и хранение проектной документации.</li>
+                                                <li>Ускорить согласования разрешений и изменений.</li>
+                                                <li>Повысить прозрачность сроков и бюджетов.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Индивидуальное AI RPA-решение для документооборота и контроля сроков.</li>
+                                                <li>Автоматические напоминания и отчёты для команд.</li>
+                                                <li>Интеграция с существующими системами управления проектами.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сокращение задержек проектов на 15%.</li>
+                                                <li>Снижение операционных затрат на 20%.</li>
+                                                <li>Окупаемость за 12 месяцев и рост производительности на 25%.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    Команда получила прозрачный контроль над документами и сроками, улучшив взаимодействие между офисом и стройплощадками.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-6"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-6"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 6</span>
+                                    <h3>Роботизация обработки актов сверки в торговой компании</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-6.svg" alt="Роботизация обработки актов сверки" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Сократили время на обработку актов сверки на 85%, снизили ошибки на 90% и вернули инвестиции за 5 месяцев.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Оптовая торговая компания с более чем 500 контрагентами.</li>
+                                                <li>Автоматизация охватила команду из 5 бухгалтеров.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Автоматизировать рассылку и получение актов сверки.</li>
+                                                <li>Систематизировать хранение документов.</li>
+                                                <li>Формировать отчёты о статусе сверок и выявленных расхождениях.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>RPA-робот формирует и отправляет акты с учётом предпочтений контрагентов.</li>
+                                                <li>Автоматически обрабатывает ответы и сравнивает данные с бухгалтерской системой.</li>
+                                                <li>Сохраняет документы в структурированном архиве и готовит отчёты.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сокращение времени обработки на 85%.</li>
+                                                <li>Уменьшение ошибок на 90%.</li>
+                                                <li>Окупаемость проекта за 5 месяцев и улучшение отношений с контрагентами.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    Бухгалтерия сосредоточилась на аналитике и контроле, а партнёры получают документы вовремя и без ошибок.
+                                </p>
+                            </div>
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-7"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-7"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 7</span>
+                                    <h3>Роботизация поиска тендеров и подготовки документов</h3>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-7.svg" alt="Роботизация поиска тендеров" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <p class="ts-portfolio__lead">
+                                    Увеличили количество поданных заявок на 60%, сократили время подготовки документов с 4 часов до 1,5 часа в день и увеличили выручку на 40%.
+                                </p>
+                                <div class="ts-portfolio__accordion">
+                                    <details class="ts-portfolio__accordion-item" open>
+                                        <summary>Масштаб компании</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Небольшая тендерная компания из 5 специалистов.</li>
+                                                <li>Количество тендеров выросло с 10 до 16 в месяц.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Поставленные задачи</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Автоматизировать ежедневный поиск тендеров по заданным критериям.</li>
+                                                <li>Собирать и анализировать документацию.</li>
+                                                <li>Подготавливать стандартные пакеты документов для подачи заявок.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Наше решение</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>RPA-робот мониторит площадки, формирует подборку и уведомляет команду.</li>
+                                                <li>Проводит первичный анализ требований и проверяет заказчиков.</li>
+                                                <li>Заполняет шаблоны документов и организует архив.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                    <details class="ts-portfolio__accordion-item">
+                                        <summary>Полученные результаты</summary>
+                                        <div class="ts-portfolio__accordion-content">
+                                            <ul>
+                                                <li>Сокращение времени на рутину на 60%.</li>
+                                                <li>Рост числа поданных заявок с 10 до 16 в месяц.</li>
+                                                <li>Окупаемость проекта за 4 месяца и рост выручки на 40%.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+                            <div class="ts-portfolio__panel-summary">
+                                <h4>Ключевой эффект</h4>
+                                <p>
+                                    Команда сосредоточилась на стратегии и переговорах, пока роботы берут на себя рутину мониторинга и подготовки документов.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="ts-pricing" id="ts-pricing" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Наши цены</h2>
+                </div>
+                <div class="ts-grid ts-grid--pricing">
+                    <article class="ts-price-card" data-animate="flip" data-animate-delay="0">
+                        <img src="assets/images/pricing-icon.svg" alt="Оценка проекта" />
+                        <h3>Оценка проекта</h3>
+                        <ul>
+                            <li>Консультация по RPA, экспресс-оценка робота и скорости возврата инвестиций (ROI).</li>
+                            <li>Создание бесплатного MVP робота для простого рутинного процесса</li>
+                            <li>Ваш первый шаг к роботизации бизнеса.</li>
+                        </ul>
+                        <p class="ts-price-card__value">Цена выкупа: Бесплатно</p>
+                        <a href="oczenka-proekta.html" class="ts-link-arrow">Подробнее</a>
+                    </article>
+                    <article class="ts-price-card" data-animate="flip" data-animate-delay="0.1">
+                        <img src="assets/images/pricing-icon.svg" alt="Хочу попробовать" />
+                        <h3>Хочу попробовать</h3>
+                        <ul>
+                            <li>100 часов аналитики и разработки.</li>
+                            <li>3 месяца работы робота на наших мощностях.</li>
+                            <li>Идеальный выбор для тех, кто хочет познакомиться с RPA и увидеть первые результаты.</li>
+                        </ul>
+                        <p class="ts-price-card__value">Цена выкупа: 550 000 руб.</p>
+                        <p class="ts-price-card__value">Цена аренды: 48 500 руб/мес</p>
+                        <a href="xochu-poprobovat.html" class="ts-link-arrow">Подробнее</a>
+                    </article>
+                    <article class="ts-price-card ts-price-card--hit" data-animate="flip" data-animate-delay="0.2">
+                        <span class="ts-price-card__label">ХИТ</span>
+                        <img src="assets/images/pricing-icon.svg" alt="Первые шаги" />
+                        <h3>Первые шаги</h3>
+                        <ul>
+                            <li>200 часов аналитики и разработки.</li>
+                            <li>Лицензия на 1 год</li>
+                            <li>20 часов поддержки.</li>
+                            <li>Оптимальный выбор для автоматизации среднего процесса.</li>
+                        </ul>
+                        <p class="ts-price-card__value">Цена выкупа: 1 200 000 руб.</p>
+                        <p class="ts-price-card__value">Цена аренды: 84 000 руб/мес</p>
+                        <a href="pervyie-shagi.html" class="ts-link-arrow">Подробнее</a>
+                    </article>
+                    <article class="ts-price-card ts-price-card--hit" data-animate="flip" data-animate-delay="0.3">
+                        <span class="ts-price-card__label">ХИТ</span>
+                        <img src="assets/images/pricing-icon.svg" alt="Прогресс" />
+                        <h3>Прогресс</h3>
+                        <ul>
+                            <li>250 часов аналитики и разработки.</li>
+                            <li>Одна бессрочная лицензия.</li>
+                            <li>40 часов поддержки.</li>
+                            <li>Идеальный выбор для масштабной автоматизации.</li>
+                        </ul>
+                        <p class="ts-price-card__value">Цена выкупа: 2 500 000 руб.</p>
+                        <p class="ts-price-card__value">Цена аренды: 154 000 руб/мес</p>
+                        <a href="progress.html" class="ts-link-arrow">Подробнее</a>
+                    </article>
+                    <article class="ts-price-card" data-animate="flip" data-animate-delay="0.4">
+                        <img src="assets/images/pricing-icon.svg" alt="Максимум" />
+                        <h3>Максимум</h3>
+                        <ul>
+                            <li>500 часов аналитики и разработки.</li>
+                            <li>Одна бессрочная лицензия.</li>
+                            <li>80 часов поддержки.</li>
+                            <li>Решение для компаний с глубоким пониманием AI RPA.</li>
+                        </ul>
+                        <p class="ts-price-card__value">Цена выкупа: 4 800 000 руб.</p>
+                        <p class="ts-price-card__value">Цена аренды: 290 000 руб/мес</p>
+                        <a href="maksimum.html" class="ts-link-arrow">Подробнее</a>
+                    </article>
+                    <article class="ts-price-card ts-price-card--hit" data-animate="flip" data-animate-delay="0.5">
+                        <span class="ts-price-card__label">ХИТ</span>
+                        <img src="assets/images/pricing-icon.svg" alt="Индивидуальный подход" />
+                        <h3>Индивидуальный подход</h3>
+                        <ul>
+                            <li>Индивидуальные решения для вашего предприятия или структуры.</li>
+                            <li>Оптимальный выбор для уникальных задач.</li>
+                        </ul>
+                        <p class="ts-price-card__value">Цена выкупа: Индивидуальный расчёт</p>
+                        <a href="individualnyij-podxod.html" class="ts-link-arrow">Подробнее</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-team" id="team" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Команда экспертов</h2>
+                </div>
+                <div class="ts-grid ts-grid--team">
+                    <article class="ts-team-card" data-animate="lift" data-animate-delay="0">
+                        <img src="assets/images/team-yaroslav.svg" alt="Ярослав" />
+                        <h3>Ярослав</h3>
+                        <p>CEO</p>
+                    </article>
+                    <article class="ts-team-card" data-animate="lift" data-animate-delay="0.1">
+                        <img src="assets/images/team-andrey.svg" alt="Андрей" />
+                        <h3>Андрей</h3>
+                        <p>Руководитель проектов по AI RPA и бизнес-аналитике</p>
+                    </article>
+                    <article class="ts-team-card" data-animate="lift" data-animate-delay="0.2">
+                        <img src="assets/images/team-anastasiya.svg" alt="Анастасия" />
+                        <h3>Анастасия</h3>
+                        <p>Менеджер по работе с клиентами</p>
+                    </article>
+                    <article class="ts-team-card" data-animate="lift" data-animate-delay="0.3">
+                        <img src="assets/images/team-nikita.svg" alt="Никита" />
+                        <h3>Никита</h3>
+                        <p>Разработчик</p>
+                    </article>
+                    <article class="ts-team-card" data-animate="lift" data-animate-delay="0.4">
+                        <img src="assets/images/team-andrey-dev.svg" alt="Андрей" />
+                        <h3>Андрей</h3>
+                        <p>Разработчик</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-faq" id="ts-faq" data-animate="section">
+            <div class="ts-container ts-grid ts-grid--faq">
+                <div class="ts-faq__media" aria-hidden="true" data-animate="parallax">
+                    <img src="assets/images/faq-illustration.svg" alt="Часто задаваемые вопросы" />
+                </div>
+                <div data-animate="fade-up">
+                    <div class="ts-section-header ts-section-header--left">
+                        <h2>Часто задаваемые вопросы</h2>
+                    </div>
+                    <div class="ts-accordion" role="tablist">
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="true">
+                                Какие уникальные преимущества предлагает ваша компания в области разработки AI RPA-решений?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>Опыт и знания наших специалистов позволили выработать собственные ноу-хау и уникальные решения, которые делают наших роботов более эффективными и гибкими. Эти разработки обеспечивают высокую производительность, безотказность, точность и адаптивность наших роботов под любые бизнес-процессы. Благодаря наработанным AI RPA-решениям наши клиенты получают более короткие сроки внедрения, максимальную отдачу от роботизации и уникальные конкурентные преимущества на рынке.</p>
+                            </div>
+                        </article>
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="false">
+                                Что такое роботы RPA и как они помогают вашему бизнесу?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>Роботы RPA — это виртуальные программные решения, которые эмулируют действия сотрудников в различных программных системах. Они могут выполнять рутинные задачи, такие как ввод данных, проверка информации, обработка транзакций, генерация отчетов, поиск и анализ информации на сайтах и многие другие задачи. Используя существующую IT-инфраструктуру компании, такие роботы автоматизируют процессы без необходимости внесения изменений в текущие системы. Это позволяет бизнесу снижать ошибки, ускорять выполнение операций, а сотрудники могут сосредоточиться на более сложных и стратегических задачах, что повышает общую эффективность и производительность бизнеса. Говоря простым языком: если это может сделать человек, то это может сделать и робот, но без ошибок, значительно быстрее и в любое время.</p>
+                            </div>
+                        </article>
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="false">
+                                Как внедрение роботов влияет на атмосферу в коллективе?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>Роботы автоматизируют рутинные задачи, что снимает напряжение, вызванное постоянной передачей задач между сотрудниками и отделами, забывчивостью, отсутствием времени и общей нелюбовью многих сотрудников к выполнению скучных повторяющихся задач. Это уменьшает стрессовые ситуации и недовольство внутри коллектива, что, в свою очередь, способствует улучшению атмосферы. Со временем это приводит к более здоровой и продуктивной рабочей среде, где сотрудники сфокусированы на значимых задачах и ощущают поддержку от виртуальных помощников.</p>
+                            </div>
+                        </article>
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="false">
+                                Приводит ли внедрение роботов к увольнению сотрудников?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>Роботы не заменяют людей, а дополняют их, беря на себя рутинные задачи. Это не приводит к увольнениям, а наоборот, позволяет компании направить высвободившиеся ресурсы на развитие. Сотрудники могут сосредоточиться на более креативной и стратегической работе, что повышает их эффективность. Например, в продажах они могут больше взаимодействовать с клиентами и проводить встречи, что приносит дополнительный доход. Внедрение роботов улучшает атмосферу в коллективе и снижает текучесть кадров, а также уменьшает зависимость компании от дефицита специалистов на рынке труда</p>
+                            </div>
+                        </article>
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="false">
+                                Что меняется с увеличением количества роботов в компании?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>По мере увеличения числа роботов растет масштаб автоматизации, позволяя охватывать больше процессов и задач. Это значительно ускоряет рабочие операции и увеличивает производительность. При этом возникает эффект синергии — чем больше роботов, тем быстрее, эффективнее и безошибочнее работают все бизнес-процессы. Также с увеличением количества роботов снижается стоимость их обслуживания и поддержки.</p>
+                            </div>
+                        </article>
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="false">
+                                Сколько времени занимает автоматизация бизнес-процессов?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>Продолжительность внедрения роботов зависит от сложности задач. Простейшие процессы могут быть автоматизированы за несколько дней. Средние по сложности процессы требуют около 2-3 недель. Самые сложные системы могут занять несколько месяцев на настройку, тестирование и интеграцию.</p>
+                            </div>
+                        </article>
+                        <article class="ts-accordion__item">
+                            <button class="ts-accordion__trigger" aria-expanded="false">
+                                Каковы затраты и какая скорость возврата инвестиций (ROI) от внедрения роботов?
+                            </button>
+                            <div class="ts-accordion__content" role="region">
+                                <p>Стоимость роботов зависит от сложности проекта и может быть рассчитана индивидуально при взаимодействии с нашим специалистом. Экспресс оценка длится примерно 20 минут. В большинстве случаев возврат инвестиций (ROI) от внедрения RPA-роботов наступает быстро — в течение 3-6 месяцев, благодаря значительному снижению ФОТ (фонда оплаты труда) от затрат на рутинные операции и дополнительных выгод. Непосредственно затраты на алгоритмы роботов - это единоразовые платежи.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-blog" id="blog" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Полезная информация</h2>
+                </div>
+                <div class="ts-grid ts-grid--blog">
+                    <article class="ts-blog-card" data-animate="fade-up" data-animate-delay="0">
+                        <a href="Стек используемых технологий и языки программирования в наших RPA-решениях.html">
+                            <img src="assets/images/blog-1.svg" alt="Стек технологий" />
+                        </a>
+                        <div class="ts-blog-card__meta">25 ноября 2024</div>
+                        <h3>
+                            <a href="Стек используемых технологий и языки программирования в наших RPA-решениях.html">
+                                Стек используемых технологий и языки программирования в наших RPA-решениях
+                            </a>
+                        </h3>
+                        <p>В "Техностанции" мы стремимся предоставлять нашим клиентам современные и эффективные решения в области…</p>
+                        <a class="ts-link-arrow" href="Стек используемых технологий и языки программирования в наших RPA-решениях.html">Читать статью</a>
+                    </article>
+                    <article class="ts-blog-card" data-animate="fade-up" data-animate-delay="0.1">
+                        <a href="Анализ текущих тенденций и прогноз развития роботизации бизнес-процессов в мире.html">
+                            <img src="assets/images/blog-2.svg" alt="Исследования мирового рынка RPA" />
+                        </a>
+                        <div class="ts-blog-card__meta">01 января 1970</div>
+                        <h3>
+                            <a href="Анализ текущих тенденций и прогноз развития роботизации бизнес-процессов в мире.html">Исследования мирового рынка RPA</a>
+                        </h3>
+                        <p>В условиях глобальной цифровизации роботизация процессов автоматизации (RPA) стала неотъемлемой частью…</p>
+                        <a class="ts-link-arrow" href="Анализ текущих тенденций и прогноз развития роботизации бизнес-процессов в мире.html">Читать статью</a>
+                    </article>
+                    <article class="ts-blog-card" data-animate="fade-up" data-animate-delay="0.2">
+                        <a href="Применение RPA в российских компаниях и государственном секторе.html">
+                            <img src="assets/images/blog-3.svg" alt="Применение RPA" />
+                        </a>
+                        <div class="ts-blog-card__meta">01 января 1970</div>
+                        <h3>
+                            <a href="Применение RPA в российских компаниях и государственном секторе.html">Применение RPA в российских компаниях и государственном секторе</a>
+                        </h3>
+                        <p>В России роботизация процессов автоматизации набирает обороты не только в частном секторе, но и в государственных…</p>
+                        <a class="ts-link-arrow" href="Применение RPA в российских компаниях и государственном секторе.html">Читать статью</a>
+                    </article>
+                </div>
+                <div class="ts-blog__cta" data-animate="fade-up" data-animate-delay="0.3">
+                    <a class="ts-button ts-button--primary" href="Полезные материалы по роботизации процессов.html">Смотреть все статьи</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-contact" id="ts-contact" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Связаться с нами</h2>
+                </div>
+                <form class="ts-contact__form" action="#" method="post" data-animate="fade-up" data-animate-delay="0.1">
+                    <div class="ts-form-grid">
+                        <label class="ts-form-field">
+                            <span class="ts-form-label">Имя*</span>
+                            <input type="text" name="name" placeholder="Имя*" required />
+                        </label>
+                        <label class="ts-form-field">
+                            <span class="ts-form-label">Телефон*</span>
+                            <input type="tel" name="phone" placeholder="Телефон*" required />
+                        </label>
+                        <label class="ts-form-field">
+                            <span class="ts-form-label">E-mail</span>
+                            <input type="email" name="email" placeholder="E-mail" />
+                        </label>
+                        <label class="ts-form-field ts-form-field--full">
+                            <span class="ts-form-label">Сообщение</span>
+                            <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
+                        </label>
+                        <label class="ts-form-checkbox ts-form-field--full">
+                            <input type="checkbox" required />
+                            <span class="ts-checkbox"></span>
+                            <span>Даю согласие на обработку персональных данных в соответствии с <a href="https://ai-rpa.ru/politika-konfidenczialnosti.html">Политикой конфиденциальности и Согласием на обработку персональных данных.</a></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="ts-button ts-button--primary">Отправить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="ts-footer">
+        <div class="ts-container ts-grid ts-grid--footer">
+            <div>
+                <h2 class="ts-footer__logo">Technostation: AI-RPA</h2>
+                <p>Наши виртуальные роботы подстраиваются под ваши процессы, устраняя рутину и эмулируя действия сотрудников. Ваша система остается неизменной, а бизнес фокусируется на росте и увеличении эффективности.</p>
+                <div class="ts-footer__socials">
+                    <a href="https://wa.me/79296159054/" aria-label="WhatsApp"><span>WhatsApp</span></a>
+                    <a href="https://t.me/Yaroslav_TechnoStation" aria-label="Telegram"><span>Telegram</span></a>
+                </div>
+            </div>
+            <div>
+                <h3>Услуги</h3>
+                <ul>
+                    <li><a href="https://ai-rpa.ru/uslugi/usluga-2.html">Исследование процессов для роботизации</a></li>
+                    <li><a href="https://ai-rpa.ru/uslugi/usluga-3.html">Разработка RPA-решений</a></li>
+                    <li><a href="https://ai-rpa.ru/uslugi/usluga-1.html">Внедрение RPA</a></li>
+                    <li><a href="https://ai-rpa.ru/uslugi/texnicheskaya-podderzhka-i-soprovozhdenie.html">Техническая поддержка и сопровождение</a></li>
+                    <li><a href="https://ai-rpa.ru/uslugi/optimizacziya-i-uluchshenie-sushhestvuyushhix-robotov.html">Оптимизация и улучшение существующих роботов</a></li>
+                    <li><a href="https://ai-rpa.ru/uslugi/integracziya-s-biznes-sistemami.html">Интеграция с бизнес-системами</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Компания</h3>
+                <ul>
+                    <li><a href="https://ai-rpa.ru/uslugi/">Услуги</a></li>
+                    <li><a href="Полезные материалы по роботизации процессов.html">RPA: Информация</a></li>
+                    <li><a href="https://ai-rpa.ru/o-nas.html">О нас</a></li>
+                    <li><a href="https://ai-rpa.ru/portfolio-video/">Примеры работы роботов</a></li>
+                    <li><a href="https://ai-rpa.ru/pp/">Партнёрские программы</a></li>
+                    <li><a href="https://ai-rpa.ru/price/">Цены</a></li>
+                    <li><a href="https://ai-rpa.ru/kontakty.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="ts-footer__contact">
+                <h3>Контакты</h3>
+                <p><strong>Телефон:</strong> <a href="tel:+79296159054">+7(929)615-90-54</a></p>
+                <p><strong>E-mail:</strong> <a href="mailto:info@ai-rpa.ru">info@ai-rpa.ru</a></p>
+                <p><strong>Адрес:</strong> 125167, Москва, пр-кт Ленинградский, д. 47, стр. 2, помещение 28А</p>
+                <p><strong>Время работы:</strong> пн-пт: 9.00 - 18.00</p>
+            </div>
+        </div>
+        <div class="ts-footer__bottom">
+            <p>© 2025 ai-rpa.ru</p>
+            <a href="https://ai-rpa.ru/politika-konfidenczialnosti.html">Политика конфиденциальности</a>
+        </div>
+    </footer>
+
+    <a class="ts-floating-cta" href="#ts-contact">Связаться с нами</a>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
