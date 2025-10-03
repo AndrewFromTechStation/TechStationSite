@@ -69,6 +69,7 @@
                     <div class="ts-services__list" role="tablist" aria-label="Услуги Technostation">
                         <button
                             class="ts-services__item is-active"
+                            data-index="01"
                             type="button"
                             role="tab"
                             id="service-tab-integration"
@@ -80,6 +81,7 @@
                         </button>
                         <button
                             class="ts-services__item"
+                            data-index="02"
                             type="button"
                             role="tab"
                             id="service-tab-optimization"
@@ -91,6 +93,7 @@
                         </button>
                         <button
                             class="ts-services__item"
+                            data-index="03"
                             type="button"
                             role="tab"
                             id="service-tab-support"
@@ -102,6 +105,7 @@
                         </button>
                         <button
                             class="ts-services__item"
+                            data-index="04"
                             type="button"
                             role="tab"
                             id="service-tab-implementation"
@@ -113,6 +117,7 @@
                         </button>
                         <button
                             class="ts-services__item"
+                            data-index="05"
                             type="button"
                             role="tab"
                             id="service-tab-discovery"
@@ -124,6 +129,7 @@
                         </button>
                         <button
                             class="ts-services__item"
+                            data-index="06"
                             type="button"
                             role="tab"
                             id="service-tab-development"
@@ -301,468 +307,360 @@
                 <div class="ts-section-header" data-animate="fade-up">
                     <h2>Наше портфолио</h2>
                 </div>
-                <div class="ts-portfolio__layout" data-animate="fade-up">
-                    <div class="ts-portfolio__list" role="tablist" aria-label="Кейсы Technostation">
-                        <button
-                            class="ts-portfolio__item is-active"
-                            type="button"
-                            role="tab"
-                            id="case-tab-1"
-                            aria-controls="case-panel-1"
-                            aria-selected="true"
-                            data-case-target="case-panel-1"
-                        >
-                            <span>Кейс 1</span>
-                        </button>
-                        <button
-                            class="ts-portfolio__item"
-                            type="button"
-                            role="tab"
-                            id="case-tab-2"
-                            aria-controls="case-panel-2"
-                            aria-selected="false"
-                            data-case-target="case-panel-2"
-                        >
-                            <span>Кейс 2</span>
-                        </button>
-                        <button
-                            class="ts-portfolio__item"
-                            type="button"
-                            role="tab"
-                            id="case-tab-3"
-                            aria-controls="case-panel-3"
-                            aria-selected="false"
-                            data-case-target="case-panel-3"
-                        >
-                            <span>Кейс 3</span>
-                        </button>
-                        <button
-                            class="ts-portfolio__item"
-                            type="button"
-                            role="tab"
-                            id="case-tab-4"
-                            aria-controls="case-panel-4"
-                            aria-selected="false"
-                            data-case-target="case-panel-4"
-                        >
-                            <span>Кейс 4</span>
-                        </button>
-                        <button
-                            class="ts-portfolio__item"
-                            type="button"
-                            role="tab"
-                            id="case-tab-5"
-                            aria-controls="case-panel-5"
-                            aria-selected="false"
-                            data-case-target="case-panel-5"
-                        >
-                            <span>Кейс 5</span>
-                        </button>
-                        <button
-                            class="ts-portfolio__item"
-                            type="button"
-                            role="tab"
-                            id="case-tab-6"
-                            aria-controls="case-panel-6"
-                            aria-selected="false"
-                            data-case-target="case-panel-6"
-                        >
-                            <span>Кейс 6</span>
-                        </button>
-                        <button
-                            class="ts-portfolio__item"
-                            type="button"
-                            role="tab"
-                            id="case-tab-7"
-                            aria-controls="case-panel-7"
-                            aria-selected="false"
-                            data-case-target="case-panel-7"
-                        >
-                            <span>Кейс 7</span>
-                        </button>
-                    </div>
-                    <div class="ts-portfolio__detail">
-                        <article
-                            class="ts-portfolio__panel is-active"
-                            id="case-panel-1"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-1"
-                        >
-                            <div class="ts-portfolio__media">
+                <div class="ts-case-grid">
+                    <article class="ts-case" data-animate="fade-up">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 1</span>
+                                <h3>Роботизация межфилиальных процессов в международной производственной корпорации</h3>
+                                <p>Сократили внутренние процессы на 65% и снизили операционные расходы на 15% в 24 странах.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-1.svg" alt="Роботизация межфилиальных процессов" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 1: Роботизация межфилиальных процессов в международной производственной корпорации</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Международная производственная корпорация в сфере электроники и бытовой техники.</li>
-                                        <li>Присутствие: Более 150 стран.</li>
-                                        <li>Численность сотрудников: Около 400&nbsp;000.</li>
-                                        <li>Автоматизация затронула около 10&nbsp;000 сотрудников в 24 странах.</li>
+                                        <li>Международная корпорация в сфере электроники и бытовой техники.</li>
+                                        <li>Присутствие более чем в 150 странах.</li>
+                                        <li>Около 400&nbsp;000 сотрудников, из них 10&nbsp;000 в зоне автоматизации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
-                                        <li>Оптимизировать бюрократические процессы между филиалами в 24 странах.</li>
-                                        <li>Сократить время обработки внутренних запросов и согласований.</li>
-                                        <li>Учитывать специфику локальных рынков и законодательных требований.</li>
-                                        <li>Повысить прозрачность и контроль над внутренними процессами.</li>
+                                        <li>Ускорить согласования между 24 филиалами.</li>
+                                        <li>Повысить прозрачность и контроль внутренних процессов.</li>
+                                        <li>Учитывать локальные требования и особенности рынков.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Разработали AI RPA-робота для автоматизации межфилиальных коммуникаций, обработки документов и согласований.</li>
-                                        <li>Обеспечили многоязычную поддержку с учетом локальных особенностей.</li>
-                                        <li>Интегрировали решение с корпоративными ERP и CRM системами.</li>
-                                        <li>Настроили алгоритмы под нормативные требования каждой страны.</li>
+                                        <li>AI RPA-робот для коммуникаций, обработки документов и согласований.</li>
+                                        <li>Многоязычная поддержка с учетом локальных особенностей.</li>
+                                        <li>Интеграция с корпоративными ERP и CRM.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
-                                        <li>Сокращение времени на внутренние процессы на 65%.</li>
-                                        <li>Снижение операционных затрат на 15% благодаря уменьшению ручного труда.</li>
-                                        <li>Окупаемость инвестиций за 10 месяцев.</li>
-                                        <li>Повышение точности обработки документов до 98% и рост продуктивности сотрудников на 20%.</li>
+                                        <li>Скорость внутренних процессов выросла на 65%.</li>
+                                        <li>Снижение операционных затрат на 15%.</li>
+                                        <li>ROI достигнут за 10 месяцев, точность обработки 98%.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        Автоматизация межфилиальных процессов укрепила позиции корпорации на глобальном рынке, улучшила удовлетворенность сотрудников и
-                                        снизила операционные риски.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                        <article
-                            class="ts-portfolio__panel"
-                            id="case-panel-2"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-2"
-                            hidden
-                        >
-                            <div class="ts-portfolio__media">
+                            <div class="ts-case__summary">
+                                Решение укрепило позиции корпорации на глобальном рынке: сотрудники избавились от рутины, а руководители получили контроль над процессами без роста затрат.
+                            </div>
+                        </div>
+                    </article>
+                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.05">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 2</span>
+                                <h3>Роботизация обработки заказов в интернет-магазине</h3>
+                                <p>Подняли продажи на 25% и окупили проект всего за два месяца благодаря актуальным данным.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-2.svg" alt="Роботизация обработки заказов" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 2: Роботизация обработки заказов в интернет-магазине</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Интернет-магазин строительных материалов и инструментов.</li>
-                                        <li>Численность сотрудников: Около 15.</li>
-                                        <li>Автоматизация затронула отдел продаж из 4 человек.</li>
+                                        <li>Интернет-магазин строительных материалов и инструментов.</li>
+                                        <li>Команда из 15 сотрудников.</li>
+                                        <li>Автоматизация затронула отдел продаж из 4 специалистов.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
-                                        <li>Автоматизировать обновление наличия товаров и цен на маркетплейсах.</li>
-                                        <li>Готовить актуальную отчетность к началу и в течение рабочего дня.</li>
+                                        <li>Автоматизировать обновление остатков и цен на маркетплейсах.</li>
+                                        <li>Давать ежедневную отчетность в начале смены.</li>
                                         <li>Снизить операционные издержки.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Разработали RPA-робота, синхронизирующего данные о товарах и ценах в реальном времени.</li>
-                                        <li>Настроили автоматическую генерацию отчетности для команды продаж.</li>
+                                        <li>RPA-робот синхронизирует данные о товарах в реальном времени.</li>
+                                        <li>Автоматическая генерация отчетности для отдела продаж.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
-                                        <li>Рост продаж на 25% благодаря актуальным данным и быстрому обслуживанию.</li>
-                                        <li>Снижение операционных затрат на 20% и сокращение времени обработки заказов на 70%.</li>
-                                        <li>Окупаемость проекта за 2 месяца.</li>
+                                        <li>Рост продаж на 25%.</li>
+                                        <li>Снижение затрат на 20% и ускорение обработки заказов на 70%.</li>
+                                        <li>Инвестиции окупились за 2 месяца.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        Внедрение роботов позволило интернет-магазину повысить эффективность и конкурентоспособность, обеспечив быстрый рост ключевых
-                                        показателей.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                        <article
-                            class="ts-portfolio__panel"
-                            id="case-panel-3"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-3"
-                            hidden
-                        >
-                            <div class="ts-portfolio__media">
+                            <div class="ts-case__summary">
+                                Бизнес получил быстрый возврат инвестиций и конкурентное преимущество на маркетплейсах благодаря своевременным обновлениям и высокой скорости обслуживания клиентов.
+                            </div>
+                        </div>
+                    </article>
+                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.1">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 3</span>
+                                <h3>Оптимизация бухгалтерских процессов в финансовой компании</h3>
+                                <p>Ускорили подготовку отчетности на 65% и расширили клиентскую базу на 40% без роста штата.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-3.svg" alt="Оптимизация бухгалтерских процессов" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 3: Оптимизация бухгалтерских процессов в финансовой компании</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Финансовая компания, оказывающая бухгалтерские и консалтинговые услуги.</li>
-                                        <li>Численность сотрудников: Около 100.</li>
-                                        <li>Автоматизация затронула 30 специалистов бухгалтерского отдела.</li>
+                                        <li>Финансовая компания с бухгалтерскими и консалтинговыми услугами.</li>
+                                        <li>Около 100 сотрудников, 30 бухгалтеров вовлечены в проект.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
-                                        <li>Сократить время подготовки финансовой отчетности и налоговых деклараций.</li>
-                                        <li>Уменьшить количество ошибок и повысить качество обслуживания клиентов.</li>
+                                        <li>Сократить время подготовки отчетности и деклараций.</li>
+                                        <li>Снизить количество ошибок в документации.</li>
                                         <li>Повысить производительность без расширения штата.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Внедрили AI RPA-робота для ввода данных из первичных документов в бухгалтерскую систему.</li>
-                                        <li>Настроили автоматическую проверку данных на соответствие нормативным требованиям.</li>
-                                        <li>Автоматизировали генерацию отчетности и деклараций.</li>
+                                        <li>AI RPA-робот для ввода данных из первичных документов.</li>
+                                        <li>Автоматическая проверка нормативных требований.</li>
+                                        <li>Генерация отчетности и деклараций без участия сотрудников.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
-                                        <li>Сокращение времени подготовки отчетности на 65%.</li>
-                                        <li>Увеличение клиентской базы на 40% без увеличения штата.</li>
-                                        <li>Снижение операционных затрат на 25% и сокращение количества ошибок на 95%.</li>
-                                        <li>Окупаемость инвестиций за 13 месяцев.</li>
+                                        <li>Время подготовки отчетности сократилось на 65%.</li>
+                                        <li>Клиентская база выросла на 40% без найма новых сотрудников.</li>
+                                        <li>Снижение затрат на 25% и ошибок на 95%.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        Автоматизация бухгалтерии стала драйвером роста компании и повысила доверие клиентов, обеспечив устойчивый рост бизнеса.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                        <article
-                            class="ts-portfolio__panel"
-                            id="case-panel-4"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-4"
-                            hidden
-                        >
-                            <div class="ts-portfolio__media">
+                            <div class="ts-case__summary">
+                                Автоматизация бухгалтерии стала драйвером роста: компания повысила качество сервиса, сохранив штат и обеспечив устойчивый рост прибыльности.
+                            </div>
+                        </div>
+                    </article>
+                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.15">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 4</span>
+                                <h3>Роботизация HR-процессов в крупной розничной компании</h3>
+                                <p>Сократили время найма на 40% и повысили удовлетворенность кандидатов на 30%.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-4.svg" alt="Роботизация HR-процессов" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 4: Роботизация HR-процессов в крупной компании</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Крупная розничная компания.</li>
-                                        <li>Численность сотрудников: Более 5&nbsp;000.</li>
-                                        <li>Автоматизация затронула около 80 HR-специалистов.</li>
+                                        <li>Розничная сеть с более чем 5&nbsp;000 сотрудниками.</li>
+                                        <li>Проект охватил около 80 HR-специалистов.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Автоматизировать отбор резюме и назначение интервью.</li>
-                                        <li>Сократить время обработки заявок кандидатов и улучшить коммуникацию.</li>
+                                        <li>Сократить время обработки заявок и улучшить коммуникацию.</li>
                                         <li>Снизить затраты на HR-процессы.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Настроили робота для сканирования резюме и сортировки по заданным критериям.</li>
-                                        <li>Автоматизировали рассылку приглашений, обновление HRIS и уведомления для кандидатов.</li>
-                                        <li>Интегрировали решение с системами рекрутинга и управления персоналом.</li>
+                                        <li>Робот сканирует резюме по критериям и формирует шорт-листы.</li>
+                                        <li>Автоматическая рассылка приглашений и обновление HRIS.</li>
+                                        <li>Интеграция с системами рекрутинга и управления персоналом.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Сокращение времени найма на 40%.</li>
                                         <li>Снижение затрат на HR-процессы на 25%.</li>
-                                        <li>Рост удовлетворенности кандидатов на 30% благодаря прозрачной коммуникации.</li>
-                                        <li>Окупаемость проекта за 9 месяцев.</li>
+                                        <li>Рост удовлетворенности кандидатов на 30%.</li>
+                                        <li>ROI достигнут за 9 месяцев.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        Автоматизация HR-процессов повысила эффективность отдела и привлекательность компании для кандидатов, освободив команду для
-                                        стратегических задач.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                        <article
-                            class="ts-portfolio__panel"
-                            id="case-panel-5"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-5"
-                            hidden
-                        >
-                            <div class="ts-portfolio__media">
+                            <div class="ts-case__summary">
+                                HR-команда сосредоточилась на стратегических задачах, а автоматизация сделала найм прозрачным и комфортным для кандидатов.
+                            </div>
+                        </div>
+                    </article>
+                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.2">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 5</span>
+                                <h3>Роботизация административных процессов в строительной компании</h3>
+                                <p>Сократили задержки проектов на 15% и уменьшили административные расходы на 20%.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-5.svg" alt="Роботизация административных процессов" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 5: Роботизация административных процессов в строительной компании</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Строительство нежилых и коммерческих объектов.</li>
-                                        <li>Численность сотрудников: Более 3&nbsp;000.</li>
-                                        <li>Автоматизация затронула около 50 проект-менеджеров, инженеров и администраторов.</li>
+                                        <li>Строительная компания с более чем 3&nbsp;000 сотрудниками.</li>
+                                        <li>Около 50 проект-менеджеров, инженеров и администраторов в зоне автоматизации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
-                                        <li>Автоматизировать обработку и управление проектной документацией.</li>
-                                        <li>Улучшить координацию между офисом и строительными площадками.</li>
-                                        <li>Повысить прозрачность сроков и бюджетов, минимизировать ошибки и задержки.</li>
+                                        <li>Ускорить обработку проектной документации.</li>
+                                        <li>Согласовать работу офисов и стройплощадок.</li>
+                                        <li>Минимизировать ошибки и узкие места в администрировании.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Создали AI RPA-решение для сбора, организации и хранения проектной документации.</li>
-                                        <li>Автоматизировали согласование разрешений, изменений и счетов с напоминаниями о сроках.</li>
-                                        <li>Настроили систему отчетности и интеграцию с инструментами управления проектами.</li>
-                                        <li>Ввели проверки данных для снижения количества ошибок и соответствия стандартам.</li>
+                                        <li>Роботы собирают и структурируют документацию.</li>
+                                        <li>Автоматизировали согласования, уведомления и контроль сроков.</li>
+                                        <li>Интеграция с системой управления проектами и проверка данных.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
-                                        <li>Сокращение задержек проектов на 15% и ускорение обработки документов.</li>
-                                        <li>Снижение операционных затрат на 20% и уменьшение переработок.</li>
-                                        <li>Окупаемость инвестиций за 12 месяцев.</li>
-                                        <li>Рост продуктивности сотрудников на 25% и улучшение командного взаимодействия.</li>
-                                        <li>Снижение числа ошибок на 90% и укрепление доверия между отделами.</li>
+                                        <li>Задержки проектов снизились на 15%.</li>
+                                        <li>Сокращение затрат на 20%, рост производительности на 25%.</li>
+                                        <li>ROI — 12 месяцев, ошибок стало на 90% меньше.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        Роботизация рутинных административных задач ускорила реализацию проектов и повысила качество управления, показав эффективность
-                                        AI RPA в строительной отрасли.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                        <article
-                            class="ts-portfolio__panel"
-                            id="case-panel-6"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-6"
-                            hidden
-                        >
-                            <div class="ts-portfolio__media">
+                            <div class="ts-case__summary">
+                                Автоматизация привела к лучшей координации команд и прозрачности проектов, улучшив атмосферу и снизив стресс в коллективе.
+                            </div>
+                        </div>
+                    </article>
+                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.25">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 6</span>
+                                <h3>Роботизация обработки актов сверки в торговой компании</h3>
+                                <p>Сократили время обработки актов на 85% и снизили ошибки на 90%.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-6.svg" alt="Роботизация обработки актов сверки" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 6: Роботизация обработки актов сверки в торговой компании</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Средняя торговая компания по оптовой продаже товаров народного потребления.</li>
-                                        <li>Численность сотрудников: Около 100.</li>
-                                        <li>Количество контрагентов: Более 500 поставщиков и клиентов.</li>
-                                        <li>Автоматизация затронула 5 бухгалтеров.</li>
+                                        <li>Средняя торговая компания с ~100 сотрудниками.</li>
+                                        <li>Более 500 контрагентов, 5 бухгалтеров в зоне автоматизации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
-                                        <li>Автоматизировать рассылку и обработку актов сверки контрагентам.</li>
-                                        <li>Систематизировать хранение полученных документов и формировать отчеты о статусах.</li>
-                                        <li>Сократить время и снизить количество ошибок при обработке документов.</li>
+                                        <li>Роботизировать рассылку и прием актов сверки.</li>
+                                        <li>Автоматизировать хранение документов и отчетность.</li>
+                                        <li>Сократить время ручной работы бухгалтеров.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Разработали робота для формирования и отправки актов сверки с учетом предпочтений контрагентов.</li>
-                                        <li>Настроили мониторинг входящих сообщений, сверку данных и автоматические уведомления.</li>
-                                        <li>Организовали структурированное хранение документов и регулярную отчетность.</li>
+                                        <li>Робот формирует и отправляет акты по предпочтительным каналам.</li>
+                                        <li>Автоматически обрабатывает ответы и сверяет данные с системой.</li>
+                                        <li>Создает структурированное хранилище и статусные отчеты.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
-                                        <li>Сокращение времени обработки актов сверки на 85%.</li>
-                                        <li>Снижение количества ошибок на 90%.</li>
-                                        <li>Быстрое выявление расхождений и улучшение отношений с контрагентами.</li>
-                                        <li>Окупаемость инвестиций за 5 месяцев.</li>
+                                        <li>Время обработки сократилось на 85%.</li>
+                                        <li>Ошибок стало на 90% меньше, ROI — 5 месяцев.</li>
+                                        <li>Укрепились отношения с контрагентами благодаря оперативной коммуникации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        Автоматизация обработки актов сверки повысила точность учета и эффективность бухгалтерии, освободив специалистов от рутинных задач.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                        <article
-                            class="ts-portfolio__panel"
-                            id="case-panel-7"
-                            role="tabpanel"
-                            aria-labelledby="case-tab-7"
-                            hidden
-                        >
-                            <div class="ts-portfolio__media">
+                            <div class="ts-case__summary">
+                                Бухгалтеры сосредоточились на аналитике, а компания получила прозрачную отчетность и высокий уровень доверия со стороны партнеров.
+                            </div>
+                        </div>
+                    </article>
+                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.3">
+                        <div class="ts-case__header">
+                            <div class="ts-case__title">
+                                <span class="ts-case__badge">Кейс 7</span>
+                                <h3>Роботизация поиска тендеров и подготовки документов</h3>
+                                <p>Увеличили количество тендеров на 60% и выручку компании на 40%.</p>
+                            </div>
+                            <div class="ts-case__media">
                                 <img src="assets/images/portfolio-7.svg" alt="Роботизация поиска тендеров" />
                             </div>
-                            <div class="ts-portfolio__content">
-                                <h3>Кейс 7: Роботизация поиска тендеров и подготовки документов в небольшой тендерной компании</h3>
-                                <div class="ts-portfolio__section">
+                        </div>
+                        <div class="ts-case__body">
+                            <div class="ts-case__grid">
+                                <div class="ts-case__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
-                                        <li>Тип бизнеса: Небольшая компания, участвующая в государственных и коммерческих тендерах.</li>
-                                        <li>Численность сотрудников: 5 человек.</li>
-                                        <li>Количество тендеров в месяц: рост с 10 до 16 после автоматизации.</li>
+                                        <li>Небольшая тендерная команда из 5 человек.</li>
+                                        <li>Рост количества тендеров с 10 до 16 в месяц.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
-                                        <li>Автоматизировать ежедневный поиск тендеров по заданным критериям.</li>
-                                        <li>Роботизировать сбор и анализ документации, проверку контрагентов и заказчиков.</li>
-                                        <li>Сократить время подготовки стандартных документов и освободить команду от рутины.</li>
+                                        <li>Автоматизировать мониторинг тендерных площадок.</li>
+                                        <li>Собирать и анализировать документацию.</li>
+                                        <li>Проверять контрагентов и готовить пакеты документов.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Наше решение</h4>
                                     <ul>
-                                        <li>Робот ежедневно мониторит тендерные площадки и уведомляет команду о релевантных закупках.</li>
-                                        <li>Автоматически скачивает и анализирует документацию, выделяя ключевые требования.</li>
-                                        <li>Проводит проверку заказчиков, формирует отчеты и заполняет шаблоны документов для подачи заявок.</li>
-                                        <li>Систематизирует данные и хранит их в удобном формате.</li>
+                                        <li>Робот ежедневно ищет тендеры по заданным критериям.</li>
+                                        <li>Автоматически скачивает и анализирует документацию.</li>
+                                        <li>Заполняет шаблоны документов и формирует пакеты заявок.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
+                                <div class="ts-case__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
-                                        <li>Сокращение времени на поиск и анализ тендеров на 60%.</li>
-                                        <li>Рост количества поданных заявок на 60% и повышение выручки на 40%.</li>
-                                        <li>Снижение количества ошибок в документах на 90%.</li>
-                                        <li>Окупаемость проекта за 4 месяца.</li>
+                                        <li>Поиск и анализ тендеров ускорился на 60%.</li>
+                                        <li>Количество поданных заявок выросло на 60%.</li>
+                                        <li>Ошибок в документации стало на 90% меньше.</li>
+                                        <li>ROI — 4 месяца, выручка увеличилась на 40%.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-portfolio__section">
-                                    <h4>Заключение</h4>
-                                    <p>
-                                        RPA помог маленькой команде сосредоточиться на стратегической работе и увеличил шансы на победу в тендерах благодаря точной и
-                                        своевременной подготовке документов.
-                                    </p>
-                                </div>
                             </div>
-                        </article>
-                    </div>
+                            <div class="ts-case__summary">
+                                Сотрудники освободились от рутинной подготовки документов и сфокусировались на стратегии, что повысило конкурентоспособность компании.
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>

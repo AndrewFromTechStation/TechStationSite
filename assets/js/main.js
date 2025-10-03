@@ -306,10 +306,4 @@ document.addEventListener('DOMContentLoaded', () => {
         panelSelector: '.ts-services__panel',
         targetAttribute: 'serviceTarget',
     });
-
-    initPanelTabs({
-        tabSelector: '.ts-portfolio__item',
-        panelSelector: '.ts-portfolio__panel',
-        targetAttribute: 'caseTarget',
-    });
 });
