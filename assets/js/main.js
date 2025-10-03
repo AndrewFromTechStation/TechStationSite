@@ -119,4 +119,84 @@ document.addEventListener('DOMContentLoaded', () => {
             content.style.display = isExpanded ? 'none' : 'block';
         });
     });
+
+    const serviceCards = document.querySelectorAll('.ts-service-card');
+    const serviceDetail = document.querySelector('[data-service-detail]');
+
+    if (serviceCards.length && serviceDetail) {
+        const detailTitle = serviceDetail.querySelector('[data-service-title]');
+        const detailDescription = serviceDetail.querySelector('[data-service-description]');
+        const detailImage = serviceDetail.querySelector('[data-service-image]');
+        let activeCard = document.querySelector('.ts-service-card.is-active') || null;
+        let detailAnimationTimeout;
+
+        const updateDetail = (card) => {
+            if (activeCard === card) {
+                return;
+            }
+
+            activeCard = card;
+
+            serviceCards.forEach((item) => {
+                const button = item.querySelector('.ts-service-card__button');
+                const isActive = item === card;
+                item.classList.toggle('is-active', isActive);
+                if (button) {
+                    button.setAttribute('aria-pressed', String(isActive));
+                }
+            });
+
+            const { serviceTitle, serviceDescription, serviceImage } = card.dataset;
+
+            if (detailTitle && serviceTitle) {
+                detailTitle.textContent = serviceTitle;
+            }
+
+            if (detailDescription && serviceDescription) {
+                detailDescription.textContent = serviceDescription;
+            }
+
+            if (detailImage && serviceImage) {
+                detailImage.src = serviceImage;
+                detailImage.alt = serviceTitle || detailImage.alt;
+            }
+
+            serviceDetail.classList.add('is-updating');
+            if (detailAnimationTimeout) {
+                window.clearTimeout(detailAnimationTimeout);
+            }
+            detailAnimationTimeout = window.setTimeout(() => {
+                serviceDetail.classList.remove('is-updating');
+            }, 500);
+        };
+
+        serviceCards.forEach((card) => {
+            const button = card.querySelector('.ts-service-card__button');
+            if (button) {
+                if (!card.classList.contains('is-active')) {
+                    button.setAttribute('aria-pressed', 'false');
+                } else {
+                    activeCard = card;
+                    button.setAttribute('aria-pressed', 'true');
+                }
+
+                button.addEventListener('click', () => {
+                    updateDetail(card);
+                });
+
+                button.addEventListener('focus', () => {
+                    if (prefersReducedMotion.matches) {
+                        return;
+                    }
+                    updateDetail(card);
+                });
+            }
+
+            card.addEventListener('mouseenter', () => {
+                if (window.matchMedia('(hover: hover)').matches) {
+                    updateDetail(card);
+                }
+            });
+        });
+    }
 });
