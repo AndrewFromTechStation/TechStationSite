@@ -1,16 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('ts-nav-toggle');
-    const navLinks = document.querySelectorAll('.ts-nav__links a');
     const animatedElements = document.querySelectorAll('[data-animate]');
     const counterElements = document.querySelectorAll('.ts-counter');
     const countersPlayed = new WeakSet();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-    navLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-            if (navToggle.checked) {
+    anchorLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            if (!href || href.length <= 1) {
+                return;
+            }
+
+            const target = document.querySelector(href);
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            if (navToggle && navToggle.checked) {
                 navToggle.checked = false;
             }
+
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 
@@ -121,80 +135,135 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const serviceCards = document.querySelectorAll('.ts-service-card');
-    const serviceDetail = document.querySelector('[data-service-detail]');
+    const serviceCardData = new Map();
 
-    if (serviceCards.length && serviceDetail) {
-        const detailTitle = serviceDetail.querySelector('[data-service-title]');
-        const detailDescription = serviceDetail.querySelector('[data-service-description]');
-        const detailImage = serviceDetail.querySelector('[data-service-image]');
-        let activeCard = document.querySelector('.ts-service-card.is-active') || null;
-        let detailAnimationTimeout;
+    const openServiceCard = (card, data) => {
+        if (!data) {
+            return;
+        }
 
-        const updateDetail = (card) => {
-            if (activeCard === card) {
+        const { summary, details } = data;
+        card.classList.add('is-open');
+        summary.setAttribute('aria-expanded', 'true');
+
+        if (prefersReducedMotion.matches) {
+            details.hidden = false;
+            details.style.maxHeight = '';
+            return;
+        }
+
+        details.hidden = false;
+        details.style.maxHeight = '0px';
+        requestAnimationFrame(() => {
+            const fullHeight = details.scrollHeight;
+            details.style.maxHeight = `${fullHeight}px`;
+        });
+
+        const handleTransitionEnd = (event) => {
+            if (event.propertyName === 'max-height') {
+                details.style.maxHeight = 'none';
+                details.removeEventListener('transitionend', handleTransitionEnd);
+            }
+        };
+
+        details.addEventListener('transitionend', handleTransitionEnd);
+    };
+
+    const closeServiceCard = (card, data) => {
+        if (!data) {
+            return;
+        }
+
+        const { summary, details } = data;
+        card.classList.remove('is-open');
+        summary.setAttribute('aria-expanded', 'false');
+
+        if (prefersReducedMotion.matches) {
+            details.hidden = true;
+            details.style.maxHeight = '';
+            return;
+        }
+
+        const fullHeight = details.scrollHeight;
+        details.style.maxHeight = `${fullHeight}px`;
+        requestAnimationFrame(() => {
+            details.style.maxHeight = '0px';
+        });
+
+        const handleTransitionEnd = (event) => {
+            if (event.propertyName === 'max-height') {
+                details.hidden = true;
+                details.removeEventListener('transitionend', handleTransitionEnd);
+            }
+        };
+
+        details.addEventListener('transitionend', handleTransitionEnd);
+    };
+
+    if (serviceCards.length) {
+        serviceCards.forEach((card) => {
+            const summary = card.querySelector('.ts-service-card__summary');
+            const details = card.querySelector('.ts-service-card__details');
+
+            if (!summary || !details) {
                 return;
             }
 
-            activeCard = card;
+            serviceCardData.set(card, { summary, details });
 
-            serviceCards.forEach((item) => {
-                const button = item.querySelector('.ts-service-card__button');
-                const isActive = item === card;
-                item.classList.toggle('is-active', isActive);
-                if (button) {
-                    button.setAttribute('aria-pressed', String(isActive));
-                }
-            });
+            const isOpen = card.classList.contains('is-open');
+            summary.setAttribute('aria-expanded', String(isOpen));
 
-            const { serviceTitle, serviceDescription, serviceImage } = card.dataset;
-
-            if (detailTitle && serviceTitle) {
-                detailTitle.textContent = serviceTitle;
+            if (prefersReducedMotion.matches) {
+                details.hidden = !isOpen;
+                details.style.maxHeight = '';
+            } else if (isOpen) {
+                details.hidden = false;
+                details.style.maxHeight = 'none';
+            } else {
+                details.hidden = true;
+                details.style.maxHeight = '0px';
             }
 
-            if (detailDescription && serviceDescription) {
-                detailDescription.textContent = serviceDescription;
-            }
-
-            if (detailImage && serviceImage) {
-                detailImage.src = serviceImage;
-                detailImage.alt = serviceTitle || detailImage.alt;
-            }
-
-            serviceDetail.classList.add('is-updating');
-            if (detailAnimationTimeout) {
-                window.clearTimeout(detailAnimationTimeout);
-            }
-            detailAnimationTimeout = window.setTimeout(() => {
-                serviceDetail.classList.remove('is-updating');
-            }, 500);
-        };
-
-        serviceCards.forEach((card) => {
-            const button = card.querySelector('.ts-service-card__button');
-            if (button) {
-                if (!card.classList.contains('is-active')) {
-                    button.setAttribute('aria-pressed', 'false');
-                } else {
-                    activeCard = card;
-                    button.setAttribute('aria-pressed', 'true');
+            summary.addEventListener('click', () => {
+                const cardData = serviceCardData.get(card);
+                if (!cardData) {
+                    return;
                 }
 
-                button.addEventListener('click', () => {
-                    updateDetail(card);
-                });
+                if (card.classList.contains('is-open')) {
+                    closeServiceCard(card, cardData);
+                    return;
+                }
 
-                button.addEventListener('focus', () => {
-                    if (prefersReducedMotion.matches) {
+                serviceCards.forEach((otherCard) => {
+                    if (otherCard === card) {
                         return;
                     }
-                    updateDetail(card);
+                    const otherData = serviceCardData.get(otherCard);
+                    if (otherData && otherCard.classList.contains('is-open')) {
+                        closeServiceCard(otherCard, otherData);
+                    }
                 });
-            }
 
-            card.addEventListener('mouseenter', () => {
-                if (window.matchMedia('(hover: hover)').matches) {
-                    updateDetail(card);
+                openServiceCard(card, cardData);
+            });
+        });
+
+        prefersReducedMotion.addEventListener('change', () => {
+            serviceCardData.forEach(({ summary, details }, card) => {
+                const isOpen = card.classList.contains('is-open');
+                summary.setAttribute('aria-expanded', String(isOpen));
+
+                if (prefersReducedMotion.matches) {
+                    details.hidden = !isOpen;
+                    details.style.maxHeight = '';
+                } else if (isOpen) {
+                    details.hidden = false;
+                    details.style.maxHeight = 'none';
+                } else {
+                    details.hidden = true;
+                    details.style.maxHeight = '0px';
                 }
             });
         });
