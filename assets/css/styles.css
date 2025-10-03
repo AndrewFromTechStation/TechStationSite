@@ -775,9 +775,9 @@ body.ts-page {
     background: linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(246, 196, 69, 0.18));
     box-shadow: 0 32px 68px rgba(60, 74, 31, 0.16);
     position: sticky;
-    top: 7rem;
+    top: clamp(5.75rem, 6vw, 6.75rem);
     align-self: flex-start;
-    max-height: calc(100vh - 9rem);
+    max-height: max(24rem, calc(100vh - clamp(5.75rem, 6vw, 6.75rem) - 2.25rem));
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(85, 107, 47, 0.4) transparent;
@@ -841,7 +841,8 @@ body.ts-page {
 }
 
 .ts-portfolio__detail {
-    position: relative;
+    position: sticky;
+    top: clamp(5.75rem, 6vw, 6.75rem);
     border-radius: var(--radius-xl);
     padding: clamp(2.1rem, 4vw, 2.8rem);
     background: linear-gradient(130deg, rgba(255, 255, 255, 0.95), rgba(246, 196, 69, 0.24));
@@ -849,8 +850,10 @@ body.ts-page {
     overflow: hidden;
     display: grid;
     grid-template-rows: 1fr;
-    max-height: calc(100vh - 7rem);
+    height: max(26rem, calc(100vh - clamp(5.75rem, 6vw, 6.75rem) - 2.25rem));
+    max-height: max(26rem, calc(100vh - clamp(5.75rem, 6vw, 6.75rem) - 2.25rem));
     min-height: 0;
+    scrollbar-gutter: stable both-edges;
 }
 
 .ts-portfolio__detail::before {
@@ -878,6 +881,7 @@ body.ts-page {
     scrollbar-width: thin;
     scrollbar-color: rgba(246, 196, 69, 0.5) transparent;
     scrollbar-gutter: stable both-edges;
+    -webkit-overflow-scrolling: touch;
 }
 
 .ts-portfolio__panel.is-active {
@@ -1622,6 +1626,7 @@ body.ts-page {
 
     .ts-portfolio__list {
         position: static;
+        top: auto;
         grid-auto-flow: column;
         overflow-x: auto;
         padding: 0.75rem 0 0.5rem;
@@ -1641,8 +1646,12 @@ body.ts-page {
     }
 
     .ts-portfolio__detail {
+        position: static;
+        top: auto;
         padding: clamp(1.8rem, 5vw, 2.4rem);
+        height: auto;
         max-height: none;
+        scrollbar-gutter: auto;
     }
 
     .ts-portfolio__panel-header {
@@ -1653,6 +1662,7 @@ body.ts-page {
         max-height: none;
         overflow: visible;
         padding-right: 0;
+        -webkit-overflow-scrolling: auto;
     }
 
     .ts-portfolio__panel-media {
