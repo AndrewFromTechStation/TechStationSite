@@ -868,7 +868,8 @@ body.ts-page {
 
 .ts-portfolio__panel {
     position: relative;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: clamp(1.8rem, 3vw, 2.4rem);
     opacity: 0;
     transform: translateY(16px);
@@ -876,30 +877,12 @@ body.ts-page {
     grid-area: 1 / 1;
     height: 100%;
     min-height: 0;
-    overflow-y: auto;
-    padding-right: clamp(0.25rem, 0.8vw, 0.75rem);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(246, 196, 69, 0.5) transparent;
-    scrollbar-gutter: stable both-edges;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
 }
 
 .ts-portfolio__panel.is-active {
     opacity: 1;
     transform: translateY(0);
-}
-
-.ts-portfolio__panel::-webkit-scrollbar {
-    width: 8px;
-}
-
-.ts-portfolio__panel::-webkit-scrollbar-thumb {
-    border-radius: 999px;
-    background: linear-gradient(180deg, rgba(246, 196, 69, 0.65), rgba(242, 153, 74, 0.65));
-}
-
-.ts-portfolio__panel::-webkit-scrollbar-track {
-    background: transparent;
 }
 
 .ts-portfolio__panel-header {
@@ -962,6 +945,28 @@ body.ts-page {
     display: grid;
     gap: clamp(1.4rem, 2.4vw, 2rem);
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-content: start;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding-right: clamp(0.35rem, 1vw, 0.85rem);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(246, 196, 69, 0.55) transparent;
+    scrollbar-gutter: stable both-edges;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ts-portfolio__panel-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ts-portfolio__panel-body::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(246, 196, 69, 0.65), rgba(242, 153, 74, 0.65));
+}
+
+.ts-portfolio__panel-body::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .ts-portfolio__section {
@@ -1011,6 +1016,8 @@ body.ts-page {
     padding: clamp(1.25rem, 2.4vw, 1.65rem);
     color: rgba(45, 43, 33, 0.9);
     line-height: 1.65;
+    flex: 0 0 auto;
+    margin-top: clamp(1.3rem, 2vw, 1.8rem);
 }
 
 
@@ -1663,6 +1670,17 @@ body.ts-page {
         overflow: visible;
         padding-right: 0;
         -webkit-overflow-scrolling: auto;
+    }
+
+    .ts-portfolio__panel-body {
+        flex: unset;
+        overflow: visible;
+        padding-right: 0;
+        scrollbar-width: auto;
+    }
+
+    .ts-portfolio__panel-body::-webkit-scrollbar {
+        display: none;
     }
 
     .ts-portfolio__panel-media {
