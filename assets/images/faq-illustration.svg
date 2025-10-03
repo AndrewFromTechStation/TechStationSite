@@ -1,0 +1,19 @@
+<svg width="480" height="420" viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="faq-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0C8" />
+      <stop offset="100%" stop-color="#F5F1E3" />
+    </linearGradient>
+    <linearGradient id="faq-symbol" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#556B2F" />
+      <stop offset="100%" stop-color="#3C4A1F" />
+    </linearGradient>
+  </defs>
+  <rect x="30" y="30" width="420" height="360" rx="48" fill="url(#faq-bg)" />
+  <circle cx="150" cy="180" r="78" fill="white" opacity="0.92" />
+  <circle cx="320" cy="240" r="90" fill="white" opacity="0.92" />
+  <path d="M136 162C136 131 159 112 188 112C212 112 226 126 226 146C226 166 214 178 194 182V212H170V178H188C197 176 202 170 202 160C202 148 194 140 182 140C166 140 158 149 156 162H136Z" fill="url(#faq-symbol)" />
+  <circle cx="186" cy="240" r="12" fill="url(#faq-symbol)" />
+  <path d="M286 212C286 178 316 152 350 152C380 152 402 170 402 198C402 224 388 240 362 244V272H338V226H354C366 224 374 214 374 202C374 186 362 176 348 176C330 176 318 190 318 212H286Z" fill="url(#faq-symbol)" opacity="0.85" />
+  <rect x="96" y="288" width="288" height="48" rx="24" fill="#556B2F" opacity="0.12" />
+</svg>
