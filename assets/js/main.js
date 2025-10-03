@@ -134,138 +134,182 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const serviceCards = document.querySelectorAll('.ts-service-card');
-    const serviceCardData = new Map();
+    const initPanelTabs = ({ tabSelector, panelSelector, targetAttribute }) => {
+        const tabs = Array.from(document.querySelectorAll(tabSelector));
+        const panels = Array.from(document.querySelectorAll(panelSelector));
 
-    const openServiceCard = (card, data) => {
-        if (!data) {
+        if (!tabs.length || !panels.length) {
             return;
         }
 
-        const { summary, details } = data;
-        card.classList.add('is-open');
-        summary.setAttribute('aria-expanded', 'true');
+        const getTargetId = (tab) => tab.dataset[targetAttribute];
+        const panelById = new Map(panels.map((panel) => [panel.id, panel]));
 
-        if (prefersReducedMotion.matches) {
-            details.hidden = false;
-            details.style.maxHeight = '';
-            return;
-        }
+        let activeTab = tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0];
 
-        details.hidden = false;
-        details.style.maxHeight = '0px';
-        requestAnimationFrame(() => {
-            const fullHeight = details.scrollHeight;
-            details.style.maxHeight = `${fullHeight}px`;
-        });
-
-        const handleTransitionEnd = (event) => {
-            if (event.propertyName === 'max-height') {
-                details.style.maxHeight = 'none';
-                details.removeEventListener('transitionend', handleTransitionEnd);
-            }
-        };
-
-        details.addEventListener('transitionend', handleTransitionEnd);
-    };
-
-    const closeServiceCard = (card, data) => {
-        if (!data) {
-            return;
-        }
-
-        const { summary, details } = data;
-        card.classList.remove('is-open');
-        summary.setAttribute('aria-expanded', 'false');
-
-        if (prefersReducedMotion.matches) {
-            details.hidden = true;
-            details.style.maxHeight = '';
-            return;
-        }
-
-        const fullHeight = details.scrollHeight;
-        details.style.maxHeight = `${fullHeight}px`;
-        requestAnimationFrame(() => {
-            details.style.maxHeight = '0px';
-        });
-
-        const handleTransitionEnd = (event) => {
-            if (event.propertyName === 'max-height') {
-                details.hidden = true;
-                details.removeEventListener('transitionend', handleTransitionEnd);
-            }
-        };
-
-        details.addEventListener('transitionend', handleTransitionEnd);
-    };
-
-    if (serviceCards.length) {
-        serviceCards.forEach((card) => {
-            const summary = card.querySelector('.ts-service-card__summary');
-            const details = card.querySelector('.ts-service-card__details');
-
-            if (!summary || !details) {
+        const showPanel = (panel) => {
+            if (!panel) {
                 return;
             }
 
-            serviceCardData.set(card, { summary, details });
-
-            const isOpen = card.classList.contains('is-open');
-            summary.setAttribute('aria-expanded', String(isOpen));
+            panel.hidden = false;
 
             if (prefersReducedMotion.matches) {
-                details.hidden = !isOpen;
-                details.style.maxHeight = '';
-            } else if (isOpen) {
-                details.hidden = false;
-                details.style.maxHeight = 'none';
-            } else {
-                details.hidden = true;
-                details.style.maxHeight = '0px';
+                panel.classList.add('is-active');
+                return;
             }
 
-            summary.addEventListener('click', () => {
-                const cardData = serviceCardData.get(card);
-                if (!cardData) {
-                    return;
-                }
+            panel.classList.remove('is-active');
+            requestAnimationFrame(() => {
+                panel.classList.add('is-active');
+            });
+        };
 
-                if (card.classList.contains('is-open')) {
-                    closeServiceCard(card, cardData);
-                    return;
-                }
+        const hidePanel = (panel) => {
+            if (!panel) {
+                return;
+            }
 
-                serviceCards.forEach((otherCard) => {
-                    if (otherCard === card) {
-                        return;
+            if (prefersReducedMotion.matches) {
+                panel.classList.remove('is-active');
+                panel.hidden = true;
+                return;
+            }
+
+            panel.classList.remove('is-active');
+            panel.addEventListener(
+                'transitionend',
+                (event) => {
+                    if (event.propertyName === 'opacity') {
+                        panel.hidden = true;
                     }
-                    const otherData = serviceCardData.get(otherCard);
-                    if (otherData && otherCard.classList.contains('is-open')) {
-                        closeServiceCard(otherCard, otherData);
-                    }
-                });
+                },
+                { once: true },
+            );
 
-                openServiceCard(card, cardData);
+            window.setTimeout(() => {
+                if (!panel.hidden) {
+                    panel.hidden = true;
+                }
+            }, 600);
+        };
+
+        const activateTab = (tab) => {
+            if (!tab) {
+                return;
+            }
+
+            const targetId = getTargetId(tab);
+            const targetPanel = panelById.get(targetId);
+
+            if (!targetPanel) {
+                return;
+            }
+
+            if (activeTab && activeTab !== tab) {
+                const previousPanel = panelById.get(getTargetId(activeTab));
+                activeTab.classList.remove('is-active');
+                activeTab.setAttribute('aria-selected', 'false');
+                activeTab.setAttribute('tabindex', '-1');
+                hidePanel(previousPanel);
+            }
+
+            tab.classList.add('is-active');
+            tab.setAttribute('aria-selected', 'true');
+            tab.setAttribute('tabindex', '0');
+            showPanel(targetPanel);
+
+            activeTab = tab;
+        };
+
+        const initialiseStates = () => {
+            tabs.forEach((tab, index) => {
+                const isActive = tab === activeTab;
+                const panel = panelById.get(getTargetId(tab));
+
+                tab.classList.toggle('is-active', isActive);
+                tab.setAttribute('aria-selected', String(isActive));
+                tab.setAttribute('tabindex', isActive ? '0' : '-1');
+
+                if (panel) {
+                    panel.classList.toggle('is-active', isActive);
+                    panel.hidden = !isActive;
+                }
+            });
+        };
+
+        initialiseStates();
+
+        const focusTabByOffset = (currentIndex, offset) => {
+            const nextIndex = (currentIndex + offset + tabs.length) % tabs.length;
+            const nextTab = tabs[nextIndex];
+            nextTab.focus();
+            activateTab(nextTab);
+        };
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                if (!tab.classList.contains('is-active')) {
+                    activateTab(tab);
+                }
+            });
+
+            tab.addEventListener('keydown', (event) => {
+                switch (event.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
+                        event.preventDefault();
+                        focusTabByOffset(index, 1);
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        event.preventDefault();
+                        focusTabByOffset(index, -1);
+                        break;
+                    case 'Home':
+                        event.preventDefault();
+                        tabs[0].focus();
+                        activateTab(tabs[0]);
+                        break;
+                    case 'End':
+                        event.preventDefault();
+                        tabs[tabs.length - 1].focus();
+                        activateTab(tabs[tabs.length - 1]);
+                        break;
+                    case 'Enter':
+                    case ' ':
+                        event.preventDefault();
+                        activateTab(tab);
+                        break;
+                    default:
+                        break;
+                }
             });
         });
 
         prefersReducedMotion.addEventListener('change', () => {
-            serviceCardData.forEach(({ summary, details }, card) => {
-                const isOpen = card.classList.contains('is-open');
-                summary.setAttribute('aria-expanded', String(isOpen));
-
-                if (prefersReducedMotion.matches) {
-                    details.hidden = !isOpen;
-                    details.style.maxHeight = '';
-                } else if (isOpen) {
-                    details.hidden = false;
-                    details.style.maxHeight = 'none';
-                } else {
-                    details.hidden = true;
-                    details.style.maxHeight = '0px';
+            tabs.forEach((tab) => {
+                const panel = panelById.get(getTargetId(tab));
+                if (!panel) {
+                    return;
                 }
+
+                const isActive = tab.classList.contains('is-active');
+                panel.hidden = !isActive;
+                panel.classList.toggle('is-active', isActive);
             });
         });
-    }
+    };
+
+    initPanelTabs({
+        tabSelector: '.ts-services__item',
+        panelSelector: '.ts-services__panel',
+        targetAttribute: 'serviceTarget',
+    });
+
+    initPanelTabs({
+        tabSelector: '.ts-portfolio__item',
+        panelSelector: '.ts-portfolio__panel',
+        targetAttribute: 'caseTarget',
+    });
 });
