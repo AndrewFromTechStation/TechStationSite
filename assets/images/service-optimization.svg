@@ -1,0 +1,37 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="optimization-bg" x1="24" y1="24" x2="140" y2="136" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDF2D1" />
+      <stop offset="1" stop-color="#F7D87A" />
+    </linearGradient>
+    <linearGradient id="optimization-accent" x1="44" y1="52" x2="120" y2="124" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4C5F2B" />
+      <stop offset="1" stop-color="#7B8C45" />
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="120" height="120" rx="36" fill="url(#optimization-bg)" opacity="0.35" />
+  <circle cx="80" cy="88" r="44" fill="#FCF7E6" stroke="#C9B88D" stroke-width="4" />
+  <path
+    d="M80 52C60.5655 52 45 67.5655 45 87C45 106.435 60.5655 122 80 122C99.4345 122 115 106.435 115 87"
+    stroke="url(#optimization-accent)"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+  <path d="M80 64V86L102 98" stroke="#F2A25C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="80" cy="88" r="10" fill="#4C5F2B" />
+  <circle cx="54" cy="108" r="8" fill="#F7D87A" />
+  <circle cx="108" cy="72" r="9" fill="#F2A25C" />
+  <path
+    d="M120 52C120 47.0294 115.971 43 111 43C107.093 43 103.708 45.4472 102.318 48.9741"
+    stroke="#4C5F2B"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <path
+    d="M120 52C120 56.9706 123.029 61 128 61C131.907 61 135.292 58.5528 136.682 55.0259"
+    stroke="#F2A25C"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <circle cx="111" cy="52" r="7" fill="#FCF7E6" stroke="#4C5F2B" stroke-width="3" />
+</svg>

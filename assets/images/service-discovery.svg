@@ -1,0 +1,42 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="discovery-bg" x1="28" y1="26" x2="134" y2="134" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDF2D1" />
+      <stop offset="1" stop-color="#F7D87A" />
+    </linearGradient>
+    <linearGradient id="discovery-accent" x1="64" y1="52" x2="112" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4C5F2B" />
+      <stop offset="1" stop-color="#7B8C45" />
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="112" height="112" rx="32" fill="url(#discovery-bg)" opacity="0.3" />
+  <circle cx="76" cy="76" r="36" fill="#FCF7E6" stroke="#C9B88D" stroke-width="4" />
+  <path
+    d="M102 102L118 118"
+    stroke="#F2A25C"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+  <circle cx="76" cy="76" r="28" fill="url(#discovery-accent)" opacity="0.9" />
+  <circle cx="76" cy="76" r="16" fill="#FCF7E6" />
+  <path
+    d="M70 60C64 60 60 66 60 72"
+    stroke="#F2A25C"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <circle cx="108" cy="44" r="10" fill="#F7D87A" />
+  <circle cx="50" cy="110" r="9" fill="#F2A25C" />
+  <path
+    d="M118 60C123 60 128 55 128 50"
+    stroke="#4C5F2B"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <path
+    d="M40 58C45 58 50 53 50 48"
+    stroke="#4C5F2B"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+</svg>
