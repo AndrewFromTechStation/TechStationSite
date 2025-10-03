@@ -544,11 +544,11 @@ body.ts-page {
 .ts-services__panel {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
-    gap: clamp(1.25rem, 3vw, 2rem);
-    align-items: flex-start;
-    align-content: flex-start;
-    min-height: clamp(220px, 36vh, 280px);
+    grid-template-columns: minmax(0, 1fr) minmax(120px, 168px);
+    gap: clamp(1.35rem, 3.5vw, 2.25rem);
+    align-items: start;
+    align-content: start;
+    min-height: clamp(240px, 34vh, 300px);
     width: 100%;
     opacity: 0;
     transform: translateY(20px);
@@ -562,23 +562,27 @@ body.ts-page {
 }
 
 .ts-services__panel-media {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 24px;
-    padding: 1.25rem;
-    box-shadow: inset 0 0 0 1px rgba(246, 196, 69, 0.35);
+    order: 2;
+    background: radial-gradient(circle at 30% 30%, rgba(246, 196, 69, 0.55), rgba(255, 255, 255, 0.9) 62%);
+    border-radius: 32px;
+    padding: clamp(1rem, 2.5vw, 1.4rem);
+    box-shadow: 0 18px 34px rgba(242, 153, 74, 0.28), inset 0 0 0 1px rgba(85, 107, 47, 0.15);
     display: grid;
     place-items: center;
+    align-self: start;
+    justify-self: end;
 }
 
 .ts-services__panel-media img {
-    width: clamp(72px, 10vw, 92px);
+    width: clamp(68px, 9vw, 96px);
     height: auto;
 }
 
 .ts-services__panel-content {
     display: grid;
-    gap: 1rem;
+    gap: clamp(0.85rem, 2vw, 1.25rem);
     color: var(--color-olive-dark);
+    align-content: start;
 }
 
 .ts-services__panel-content h3 {
@@ -769,6 +773,23 @@ body.ts-page {
     position: sticky;
     top: 7rem;
     align-self: flex-start;
+    max-height: calc(100vh - 9rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(85, 107, 47, 0.4) transparent;
+}
+
+.ts-portfolio__list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ts-portfolio__list::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(85, 107, 47, 0.35);
+}
+
+.ts-portfolio__list::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .ts-portfolio__item {
@@ -823,6 +844,7 @@ body.ts-page {
     overflow: hidden;
     display: grid;
     align-content: start;
+    max-height: calc(100vh - 7rem);
 }
 
 .ts-portfolio__detail::before {
@@ -843,11 +865,29 @@ body.ts-page {
     transform: translateY(16px);
     transition: opacity 0.45s ease, transform 0.45s ease;
     grid-area: 1 / 1;
+    max-height: min(760px, calc(100vh - 11rem));
+    overflow-y: auto;
+    padding-right: clamp(0.25rem, 0.8vw, 0.75rem);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(246, 196, 69, 0.5) transparent;
 }
 
 .ts-portfolio__panel.is-active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.ts-portfolio__panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ts-portfolio__panel::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(246, 196, 69, 0.65), rgba(242, 153, 74, 0.65));
+}
+
+.ts-portfolio__panel::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .ts-portfolio__panel-header {
@@ -1546,6 +1586,16 @@ body.ts-page {
         scrollbar-width: none;
     }
 
+    .ts-services__panel {
+        grid-template-columns: 1fr;
+    }
+
+    .ts-services__panel-media {
+        order: 0;
+        justify-self: flex-start;
+        margin-bottom: 1rem;
+    }
+
     .ts-services__list::-webkit-scrollbar {
         display: none;
     }
@@ -1567,6 +1617,7 @@ body.ts-page {
         box-shadow: none;
         gap: 0.75rem;
         scrollbar-width: none;
+        max-height: none;
     }
 
     .ts-portfolio__list::-webkit-scrollbar {
@@ -1579,10 +1630,17 @@ body.ts-page {
 
     .ts-portfolio__detail {
         padding: clamp(1.8rem, 5vw, 2.4rem);
+        max-height: none;
     }
 
     .ts-portfolio__panel-header {
         grid-template-columns: 1fr;
+    }
+
+    .ts-portfolio__panel {
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
     }
 
     .ts-portfolio__panel-media {

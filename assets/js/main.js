@@ -217,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.classList.add('is-active');
             tab.setAttribute('aria-selected', 'true');
             tab.setAttribute('tabindex', '0');
+            targetPanel.scrollTop = 0;
             showPanel(targetPanel);
 
             activeTab = tab;
