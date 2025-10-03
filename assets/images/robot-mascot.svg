@@ -1,0 +1,30 @@
+<svg width="520" height="520" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="robot-glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#FFF5D6" />
+      <stop offset="100%" stop-color="#F5F1E3" />
+    </radialGradient>
+    <linearGradient id="robot-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#556B2F" />
+      <stop offset="100%" stop-color="#3C4A1F" />
+    </linearGradient>
+    <linearGradient id="robot-highlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F6C445" />
+      <stop offset="100%" stop-color="#F2994A" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="60" width="440" height="400" rx="120" fill="url(#robot-glow)" />
+  <rect x="120" y="120" width="280" height="220" rx="72" fill="url(#robot-body)" />
+  <rect x="158" y="160" width="204" height="140" rx="60" fill="#F5F1E3" />
+  <circle cx="220" cy="214" r="26" fill="#556B2F" />
+  <circle cx="300" cy="214" r="26" fill="#556B2F" />
+  <circle cx="220" cy="214" r="12" fill="#F6C445" />
+  <circle cx="300" cy="214" r="12" fill="#F6C445" />
+  <path d="M210 270C226 300 294 302 310 270" stroke="#556B2F" stroke-width="12" stroke-linecap="round" />
+  <rect x="190" y="340" width="140" height="70" rx="35" fill="url(#robot-highlight)" />
+  <rect x="200" y="352" width="120" height="46" rx="23" fill="#FFF8E6" />
+  <path d="M140 220 H100" stroke="#556B2F" stroke-width="14" stroke-linecap="round" />
+  <path d="M420 220 H460" stroke="#556B2F" stroke-width="14" stroke-linecap="round" />
+  <circle cx="260" cy="92" r="32" fill="url(#robot-highlight)" />
+  <rect x="240" y="60" width="40" height="40" rx="20" fill="#F5F1E3" />
+</svg>
