@@ -386,8 +386,8 @@ body.ts-page {
     color: var(--color-olive-dark);
     width: 60%;
     aspect-ratio: 1;
-    top: 60%;
-    left: 48%;
+    top: 56%;
+    left: 66%;
     padding: 2.3rem 2rem;
     animation-duration: 9s;
     z-index: 2;
@@ -527,6 +527,9 @@ body.ts-page {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(246, 196, 69, 0.28));
     box-shadow: 0 34px 56px rgba(60, 74, 31, 0.16);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .ts-services__detail::before {
@@ -545,6 +548,9 @@ body.ts-page {
     grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
     gap: clamp(1.25rem, 3vw, 2rem);
     align-items: flex-start;
+    align-content: flex-start;
+    min-height: clamp(220px, 36vh, 280px);
+    width: 100%;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.45s ease, transform 0.45s ease;
@@ -747,48 +753,116 @@ body.ts-page {
     background: linear-gradient(180deg, rgba(245, 241, 227, 0.35) 0%, rgba(255, 255, 255, 0.8) 100%);
 }
 
-.ts-case-grid {
+.ts-portfolio__layout {
     display: grid;
-    gap: clamp(2.25rem, 5vw, 3.25rem);
+    gap: clamp(2.25rem, 5vw, 3.5rem);
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
 }
 
-.ts-case {
+.ts-portfolio__list {
+    display: grid;
+    gap: 0.85rem;
+    padding: clamp(1.6rem, 3vw, 2.1rem);
+    border-radius: var(--radius-xl);
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(246, 196, 69, 0.18));
+    box-shadow: 0 32px 68px rgba(60, 74, 31, 0.16);
+    position: sticky;
+    top: 7rem;
+    align-self: flex-start;
+}
+
+.ts-portfolio__item {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1.05rem 1.25rem;
+    border-radius: 20px;
+    border: 1px solid rgba(85, 107, 47, 0.14);
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--color-olive-dark);
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.ts-portfolio__item:hover,
+.ts-portfolio__item:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(85, 107, 47, 0.18);
+    border-color: rgba(85, 107, 47, 0.28);
+}
+
+.ts-portfolio__item.is-active {
+    background: linear-gradient(135deg, rgba(246, 196, 69, 0.35), rgba(242, 153, 74, 0.45));
+    border-color: rgba(242, 153, 74, 0.55);
+    box-shadow: 0 24px 46px rgba(242, 153, 74, 0.26);
+}
+
+.ts-portfolio__item-badge {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(60, 74, 31, 0.68);
+}
+
+.ts-portfolio__item.is-active .ts-portfolio__item-badge {
+    color: rgba(45, 43, 33, 0.88);
+}
+
+.ts-portfolio__item-title {
+    font-size: 0.98rem;
+    line-height: 1.45;
+}
+
+.ts-portfolio__detail {
     position: relative;
     border-radius: var(--radius-xl);
-    padding: clamp(2rem, 4vw, 2.75rem);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(246, 196, 69, 0.22));
+    padding: clamp(2.1rem, 4vw, 2.8rem);
+    background: linear-gradient(130deg, rgba(255, 255, 255, 0.95), rgba(246, 196, 69, 0.24));
     box-shadow: 0 42px 86px rgba(60, 74, 31, 0.18);
     overflow: hidden;
 }
 
-.ts-case::before {
+.ts-portfolio__detail::before {
     content: '';
     position: absolute;
-    inset: -20% -15% auto auto;
-    width: clamp(280px, 40vw, 360px);
-    aspect-ratio: 1;
-    background: radial-gradient(circle at 30% 30%, rgba(246, 196, 69, 0.35), transparent 70%);
-    opacity: 0.8;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(242, 153, 74, 0.18), transparent 55%),
+        radial-gradient(circle at 85% 70%, rgba(85, 107, 47, 0.18), transparent 60%);
+    opacity: 0.9;
     pointer-events: none;
-    z-index: 0;
 }
 
-.ts-case__header {
+.ts-portfolio__panel {
+    position: relative;
+    display: grid;
+    gap: clamp(1.8rem, 3vw, 2.4rem);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.ts-portfolio__panel.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ts-portfolio__panel-header {
     position: relative;
     z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(180px, 220px);
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: clamp(1.6rem, 3vw, 2.4rem);
     align-items: center;
 }
 
-.ts-case__badge {
+.ts-portfolio__badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     padding: 0.45rem 0.9rem;
     border-radius: 999px;
-    background: rgba(85, 107, 47, 0.1);
+    background: rgba(85, 107, 47, 0.12);
     color: var(--color-olive-dark);
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -796,83 +870,76 @@ body.ts-page {
     font-size: 0.78rem;
 }
 
-.ts-case__title {
+.ts-portfolio__panel-title {
     display: grid;
     gap: 0.75rem;
 }
 
-.ts-case__title h3 {
+.ts-portfolio__panel-title h3 {
     margin: 0;
-    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+    font-size: clamp(1.55rem, 2.5vw, 1.95rem);
     line-height: 1.35;
     color: var(--color-olive-dark);
 }
 
-.ts-case__title p {
+.ts-portfolio__panel-title p {
     margin: 0;
     line-height: 1.6;
-    color: rgba(60, 74, 31, 0.75);
+    color: rgba(60, 74, 31, 0.76);
 }
 
-.ts-case__media {
-    position: relative;
+.ts-portfolio__panel-media {
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.88);
-    padding: clamp(1rem, 2vw, 1.6rem);
+    background: rgba(255, 255, 255, 0.9);
+    padding: clamp(1.1rem, 2vw, 1.6rem);
     box-shadow: inset 0 0 0 1px rgba(246, 196, 69, 0.32);
 }
 
-.ts-case__media img {
+.ts-portfolio__panel-media img {
     display: block;
     width: 100%;
     height: auto;
 }
 
-.ts-case__body {
+.ts-portfolio__panel-body {
     position: relative;
     z-index: 1;
-    margin-top: clamp(1.8rem, 3vw, 2.4rem);
     display: grid;
-    gap: clamp(1.5rem, 2.5vw, 2.2rem);
-}
-
-.ts-case__grid {
-    display: grid;
-    gap: clamp(1.25rem, 2.5vw, 1.75rem);
+    gap: clamp(1.4rem, 2.4vw, 2rem);
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-.ts-case__section {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 1.2rem 1.35rem;
-    box-shadow: inset 0 0 0 1px rgba(85, 107, 47, 0.1);
+.ts-portfolio__section {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 22px;
+    padding: 1.25rem 1.45rem;
+    box-shadow: inset 0 0 0 1px rgba(85, 107, 47, 0.12);
     display: grid;
     gap: 0.65rem;
 }
 
-.ts-case__section h4 {
+.ts-portfolio__section h4 {
     margin: 0;
     color: var(--color-olive);
-    font-size: 1.02rem;
+    font-size: 1.04rem;
 }
 
-.ts-case__section ul {
+.ts-portfolio__section ul {
     margin: 0;
     padding: 0;
     list-style: none;
     display: grid;
-    gap: 0.55rem;
+    gap: 0.6rem;
 }
 
-.ts-case__section ul li {
+.ts-portfolio__section ul li {
     position: relative;
     padding-left: 1.3rem;
     line-height: 1.55;
     color: rgba(45, 43, 33, 0.85);
 }
 
-.ts-case__section ul li::before {
+.ts-portfolio__section ul li::before {
     content: '';
     position: absolute;
     left: 0;
@@ -883,13 +950,14 @@ body.ts-page {
     background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
 }
 
-.ts-case__summary {
+.ts-portfolio__panel-summary {
     background: rgba(85, 107, 47, 0.08);
-    border-radius: 22px;
-    padding: clamp(1.2rem, 2.5vw, 1.6rem);
+    border-radius: 24px;
+    padding: clamp(1.25rem, 2.4vw, 1.65rem);
     color: rgba(45, 43, 33, 0.9);
     line-height: 1.65;
 }
+
 
 .ts-pricing {
     padding: 4rem 0;
@@ -1453,13 +1521,13 @@ body.ts-page {
     }
 
     .ts-hero__orb--metric {
-        top: 64%;
-        left: 18%;
+        top: 66%;
+        left: 24%;
         width: 70%;
     }
 
     .ts-hero__orb--accent {
-        top: 34%;
+        top: 32%;
         right: 4%;
         width: 74%;
     }
@@ -1483,13 +1551,40 @@ body.ts-page {
         min-width: 200px;
     }
 
-    .ts-case__header {
+    .ts-portfolio__layout {
         grid-template-columns: 1fr;
     }
 
-    .ts-case__media {
+    .ts-portfolio__list {
+        position: static;
+        grid-auto-flow: column;
+        overflow-x: auto;
+        padding: 0.75rem 0 0.5rem;
+        background: transparent;
+        box-shadow: none;
+        gap: 0.75rem;
+        scrollbar-width: none;
+    }
+
+    .ts-portfolio__list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ts-portfolio__item {
+        min-width: 220px;
+    }
+
+    .ts-portfolio__detail {
+        padding: clamp(1.8rem, 5vw, 2.4rem);
+    }
+
+    .ts-portfolio__panel-header {
+        grid-template-columns: 1fr;
+    }
+
+    .ts-portfolio__panel-media {
         justify-self: center;
-        max-width: 240px;
+        max-width: 220px;
     }
 }
 
@@ -1510,8 +1605,12 @@ body.ts-page {
         min-width: 180px;
     }
 
+    .ts-portfolio__item {
+        min-width: 190px;
+    }
+
     .ts-services__detail,
-    .ts-case,
+    .ts-portfolio__detail,
     .ts-price-card,
     .ts-team-card,
     .ts-blog-card,

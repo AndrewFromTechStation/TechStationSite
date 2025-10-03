@@ -307,21 +307,120 @@
                 <div class="ts-section-header">
                     <h2>Наше портфолио</h2>
                 </div>
-                <div class="ts-case-grid">
-                    <article class="ts-case" data-animate="fade-up">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 1</span>
-                                <h3>Роботизация межфилиальных процессов в международной производственной корпорации</h3>
-                                <p>Сократили внутренние процессы на 65% и снизили операционные расходы на 15% в 24 странах.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-1.svg" alt="Роботизация межфилиальных процессов" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                <div class="ts-portfolio__layout">
+                    <div class="ts-portfolio__list" role="tablist" aria-label="Кейсы Technostation">
+                        <button
+                            class="ts-portfolio__item is-active"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-1"
+                            aria-controls="portfolio-case-1"
+                            aria-selected="true"
+                            tabindex="0"
+                            data-case-target="portfolio-case-1"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 1</span>
+                            <span class="ts-portfolio__item-title">Межфилиальные процессы международной корпорации</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-2"
+                            aria-controls="portfolio-case-2"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-2"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 2</span>
+                            <span class="ts-portfolio__item-title">Обработка заказов интернет-магазина</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-3"
+                            aria-controls="portfolio-case-3"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-3"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 3</span>
+                            <span class="ts-portfolio__item-title">Оптимизация бухгалтерии</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-4"
+                            aria-controls="portfolio-case-4"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-4"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 4</span>
+                            <span class="ts-portfolio__item-title">Роботизация HR-процессов</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-5"
+                            aria-controls="portfolio-case-5"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-5"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 5</span>
+                            <span class="ts-portfolio__item-title">Административные процессы в строительстве</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-6"
+                            aria-controls="portfolio-case-6"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-6"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 6</span>
+                            <span class="ts-portfolio__item-title">Обработка актов сверки</span>
+                        </button>
+                        <button
+                            class="ts-portfolio__item"
+                            type="button"
+                            role="tab"
+                            id="portfolio-tab-7"
+                            aria-controls="portfolio-case-7"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-case-target="portfolio-case-7"
+                        >
+                            <span class="ts-portfolio__item-badge">Кейс 7</span>
+                            <span class="ts-portfolio__item-title">Поиск тендеров и подготовка документов</span>
+                        </button>
+                    </div>
+
+                    <div class="ts-portfolio__detail">
+                        <article
+                            class="ts-portfolio__panel is-active"
+                            id="portfolio-case-1"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-1"
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 1</span>
+                                    <h3>Роботизация межфилиальных процессов в международной производственной корпорации</h3>
+                                    <p>Сократили внутренние процессы на 65% и снизили операционные расходы на 15% в 24 странах.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-1.svg" alt="Роботизация межфилиальных процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Международная корпорация в сфере электроники и бытовой техники.</li>
@@ -329,7 +428,7 @@
                                         <li>Около 400&nbsp;000 сотрудников, из них 10&nbsp;000 в зоне автоматизации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Ускорить согласования между 24 филиалами.</li>
@@ -337,7 +436,7 @@
                                         <li>Учитывать локальные требования и особенности рынков.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>AI RPA-робот для коммуникаций, обработки документов и согласований.</li>
@@ -345,7 +444,7 @@
                                         <li>Интеграция с корпоративными ERP и CRM.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Скорость внутренних процессов выросла на 65%.</li>
@@ -354,25 +453,29 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 Решение укрепило позиции корпорации на глобальном рынке: сотрудники избавились от рутины, а руководители получили контроль над процессами без роста затрат.
                             </div>
-                        </div>
-                    </article>
-                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.05">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 2</span>
-                                <h3>Роботизация обработки заказов в интернет-магазине</h3>
-                                <p>Подняли продажи на 25% и окупили проект всего за два месяца благодаря актуальным данным.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-2.svg" alt="Роботизация обработки заказов" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-2"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-2"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 2</span>
+                                    <h3>Роботизация обработки заказов в интернет-магазине</h3>
+                                    <p>Подняли продажи на 25% и окупили проект всего за два месяца благодаря актуальным данным.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-2.svg" alt="Роботизация обработки заказов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Интернет-магазин строительных материалов и инструментов.</li>
@@ -380,7 +483,7 @@
                                         <li>Автоматизация затронула отдел продаж из 4 специалистов.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Автоматизировать обновление остатков и цен на маркетплейсах.</li>
@@ -388,14 +491,14 @@
                                         <li>Снизить операционные издержки.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>RPA-робот синхронизирует данные о товарах в реальном времени.</li>
                                         <li>Автоматическая генерация отчетности для отдела продаж.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Рост продаж на 25%.</li>
@@ -404,32 +507,36 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 Бизнес получил быстрый возврат инвестиций и конкурентное преимущество на маркетплейсах благодаря своевременным обновлениям и высокой скорости обслуживания клиентов.
                             </div>
-                        </div>
-                    </article>
-                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.1">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 3</span>
-                                <h3>Оптимизация бухгалтерских процессов в финансовой компании</h3>
-                                <p>Ускорили подготовку отчетности на 65% и расширили клиентскую базу на 40% без роста штата.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-3.svg" alt="Оптимизация бухгалтерских процессов" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-3"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-3"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 3</span>
+                                    <h3>Оптимизация бухгалтерских процессов в финансовой компании</h3>
+                                    <p>Ускорили подготовку отчетности на 65% и расширили клиентскую базу на 40% без роста штата.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-3.svg" alt="Оптимизация бухгалтерских процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Финансовая компания с бухгалтерскими и консалтинговыми услугами.</li>
                                         <li>Около 100 сотрудников, 30 бухгалтеров вовлечены в проект.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Сократить время подготовки отчетности и деклараций.</li>
@@ -437,7 +544,7 @@
                                         <li>Повысить производительность без расширения штата.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>AI RPA-робот для ввода данных из первичных документов.</li>
@@ -445,7 +552,7 @@
                                         <li>Генерация отчетности и деклараций без участия сотрудников.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Время подготовки отчетности сократилось на 65%.</li>
@@ -454,32 +561,36 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 Автоматизация бухгалтерии стала драйвером роста: компания повысила качество сервиса, сохранив штат и обеспечив устойчивый рост прибыльности.
                             </div>
-                        </div>
-                    </article>
-                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.15">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 4</span>
-                                <h3>Роботизация HR-процессов в крупной розничной компании</h3>
-                                <p>Сократили время найма на 40% и повысили удовлетворенность кандидатов на 30%.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-4.svg" alt="Роботизация HR-процессов" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-4"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-4"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 4</span>
+                                    <h3>Роботизация HR-процессов в крупной розничной компании</h3>
+                                    <p>Сократили время найма на 40% и повысили удовлетворенность кандидатов на 30%.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-4.svg" alt="Роботизация HR-процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Розничная сеть с более чем 5&nbsp;000 сотрудниками.</li>
                                         <li>Проект охватил около 80 HR-специалистов.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Автоматизировать отбор резюме и назначение интервью.</li>
@@ -487,7 +598,7 @@
                                         <li>Снизить затраты на HR-процессы.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>Робот сканирует резюме по критериям и формирует шорт-листы.</li>
@@ -495,7 +606,7 @@
                                         <li>Интеграция с системами рекрутинга и управления персоналом.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Сокращение времени найма на 40%.</li>
@@ -505,32 +616,36 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 HR-команда сосредоточилась на стратегических задачах, а автоматизация сделала найм прозрачным и комфортным для кандидатов.
                             </div>
-                        </div>
-                    </article>
-                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.2">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 5</span>
-                                <h3>Роботизация административных процессов в строительной компании</h3>
-                                <p>Сократили задержки проектов на 15% и уменьшили административные расходы на 20%.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-5.svg" alt="Роботизация административных процессов" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-5"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-5"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 5</span>
+                                    <h3>Роботизация административных процессов в строительной компании</h3>
+                                    <p>Сократили задержки проектов на 15% и уменьшили административные расходы на 20%.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-5.svg" alt="Роботизация административных процессов" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Строительная компания с более чем 3&nbsp;000 сотрудниками.</li>
                                         <li>Около 50 проект-менеджеров, инженеров и администраторов в зоне автоматизации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Ускорить обработку проектной документации.</li>
@@ -538,7 +653,7 @@
                                         <li>Минимизировать ошибки и узкие места в администрировании.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>Роботы собирают и структурируют документацию.</li>
@@ -546,7 +661,7 @@
                                         <li>Интеграция с системой управления проектами и проверка данных.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Задержки проектов снизились на 15%.</li>
@@ -555,32 +670,36 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 Автоматизация привела к лучшей координации команд и прозрачности проектов, улучшив атмосферу и снизив стресс в коллективе.
                             </div>
-                        </div>
-                    </article>
-                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.25">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 6</span>
-                                <h3>Роботизация обработки актов сверки в торговой компании</h3>
-                                <p>Сократили время обработки актов на 85% и снизили ошибки на 90%.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-6.svg" alt="Роботизация обработки актов сверки" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-6"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-6"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 6</span>
+                                    <h3>Роботизация обработки актов сверки в торговой компании</h3>
+                                    <p>Сократили время обработки актов на 85% и снизили ошибки на 90%.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-6.svg" alt="Роботизация обработки актов сверки" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Средняя торговая компания с ~100 сотрудниками.</li>
                                         <li>Более 500 контрагентов, 5 бухгалтеров в зоне автоматизации.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Роботизировать рассылку и прием актов сверки.</li>
@@ -588,7 +707,7 @@
                                         <li>Сократить время ручной работы бухгалтеров.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>Робот формирует и отправляет акты по предпочтительным каналам.</li>
@@ -596,7 +715,7 @@
                                         <li>Создает структурированное хранилище и статусные отчеты.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Время обработки сократилось на 85%.</li>
@@ -605,32 +724,36 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 Бухгалтеры сосредоточились на аналитике, а компания получила прозрачную отчетность и высокий уровень доверия со стороны партнеров.
                             </div>
-                        </div>
-                    </article>
-                    <article class="ts-case" data-animate="fade-up" data-animate-delay="0.3">
-                        <div class="ts-case__header">
-                            <div class="ts-case__title">
-                                <span class="ts-case__badge">Кейс 7</span>
-                                <h3>Роботизация поиска тендеров и подготовки документов</h3>
-                                <p>Увеличили количество тендеров на 60% и выручку компании на 40%.</p>
-                            </div>
-                            <div class="ts-case__media">
-                                <img src="assets/images/portfolio-7.svg" alt="Роботизация поиска тендеров" />
-                            </div>
-                        </div>
-                        <div class="ts-case__body">
-                            <div class="ts-case__grid">
-                                <div class="ts-case__section">
+                        </article>
+                        <article
+                            class="ts-portfolio__panel"
+                            id="portfolio-case-7"
+                            role="tabpanel"
+                            aria-labelledby="portfolio-tab-7"
+                            hidden
+                        >
+                            <header class="ts-portfolio__panel-header">
+                                <div class="ts-portfolio__panel-title">
+                                    <span class="ts-portfolio__badge">Кейс 7</span>
+                                    <h3>Роботизация поиска тендеров и подготовки документов</h3>
+                                    <p>Увеличили количество тендеров на 60% и выручку компании на 40%.</p>
+                                </div>
+                                <div class="ts-portfolio__panel-media">
+                                    <img src="assets/images/portfolio-7.svg" alt="Роботизация поиска тендеров" />
+                                </div>
+                            </header>
+                            <div class="ts-portfolio__panel-body">
+                                <div class="ts-portfolio__section">
                                     <h4>Масштаб компании</h4>
                                     <ul>
                                         <li>Небольшая тендерная команда из 5 человек.</li>
                                         <li>Рост количества тендеров с 10 до 16 в месяц.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Поставленные задачи</h4>
                                     <ul>
                                         <li>Автоматизировать мониторинг тендерных площадок.</li>
@@ -638,7 +761,7 @@
                                         <li>Проверять контрагентов и готовить пакеты документов.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Наше решение</h4>
                                     <ul>
                                         <li>Робот ежедневно ищет тендеры по заданным критериям.</li>
@@ -646,7 +769,7 @@
                                         <li>Заполняет шаблоны документов и формирует пакеты заявок.</li>
                                     </ul>
                                 </div>
-                                <div class="ts-case__section">
+                                <div class="ts-portfolio__section">
                                     <h4>Полученные результаты</h4>
                                     <ul>
                                         <li>Поиск и анализ тендеров ускорился на 60%.</li>
@@ -656,15 +779,14 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ts-case__summary">
+                            <div class="ts-portfolio__panel-summary">
                                 Сотрудники освободились от рутинной подготовки документов и сфокусировались на стратегии, что повысило конкурентоспособность компании.
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
-
         <section class="ts-pricing" id="ts-pricing" data-animate="section">
             <div class="ts-container">
                 <div class="ts-section-header" data-animate="fade-up">
