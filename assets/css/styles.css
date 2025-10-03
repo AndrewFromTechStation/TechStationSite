@@ -1950,29 +1950,51 @@ body.ts-page {
     gap: 1.25rem;
 }
 
+.ts-richtext h2,
+.ts-richtext h3,
 .ts-richtext h4 {
-    margin: 0;
-    font-size: 1.1rem;
+    margin: 1.5rem 0 0.85rem;
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    font-weight: 700;
     color: var(--color-olive-dark);
 }
 
+.ts-richtext h3:first-child,
+.ts-richtext h4:first-child {
+    margin-top: 0;
+}
+
 .ts-richtext h4 + p,
-.ts-richtext h4 + ul {
+.ts-richtext h4 + ul,
+.ts-richtext h3 + p,
+.ts-richtext h3 + ul,
+.ts-richtext h2 + p,
+.ts-richtext h2 + ul {
     margin-top: 0.75rem;
 }
 
 .ts-richtext p {
-    margin: 0;
+    margin: 0 0 1.1rem;
     line-height: 1.68;
     color: var(--color-text);
 }
 
-.ts-richtext ul {
-    margin: 0;
-    padding-left: 1.25rem;
+.ts-richtext p:last-child {
+    margin-bottom: 0;
+}
+
+.ts-richtext ul,
+.ts-richtext ol {
+    margin: 0 0 1.1rem;
+    padding-left: 1.4rem;
     display: grid;
     gap: 0.55rem;
     color: var(--color-text);
+}
+
+.ts-richtext ul:last-child,
+.ts-richtext ol:last-child {
+    margin-bottom: 0;
 }
 
 .ts-richtext li::marker {
@@ -1981,6 +2003,12 @@ body.ts-page {
 
 .ts-richtext strong {
     color: var(--color-olive-dark);
+}
+
+.ts-richtext hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 1.75rem 0;
 }
 
 .ts-price-detail__richtext ul span {
@@ -2105,25 +2133,8 @@ body.ts-page {
     gap: 20px;
 }
 
-.ts-article-detail__body h3 {
-    font-size: 1.6rem;
-    margin-top: 12px;
-}
-
 .ts-article-list {
     padding: 120px 0 100px;
-}
-
-.ts-article-list__intro {
-    max-width: 720px;
-    margin-bottom: 32px;
-}
-
-.ts-article-list__intro p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 1.05rem;
-    line-height: 1.6;
 }
 
 .ts-article-list__grid {
