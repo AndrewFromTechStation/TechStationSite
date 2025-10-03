@@ -545,9 +545,11 @@ body.ts-page {
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(120px, 168px);
+    grid-template-areas:
+        "title media"
+        "description description";
     gap: clamp(1.35rem, 3.5vw, 2.25rem);
     align-items: start;
-    align-content: start;
     min-height: clamp(240px, 34vh, 300px);
     width: 100%;
     opacity: 0;
@@ -563,6 +565,7 @@ body.ts-page {
 
 .ts-services__panel-media {
     order: 2;
+    grid-area: media;
     background: radial-gradient(circle at 30% 30%, rgba(246, 196, 69, 0.55), rgba(255, 255, 255, 0.9) 62%);
     border-radius: 32px;
     padding: clamp(1rem, 2.5vw, 1.4rem);
@@ -579,18 +582,18 @@ body.ts-page {
 }
 
 .ts-services__panel-content {
-    display: grid;
-    gap: clamp(0.85rem, 2vw, 1.25rem);
+    display: contents;
     color: var(--color-olive-dark);
-    align-content: start;
 }
 
 .ts-services__panel-content h3 {
+    grid-area: title;
     margin: 0;
     font-size: clamp(1.35rem, 2.2vw, 1.65rem);
 }
 
 .ts-services__panel-content p {
+    grid-area: description;
     margin: 0;
     line-height: 1.65;
 }
@@ -761,6 +764,7 @@ body.ts-page {
     display: grid;
     gap: clamp(2.25rem, 5vw, 3.5rem);
     grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    align-items: start;
 }
 
 .ts-portfolio__list {
@@ -777,6 +781,7 @@ body.ts-page {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(85, 107, 47, 0.4) transparent;
+    scrollbar-gutter: stable both-edges;
 }
 
 .ts-portfolio__list::-webkit-scrollbar {
@@ -843,8 +848,9 @@ body.ts-page {
     box-shadow: 0 42px 86px rgba(60, 74, 31, 0.18);
     overflow: hidden;
     display: grid;
-    align-content: start;
+    grid-template-rows: 1fr;
     max-height: calc(100vh - 7rem);
+    min-height: 0;
 }
 
 .ts-portfolio__detail::before {
@@ -865,11 +871,13 @@ body.ts-page {
     transform: translateY(16px);
     transition: opacity 0.45s ease, transform 0.45s ease;
     grid-area: 1 / 1;
-    max-height: min(760px, calc(100vh - 11rem));
+    height: 100%;
+    min-height: 0;
     overflow-y: auto;
     padding-right: clamp(0.25rem, 0.8vw, 0.75rem);
     scrollbar-width: thin;
     scrollbar-color: rgba(246, 196, 69, 0.5) transparent;
+    scrollbar-gutter: stable both-edges;
 }
 
 .ts-portfolio__panel.is-active {
@@ -1588,6 +1596,10 @@ body.ts-page {
 
     .ts-services__panel {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "media"
+            "title"
+            "description";
     }
 
     .ts-services__panel-media {
