@@ -870,11 +870,17 @@ body.ts-page {
     transform: translateY(16px);
     transition: opacity 0.45s ease, transform 0.45s ease;
     grid-area: 1 / 1;
+    pointer-events: none;
 }
 
 .ts-portfolio__panel.is-active {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
+}
+
+.ts-portfolio__panel[hidden] {
+    display: none !important;
 }
 
 .ts-portfolio__panel-header {
