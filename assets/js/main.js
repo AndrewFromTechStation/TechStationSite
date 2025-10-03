@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const countersPlayed = new WeakSet();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
+    const floatingCta = document.querySelector('.ts-floating-cta');
+    let scrollTicking = false;
 
     anchorLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
@@ -27,6 +30,41 @@ document.addEventListener('DOMContentLoaded', () => {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
+
+    const updateScrollUi = () => {
+        const scrollOffset = window.scrollY || window.pageYOffset;
+
+        scrollHints.forEach((hint) => {
+            if (scrollOffset > 80) {
+                hint.classList.add('is-hidden');
+            } else {
+                hint.classList.remove('is-hidden');
+            }
+        });
+
+        if (floatingCta) {
+            if (scrollOffset > 320) {
+                floatingCta.classList.add('is-visible');
+            } else {
+                floatingCta.classList.remove('is-visible');
+            }
+        }
+    };
+
+    const onScroll = () => {
+        if (scrollTicking) {
+            return;
+        }
+
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            updateScrollUi();
+            scrollTicking = false;
+        });
+    };
+
+    updateScrollUi();
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     const animateCounter = (counterEl) => {
         const target = Number(counterEl.dataset.counterTarget || counterEl.textContent);

@@ -118,6 +118,16 @@ body.ts-page {
         transform: none !important;
         transition: none !important;
     }
+
+    .ts-floating-cta,
+    .ts-floating-cta::before,
+    .ts-floating-cta::after,
+    .ts-subheader__scroll-hint,
+    .ts-subheader__scroll-icon,
+    .ts-subheader__scroll-dot {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 @keyframes ts-orbit {
@@ -353,6 +363,73 @@ body.ts-page {
 .ts-button--outline:focus {
     border-color: var(--color-olive);
     transform: translateY(-2px);
+}
+
+.ts-floating-cta {
+    position: fixed;
+    right: clamp(1rem, 4vw, 2rem);
+    bottom: clamp(1.2rem, 4vw, 2.4rem);
+    z-index: 110;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+    color: #2d2a26;
+    font-weight: 700;
+    box-shadow: 0 22px 40px rgba(242, 153, 74, 0.25);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ts-floating-cta::after,
+.ts-floating-cta::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: inherit;
+    border: 2px solid rgba(246, 196, 69, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    animation: ts-cta-wave 5.2s ease-out infinite;
+}
+
+.ts-floating-cta::before {
+    animation-delay: 1.6s;
+}
+
+.ts-floating-cta.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.ts-floating-cta.is-visible:hover,
+.ts-floating-cta.is-visible:focus {
+    box-shadow: 0 28px 48px rgba(242, 153, 74, 0.32);
+}
+
+.ts-floating-cta:not(.is-visible)::after,
+.ts-floating-cta:not(.is-visible)::before {
+    animation-play-state: paused;
+}
+
+@keyframes ts-cta-wave {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.35;
+    }
+    60% {
+        transform: scale(1.45);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.45);
+        opacity: 0;
+    }
 }
 
 .ts-hero__media {
@@ -1654,6 +1731,12 @@ body.ts-page {
     color: rgba(60, 74, 31, 0.65);
     z-index: 2;
     pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ts-subheader__scroll-hint.is-hidden {
+    opacity: 0;
+    transform: translateY(14px);
 }
 
 .ts-subheader__scroll-icon {
@@ -1806,7 +1889,7 @@ body.ts-page {
     background: linear-gradient(140deg, rgba(246, 196, 69, 0.22), rgba(242, 153, 74, 0.18));
     box-shadow: var(--shadow-soft);
     display: grid;
-    gap: 1.15rem;
+    gap: 1.4rem;
 }
 
 .ts-price-detail__callout::after {
@@ -1821,6 +1904,19 @@ body.ts-page {
     pointer-events: none;
 }
 
+.ts-price-detail__pricing {
+    display: grid;
+    gap: 1rem;
+}
+
+.ts-price-detail__price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
 .ts-price-detail__label {
     font-size: 0.82rem;
     font-weight: 700;
@@ -1832,6 +1928,12 @@ body.ts-page {
 .ts-price-detail__value {
     font-size: clamp(2.1rem, 3.4vw, 2.8rem);
     font-weight: 700;
+    color: var(--color-text);
+}
+
+.ts-price-detail__subvalue {
+    font-size: clamp(1.1rem, 2.3vw, 1.4rem);
+    font-weight: 600;
     color: var(--color-text);
 }
 
@@ -1965,6 +2067,13 @@ body.ts-page {
         width: 32px;
         height: 50px;
     }
+
+    .ts-floating-cta {
+        right: 1rem;
+        bottom: 1.1rem;
+        padding: 0.8rem 1.3rem;
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1980,6 +2089,13 @@ body.ts-page {
 
     .ts-subheader__back {
         padding: 0.35rem 0.85rem;
+    }
+
+    .ts-floating-cta {
+        right: 0.85rem;
+        bottom: 0.85rem;
+        padding: 0.75rem 1.1rem;
+        font-size: 0.9rem;
     }
 }
 
