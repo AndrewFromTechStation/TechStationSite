@@ -527,9 +527,8 @@ body.ts-page {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(246, 196, 69, 0.28));
     box-shadow: 0 34px 56px rgba(60, 74, 31, 0.16);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display: grid;
+    align-content: start;
 }
 
 .ts-services__detail::before {
@@ -554,6 +553,7 @@ body.ts-page {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.45s ease, transform 0.45s ease;
+    grid-area: 1 / 1;
 }
 
 .ts-services__panel.is-active {
@@ -821,6 +821,8 @@ body.ts-page {
     background: linear-gradient(130deg, rgba(255, 255, 255, 0.95), rgba(246, 196, 69, 0.24));
     box-shadow: 0 42px 86px rgba(60, 74, 31, 0.18);
     overflow: hidden;
+    display: grid;
+    align-content: start;
 }
 
 .ts-portfolio__detail::before {
@@ -840,6 +842,7 @@ body.ts-page {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.45s ease, transform 0.45s ease;
+    grid-area: 1 / 1;
 }
 
 .ts-portfolio__panel.is-active {
