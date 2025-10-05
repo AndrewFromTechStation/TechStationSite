@@ -1313,6 +1313,201 @@ body.ts-page {
     }
 }
 
+
+.ts-about-intro {
+    padding-bottom: clamp(3.5rem, 6vw, 4.5rem);
+}
+
+.ts-about-callout {
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 28px 48px rgba(60, 74, 31, 0.16);
+    display: grid;
+    gap: 1.1rem;
+}
+
+.ts-about-callout h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--color-olive-dark);
+}
+
+.ts-about-callout__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+    color: var(--color-muted);
+}
+
+.ts-about-callout__list li {
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+.ts-about-callout__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+}
+
+.ts-about-expertise {
+    padding: clamp(4rem, 6vw, 5rem) 0;
+}
+
+.ts-about-expertise__grid {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.ts-about-expertise__card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.6rem, 3vw, 2.2rem);
+    box-shadow: 0 30px 56px rgba(60, 74, 31, 0.14);
+    display: grid;
+    gap: 0.85rem;
+}
+
+.ts-about-expertise__card h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--color-olive-dark);
+}
+
+.ts-about-expertise__card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+.ts-about-competencies {
+    padding: clamp(4rem, 6vw, 5rem) 0;
+    background: linear-gradient(135deg, rgba(245, 241, 227, 0.72), rgba(246, 196, 69, 0.24));
+}
+
+.ts-competency-list {
+    list-style: none;
+    margin: clamp(2rem, 3vw, 2.75rem) 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.ts-competency-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.4rem 1.25rem;
+    box-shadow: 0 20px 40px rgba(60, 74, 31, 0.12);
+    display: grid;
+    gap: 0.6rem;
+}
+
+.ts-competency-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.ts-competency-item__header strong {
+    color: var(--color-olive-dark);
+}
+
+.ts-competency-bar {
+    position: relative;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(85, 107, 47, 0.15);
+    overflow: hidden;
+}
+
+.ts-competency-fill {
+    position: absolute;
+    inset: 0;
+    width: var(--progress, 0%);
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+    transition: width 0.6s ease;
+}
+
+.ts-about-accreditation {
+    padding: clamp(4.5rem, 7vw, 5.5rem) 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 241, 227, 0.68) 100%);
+}
+
+.ts-about-accreditation__grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+    grid-template-columns: minmax(0, 1.1fr) minmax(240px, 320px);
+    align-items: start;
+}
+
+.ts-about-accreditation__content > *:first-child {
+    margin-top: 0;
+}
+
+.ts-about-accreditation__side {
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+}
+
+.ts-about-accreditation__badge {
+    margin: 0;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 26px 48px rgba(60, 74, 31, 0.16);
+    text-align: center;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.ts-about-accreditation__badge img {
+    width: 100%;
+    height: auto;
+}
+
+.ts-about-accreditation__badge figcaption {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-olive-dark);
+}
+
+.ts-about-partner-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 24px 44px rgba(60, 74, 31, 0.14);
+    display: grid;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.ts-about-partner-card img {
+    justify-self: center;
+    width: min(200px, 70%);
+    height: auto;
+}
+
+.ts-about-partner-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
 .ts-faq {
     padding: 4rem 0;
 }
@@ -2238,6 +2433,14 @@ body.ts-page {
     .ts-article-detail__content {
         padding: 32px;
     }
+    .ts-about-accreditation__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ts-about-accreditation__side {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -2268,6 +2471,24 @@ body.ts-page {
     .ts-subheader__scroll-icon {
         width: 32px;
         height: 50px;
+    }
+
+    .ts-about-callout {
+        padding: 1.5rem;
+    }
+
+    .ts-competency-list {
+        gap: 0.85rem;
+    }
+
+    .ts-competency-item {
+        padding: 1rem 1.2rem 1.1rem;
+    }
+
+    .ts-competency-item__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
     }
 
     .ts-floating-cta {
