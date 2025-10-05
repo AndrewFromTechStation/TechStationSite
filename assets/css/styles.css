@@ -55,68 +55,76 @@ body.ts-page {
 }
 
 [data-animate] {
-    opacity: 0;
-    transform: translateY(48px);
+    opacity: 1;
+    transform: none;
     transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
     transition-delay: var(--animate-delay, 0s);
 }
 
-[data-animate].is-visible {
+.has-animations [data-animate] {
+    opacity: 0;
+    transform: translateY(48px);
+}
+
+.has-animations [data-animate].is-visible {
     opacity: 1;
     transform: none;
 }
 
-[data-animate='fade-left'] {
+.has-animations [data-animate='fade-left'] {
     transform: translateX(60px);
 }
 
-[data-animate='fade-up'] {
+.has-animations [data-animate='fade-up'] {
     transform: translateY(60px);
 }
 
-[data-animate='rise'] {
+.has-animations [data-animate='rise'] {
     transform: translateY(70px) scale(0.97);
 }
 
-[data-animate='tilt'] {
+.has-animations [data-animate='tilt'] {
     transform: rotateX(12deg) translateY(80px);
     transform-origin: center top;
 }
 
-[data-animate='flip'] {
+.has-animations [data-animate='flip'] {
     transform: perspective(1200px) rotateX(12deg) translateY(80px);
     transform-origin: center top;
 }
 
-[data-animate='lift'] {
+.has-animations [data-animate='lift'] {
     transform: translateY(60px) scale(0.95);
 }
 
-[data-animate='float'] {
+.has-animations [data-animate='float'] {
     transform: translateY(80px) scale(0.94);
 }
 
-[data-animate='parallax'] {
+.has-animations [data-animate='parallax'] {
     transform: translateY(90px) scale(0.98);
 }
 
-[data-animate='counter'] {
+.has-animations [data-animate='counter'] {
     transform: translateY(70px) scale(0.96);
 }
 
-[data-animate='hero'] {
+.has-animations [data-animate='hero'] {
     transform: scale(0.98);
 }
 
-[data-animate='section'] {
+.has-animations [data-animate='section'] {
     transform: translateY(80px);
 }
 
 @media (prefers-reduced-motion: reduce) {
     [data-animate] {
+        transition: none !important;
+    }
+
+    .has-animations [data-animate] {
         opacity: 1 !important;
         transform: none !important;
-        transition: none !important;
     }
 
     .ts-floating-cta,
