@@ -4,10 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterElements = document.querySelectorAll('.ts-counter');
     const countersPlayed = new WeakSet();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const supportsIntersectionObserver = 'IntersectionObserver' in window;
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
     const floatingCta = document.querySelector('.ts-floating-cta');
     let scrollTicking = false;
+
+    const addMediaQueryListener = (mediaQueryList, callback) => {
+        if (typeof mediaQueryList.addEventListener === 'function') {
+            mediaQueryList.addEventListener('change', callback);
+        } else if (typeof mediaQueryList.addListener === 'function') {
+            mediaQueryList.addListener(callback);
+        }
+    };
+
+    const showAnimatedElements = () => {
+        animatedElements.forEach((element) => {
+            element.classList.add('is-visible');
+        });
+    };
+
+    const syncCountersImmediately = () => {
+        counterElements.forEach((counterEl) => {
+            const target = Number(counterEl.dataset.counterTarget || counterEl.textContent);
+            if (!Number.isNaN(target)) {
+                counterEl.textContent = target.toLocaleString('ru-RU');
+            }
+        });
+    };
+
+    const shouldUseObserver = supportsIntersectionObserver && !prefersReducedMotion.matches;
 
     anchorLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
@@ -94,18 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(update);
     };
 
-    if (prefersReducedMotion.matches) {
-        animatedElements.forEach((element) => {
-            element.classList.add('is-visible');
-        });
+    if (!shouldUseObserver) {
+        showAnimatedElements();
+        syncCountersImmediately();
+    }
 
-        counterElements.forEach((counterEl) => {
-            const target = Number(counterEl.dataset.counterTarget || counterEl.textContent);
-            if (!Number.isNaN(target)) {
-                counterEl.textContent = target.toLocaleString('ru-RU');
-            }
-        });
-    } else {
+    if (shouldUseObserver) {
+        document.documentElement.classList.add('has-animations');
+
         const revealObserver = new IntersectionObserver(
             (entries, observer) => {
                 entries.forEach((entry) => {
@@ -141,15 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
             revealObserver.observe(element);
         });
 
-        prefersReducedMotion.addEventListener('change', (event) => {
+        addMediaQueryListener(prefersReducedMotion, (event) => {
             if (event.matches) {
-                animatedElements.forEach((element) => element.classList.add('is-visible'));
-                counterElements.forEach((counterEl) => {
-                    const target = Number(counterEl.dataset.counterTarget || counterEl.textContent);
-                    if (!Number.isNaN(target)) {
-                        counterEl.textContent = target.toLocaleString('ru-RU');
-                    }
-                });
+                showAnimatedElements();
+                syncCountersImmediately();
                 revealObserver.disconnect();
             }
         });
