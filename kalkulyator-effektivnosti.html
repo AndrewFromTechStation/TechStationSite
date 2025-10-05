@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPA ROI калькулятор — Technostation: AI-RPA</title>
+    <meta name="description" content="Интерактивный калькулятор для оценки эффективности и окупаемости внедрения RPA-решений Technostation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="ts-page ts-subpage ts-calculator">
+    <header class="ts-subheader" data-animate="hero">
+        <div class="ts-subheader__nav">
+            <div class="ts-container">
+                <nav class="ts-nav" aria-label="Главная навигация">
+                    <a class="ts-logo" href="index.html#ts-home">Technostation: AI-RPA</a>
+                    <input id="ts-nav-toggle" class="ts-nav__checkbox" type="checkbox" aria-hidden="true" />
+                    <label for="ts-nav-toggle" class="ts-nav__toggle" aria-label="Открыть меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <ul class="ts-nav__links">
+                        <li><a href="index.html#ts-services">Услуги</a></li>
+                        <li><a href="index.html#ts-portfolio">Портфолио</a></li>
+                        <li><a href="index.html#ts-pricing">Цены</a></li>
+                        <li><a href="index.html#ts-faq">FAQ</a></li>
+                        <li><a href="#ts-contact">Контакты</a></li>
+                    </ul>
+                    <a class="ts-nav__cta" href="#ts-contact">Связаться с нами</a>
+                </nav>
+            </div>
+        </div>
+        <div class="ts-subheader__intro" data-animate="fade-up">
+            <div class="ts-container">
+                <h1>RPA ROI калькулятор</h1>
+                <p class="ts-subheader__summary">Оцените экономический эффект от внедрения роботизации в ваших процессах — от трудозатрат и ошибок до окупаемости и ROI.</p>
+            </div>
+        </div>
+        <div class="ts-subheader__scroll-hint" aria-hidden="true">
+            <span>Листайте вниз</span>
+            <span class="ts-subheader__scroll-icon"><span class="ts-subheader__scroll-dot"></span></span>
+        </div>
+    </header>
+
+    <main class="ts-subpage__main">
+        <section class="ts-calculator__section" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-calculator__layout" data-animate="fade-up">
+                    <div class="ts-calculator__panel">
+                        <article class="ts-calculator__card">
+                            <header class="ts-calculator__card-header">
+                                <h2>Процессы для автоматизации</h2>
+                                <p>Опишите процессы, которые планируете роботизировать: трудозатраты, нагрузку и ошибки.</p>
+                            </header>
+                            <div class="ts-calculator__processes" id="processes-container"></div>
+                            <div class="ts-calculator__actions">
+                                <button class="ts-button ts-button--outline ts-calculator__add" type="button" onclick="addProcess()">
+                                    <span aria-hidden="true">➕</span>
+                                    <span>Добавить процесс</span>
+                                </button>
+                                <button class="ts-button ts-button--primary" type="button" onclick="calculate()">Рассчитать эффективность</button>
+                            </div>
+                        </article>
+                    </div>
+                    <aside class="ts-calculator__panel">
+                        <article class="ts-calculator__card ts-calculator__card--results" aria-live="polite">
+                            <header class="ts-calculator__card-header">
+                                <h2>Результаты расчёта</h2>
+                                <p>Получите ключевые показатели эффективности и детализацию экономии.</p>
+                            </header>
+
+                            <div class="ts-calculator__summary" id="summary" hidden>
+                                <div class="ts-calculator__summary-item">
+                                    <span>Процессов:</span>
+                                    <strong id="total-processes">0</strong>
+                                </div>
+                                <div class="ts-calculator__summary-item">
+                                    <span>Общая экономия:</span>
+                                    <strong id="total-savings">0 ₽</strong>
+                                </div>
+                            </div>
+
+                            <div class="ts-calculator__results" id="results">
+                                <div class="ts-calculator__result">
+                                    <span class="ts-calculator__result-label">Экономия в год</span>
+                                    <span class="ts-calculator__result-value" id="saving">—</span>
+                                </div>
+                                <div class="ts-calculator__result">
+                                    <span class="ts-calculator__result-label">Срок окупаемости</span>
+                                    <span class="ts-calculator__result-value" id="payback">—</span>
+                                </div>
+                                <div class="ts-calculator__result">
+                                    <span class="ts-calculator__result-label">ROI за 3 года</span>
+                                    <span class="ts-calculator__result-value" id="roi">—</span>
+                                </div>
+                            </div>
+
+                            <div class="ts-calculator__breakdown" id="breakdown" hidden>
+                                <h3>Детализация</h3>
+                                <div id="breakdown-content"></div>
+                            </div>
+
+                            <div class="ts-calculator__warning" id="warning" role="alert" hidden></div>
+                            <div class="ts-calculator__badges" id="badge-container"></div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-contact" id="ts-contact" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Связаться с нами</h2>
+                </div>
+                <form class="ts-contact__form" action="#" method="post" data-animate="fade-up" data-animate-delay="0.1">
+                    <div class="ts-contact__grid">
+                        <label class="ts-contact__field">
+                            <span>Имя</span>
+                            <input type="text" name="name" placeholder="Как к вам обращаться?" required />
+                        </label>
+                        <label class="ts-contact__field">
+                            <span>Email</span>
+                            <input type="email" name="email" placeholder="name@company.ru" required />
+                        </label>
+                        <label class="ts-contact__field">
+                            <span>Телефон</span>
+                            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" />
+                        </label>
+                        <label class="ts-contact__field ts-contact__field--wide">
+                            <span>Сообщение</span>
+                            <textarea name="message" rows="4" placeholder="Расскажите о задаче, которую нужно решить"></textarea>
+                        </label>
+                    </div>
+                    <button class="ts-button ts-button--primary" type="submit">Отправить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="ts-footer" data-animate="section">
+        <div class="ts-container">
+            <div class="ts-footer__top">
+                <a class="ts-footer__logo" href="index.html#ts-home">Technostation: AI-RPA</a>
+                <p>Комплексная роботизация процессов — от анализа до поддержки.</p>
+            </div>
+            <div class="ts-footer__bottom">
+                <span>© 2024 Technostation. Все права защищены.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let processes = [];
+        let processCounter = 0;
+
+        function addProcess() {
+            processCounter++;
+            const processId = processCounter;
+
+            const processData = {
+                id: processId,
+                employees: 0,
+                timePerOperation: 0,
+                operationsPerMonth: 0,
+                salary: 0,
+                errorRate: 0,
+                errorCost: 0
+            };
+
+            processes.push(processData);
+            renderProcesses();
+        }
+
+        function removeProcess(id) {
+            processes = processes.filter((process) => process.id !== id);
+            renderProcesses();
+        }
+
+        function renderProcesses() {
+            const container = document.getElementById('processes-container');
+
+            if (processes.length === 0) {
+                container.innerHTML = '<p class="ts-calculator__empty">Добавьте процесс, чтобы начать расчёт.</p>';
+                return;
+            }
+
+            container.innerHTML = processes
+                .map(
+                    (process) => `
+                <div class="ts-calculator__process" data-process-id="${process.id}">
+                    <div class="ts-calculator__process-header">
+                        <span class="ts-calculator__process-number">Процесс ${process.id}</span>
+                        ${
+                            processes.length > 1
+                                ? `<button class="ts-calculator__remove" type="button" onclick="removeProcess(${process.id})">Удалить</button>`
+                                : ''
+                        }
+                    </div>
+                    <div class="ts-calculator__form-grid">
+                        <label class="ts-calculator__field">
+                            <span>Сотрудников</span>
+                            <input type="number" min="0" value="${process.employees}" onchange="updateProcess(${process.id}, 'employees', this.value)" />
+                        </label>
+                        <label class="ts-calculator__field">
+                            <span>Время на операцию (час)</span>
+                            <input type="number" step="0.01" min="0" value="${process.timePerOperation}" onchange="updateProcess(${process.id}, 'timePerOperation', this.value)" />
+                        </label>
+                        <label class="ts-calculator__field">
+                            <span>Операций в месяц</span>
+                            <input type="number" min="0" value="${process.operationsPerMonth}" onchange="updateProcess(${process.id}, 'operationsPerMonth', this.value)" />
+                        </label>
+                        <label class="ts-calculator__field">
+                            <span>Зарплата (₽/мес)</span>
+                            <input type="number" min="0" value="${process.salary}" onchange="updateProcess(${process.id}, 'salary', this.value)" />
+                        </label>
+                        <label class="ts-calculator__field">
+                            <span>Процент ошибок (%)</span>
+                            <input type="number" step="0.1" min="0" value="${process.errorRate}" onchange="updateProcess(${process.id}, 'errorRate', this.value)" />
+                        </label>
+                        <label class="ts-calculator__field">
+                            <span>Стоимость ошибки (₽)</span>
+                            <input type="number" min="0" value="${process.errorCost}" onchange="updateProcess(${process.id}, 'errorCost', this.value)" />
+                        </label>
+                    </div>
+                </div>
+            `
+                )
+                .join('');
+        }
+
+        function updateProcess(id, field, value) {
+            const process = processes.find((item) => item.id === id);
+            if (process) {
+                process[field] = parseFloat(value) || 0;
+            }
+        }
+
+        function calculateProcessSavings(process) {
+            const hoursPerYear = process.timePerOperation * process.operationsPerMonth * 12;
+            const hourlyRate = process.salary / 168;
+            const laborCost = hoursPerYear * hourlyRate * process.employees;
+
+            const errorsPerYear = (process.operationsPerMonth * 12 * process.errorRate) / 100;
+            const totalErrorCost = errorsPerYear * process.errorCost;
+
+            const laborSavings = laborCost * 0.65;
+            const errorSavings = totalErrorCost * 0.95;
+
+            return {
+                total: laborSavings + errorSavings,
+                labor: laborSavings,
+                errors: errorSavings
+            };
+        }
+
+        function calculate() {
+            if (processes.length === 0) {
+                alert('Добавьте хотя бы один процесс');
+                return;
+            }
+
+            const processSavings = processes.map((process) => calculateProcessSavings(process));
+            const totalSavingsPerYear = processSavings.reduce((sum, savings) => sum + savings.total, 0);
+            const totalLaborSavings = processSavings.reduce((sum, savings) => sum + savings.labor, 0);
+            const totalErrorSavings = processSavings.reduce((sum, savings) => sum + savings.errors, 0);
+
+            const robotDevelopmentCost = 250000 * processes.length;
+            const licenseCostPerYear = 350000;
+            const supportHoursPerMonth = 10;
+            const supportHourlyRate = 4500;
+            const supportCostPerYear = supportHoursPerMonth * supportHourlyRate * 12;
+
+            const firstYearCost = robotDevelopmentCost + licenseCostPerYear + supportCostPerYear;
+            const annualCost = licenseCostPerYear + supportCostPerYear;
+
+            const minAnnualSavings = 800000;
+
+            const summary = document.getElementById('summary');
+            summary.hidden = false;
+            document.getElementById('total-processes').textContent = processes.length;
+            document.getElementById('total-savings').textContent = `${Math.round(totalSavingsPerYear).toLocaleString()} ₽`;
+
+            const savingEl = document.getElementById('saving');
+            const paybackEl = document.getElementById('payback');
+            const roiEl = document.getElementById('roi');
+            const warningEl = document.getElementById('warning');
+            const breakdownEl = document.getElementById('breakdown');
+            const badgeContainer = document.getElementById('badge-container');
+
+            if (totalSavingsPerYear < minAnnualSavings) {
+                savingEl.textContent = `${Math.round(totalSavingsPerYear).toLocaleString()} ₽/год`;
+                savingEl.className = 'ts-calculator__result-value';
+                paybackEl.textContent = '—';
+                paybackEl.className = 'ts-calculator__result-value';
+                roiEl.textContent = '—';
+                roiEl.className = 'ts-calculator__result-value';
+
+                warningEl.textContent = '⚠️ Суммарная экономия может быть недостаточной для внедрения RPA. Добавьте больше процессов или рассмотрите альтернативные решения.';
+                warningEl.hidden = false;
+                breakdownEl.hidden = true;
+                badgeContainer.innerHTML = '';
+                return;
+            }
+
+            const netSavingsYear1 = totalSavingsPerYear - firstYearCost;
+            const netSavingsYearN = totalSavingsPerYear - annualCost;
+            let paybackMonths;
+
+            if (netSavingsYear1 > 0) {
+                paybackMonths = robotDevelopmentCost / (netSavingsYear1 / 12);
+            } else if (netSavingsYearN > 0) {
+                const remainingCost = Math.abs(netSavingsYear1);
+                paybackMonths = 12 + remainingCost / (netSavingsYearN / 12);
+            } else {
+                paybackMonths = -1;
+            }
+
+            const totalSavings3Years = totalSavingsPerYear * 3;
+            const totalCosts3Years = firstYearCost + annualCost * 2;
+            const netProfit3Years = totalSavings3Years - totalCosts3Years;
+            const roi3Years = (netProfit3Years / robotDevelopmentCost) * 100;
+
+            savingEl.textContent = `${Math.round(totalSavingsPerYear).toLocaleString()} ₽/год`;
+            savingEl.className = 'ts-calculator__result-value is-positive';
+
+            if (paybackMonths > 0) {
+                paybackEl.textContent = `${paybackMonths.toFixed(1)} мес.`;
+                paybackEl.className = `ts-calculator__result-value ${paybackMonths <= 12 ? 'is-positive' : ''}`;
+            } else {
+                paybackEl.textContent = 'Не окупится';
+                paybackEl.className = 'ts-calculator__result-value is-negative';
+            }
+
+            roiEl.textContent = `${Math.round(roi3Years)}%`;
+            roiEl.className = `ts-calculator__result-value ${roi3Years >= 0 ? (roi3Years > 50 ? 'is-positive' : '') : 'is-negative'}`;
+
+            const breakdownContent = `
+                <div class="ts-calculator__breakdown-row">
+                    <span>💼 Экономия на труде:</span>
+                    <strong>${Math.round(totalLaborSavings).toLocaleString()} ₽</strong>
+                </div>
+                <div class="ts-calculator__breakdown-row">
+                    <span>✅ Снижение ошибок:</span>
+                    <strong>${Math.round(totalErrorSavings).toLocaleString()} ₽</strong>
+                </div>
+                <div class="ts-calculator__breakdown-row">
+                    <span>🔧 Разработка (${processes.length} робота/ов):</span>
+                    <strong>${robotDevelopmentCost.toLocaleString()} ₽</strong>
+                </div>
+                <div class="ts-calculator__breakdown-row">
+                    <span>📜 Лицензия (общая):</span>
+                    <strong>${licenseCostPerYear.toLocaleString()} ₽/год</strong>
+                </div>
+                <div class="ts-calculator__breakdown-row">
+                    <span>🛠️ Поддержка (10 ч/мес):</span>
+                    <strong>${supportCostPerYear.toLocaleString()} ₽/год</strong>
+                </div>
+                <div class="ts-calculator__breakdown-row is-total">
+                    <span>Чистая прибыль за 3 года:</span>
+                    <strong>${Math.round(netProfit3Years).toLocaleString()} ₽</strong>
+                </div>
+            `;
+
+            document.getElementById('breakdown-content').innerHTML = breakdownContent;
+            breakdownEl.hidden = false;
+            warningEl.hidden = true;
+
+            let badgeHTML = '';
+            if (totalSavingsPerYear > 2000000) {
+                badgeHTML += '<span class="ts-calculator__badge">⭐ Отличный кандидат для RPA!</span>';
+            }
+            if (processes.length > 1) {
+                badgeHTML += '<span class="ts-calculator__badge ts-calculator__badge--accent">🎯 Эффект масштаба: экономия на лицензии!</span>';
+            }
+            badgeContainer.innerHTML = badgeHTML;
+        }
+
+        addProcess();
+    </script>
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>
