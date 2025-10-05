@@ -231,6 +231,53 @@ body.ts-page {
     animation: ts-shimmer 12s ease-in-out infinite;
 }
 
+.ts-subpage-hero {
+    position: relative;
+    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+    background: linear-gradient(135deg, rgba(245, 241, 227, 0.95) 0%, rgba(246, 196, 69, 0.24) 50%, rgba(242, 153, 74, 0.22) 100%);
+    overflow: hidden;
+}
+
+.ts-subpage-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 25%, rgba(242, 153, 74, 0.25) 0, transparent 50%), radial-gradient(circle at 85% 30%, rgba(85, 107, 47, 0.24) 0, transparent 55%), radial-gradient(circle at 50% 80%, rgba(246, 196, 69, 0.18) 0, transparent 60%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.ts-subpage-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    display: grid;
+    gap: 1.25rem;
+}
+
+.ts-subpage-hero__content h1 {
+    margin: 0;
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
+}
+
+.ts-subpage-hero__content p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.ts-subpage-hero__eyebrow {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-olive-dark);
+    display: inline-block;
+    background: rgba(246, 196, 69, 0.35);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+}
+
 .ts-nav {
     display: flex;
     align-items: center;
@@ -262,6 +309,11 @@ body.ts-page {
 .ts-nav__links a:hover,
 .ts-nav__links a:focus {
     color: var(--color-orange);
+}
+
+.ts-nav__links a[aria-current='page'] {
+    color: var(--color-orange);
+    font-weight: 600;
 }
 
 .ts-nav__cta {
@@ -527,6 +579,72 @@ body.ts-page {
 
 .ts-section-header--left {
     text-align: left;
+}
+
+.ts-video-gallery {
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5.5rem);
+}
+
+.ts-video-gallery__lead {
+    margin: 0.75rem 0 0;
+    max-width: 640px;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.ts-video-gallery__grid {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.ts-video-card {
+    background: rgba(245, 241, 227, 0.7);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    box-shadow: var(--shadow-soft);
+    display: grid;
+    gap: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.35s ease;
+}
+
+.ts-video-card:hover,
+.ts-video-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 52px rgba(60, 74, 31, 0.18);
+}
+
+.ts-video-card__preview {
+    position: relative;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, rgba(246, 196, 69, 0.32), rgba(242, 153, 74, 0.28));
+    box-shadow: inset 0 0 0 1px rgba(85, 107, 47, 0.12);
+}
+
+.ts-video-card__preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #111;
+}
+
+.ts-video-card figcaption {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.ts-video-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.ts-video-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.5;
 }
 
 .ts-grid {
@@ -2506,6 +2624,10 @@ body.ts-page {
         width: 120px;
         height: 120px;
     }
+
+    .ts-video-gallery__lead {
+        max-width: none;
+    }
 }
 
 @media (max-width: 640px) {
@@ -2582,6 +2704,15 @@ body.ts-page {
 
     .ts-nav__checkbox:checked + .ts-nav__toggle span:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .ts-subpage-hero__content {
+        text-align: center;
+        justify-items: center;
+    }
+
+    .ts-subpage-hero__eyebrow {
+        margin: 0 auto;
     }
 
     .ts-hero__content {
@@ -2726,6 +2857,18 @@ body.ts-page {
     .ts-blog-card,
     .ts-contact__form {
         padding: 1.75rem;
+    }
+
+    .ts-subpage-hero {
+        padding: 2.75rem 0 2.3rem;
+    }
+
+    .ts-video-gallery__grid {
+        gap: 1.2rem;
+    }
+
+    .ts-video-card {
+        padding: 1rem;
     }
 
     .ts-team-card img,
