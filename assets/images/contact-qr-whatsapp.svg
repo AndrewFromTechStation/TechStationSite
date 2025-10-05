@@ -1,0 +1,16 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="220" height="220" rx="24" fill="#E9F5EA"/>
+    <rect x="24" y="24" width="64" height="64" rx="8" fill="#2D2A26"/>
+    <rect x="36" y="36" width="40" height="40" rx="4" fill="#E9F5EA"/>
+    <rect x="132" y="24" width="64" height="64" rx="8" fill="#2D2A26"/>
+    <rect x="144" y="36" width="40" height="40" rx="4" fill="#E9F5EA"/>
+    <rect x="24" y="132" width="64" height="64" rx="8" fill="#2D2A26"/>
+    <rect x="36" y="144" width="40" height="40" rx="4" fill="#E9F5EA"/>
+    <rect x="116" y="116" width="24" height="24" rx="4" fill="#2D2A26"/>
+    <rect x="160" y="140" width="24" height="24" rx="4" fill="#2D2A26"/>
+    <rect x="140" y="184" width="24" height="24" rx="4" fill="#2D2A26"/>
+    <rect x="116" y="160" width="16" height="16" rx="3" fill="#2D2A26"/>
+    <rect x="188" y="160" width="16" height="16" rx="3" fill="#2D2A26"/>
+    <rect x="188" y="120" width="16" height="16" rx="3" fill="#2D2A26"/>
+    <rect x="140" y="100" width="16" height="16" rx="3" fill="#2D2A26"/>
+</svg>
