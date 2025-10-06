@@ -262,9 +262,20 @@ body.ts-page.ts-modal-open {
 
 .ts-subpage-hero {
     position: relative;
-    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem);
     background: linear-gradient(135deg, rgba(245, 241, 227, 0.95) 0%, rgba(246, 196, 69, 0.24) 50%, rgba(242, 153, 74, 0.22) 100%);
     overflow: hidden;
+}
+
+.ts-subpage-hero__inner {
+    position: relative;
+    z-index: 1;
+    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.ts-subpage-hero__nav {
+    position: sticky;
+    top: 0;
+    z-index: 12;
 }
 
 .ts-subpage-hero__overlay {
