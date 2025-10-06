@@ -581,7 +581,7 @@ body.ts-page {
     background: linear-gradient(135deg, rgba(246, 196, 69, 0.96), rgba(242, 153, 74, 0.85));
     color: #2d2a26;
     top: 18%;
-    right: -12%;
+    right: 6%;
     width: 64%;
     animation-delay: 1.6s;
     z-index: 3;
