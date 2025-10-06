@@ -49,6 +49,10 @@ body.ts-page {
     display: block;
 }
 
+body.ts-page.ts-modal-open {
+    overflow: hidden;
+}
+
 .ts-container {
     width: var(--container-width);
     margin: 0 auto;
@@ -3256,5 +3260,88 @@ body.ts-page {
 
     .ts-calculator__result-value {
         font-size: 1.5rem;
+    }
+}
+
+.ts-video-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background-color: rgba(33, 33, 33, 0.72);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1200;
+}
+
+.ts-video-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ts-video-modal__backdrop {
+    position: absolute;
+    inset: 0;
+}
+
+.ts-video-modal__dialog {
+    position: relative;
+    width: min(960px, 100%);
+    background-color: #0d0d0d;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.ts-video-modal__player {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+}
+
+.ts-video-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ts-video-modal__close span {
+    display: block;
+    transform: translateY(-2px);
+}
+
+.ts-video-modal__close:hover,
+.ts-video-modal__close:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+@media (max-width: 640px) {
+    .ts-video-modal {
+        padding: 16px;
+    }
+
+    .ts-video-modal__close {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
     }
 }

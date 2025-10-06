@@ -370,4 +370,92 @@ document.addEventListener('DOMContentLoaded', () => {
         panelSelector: '.ts-portfolio__panel',
         targetAttribute: 'caseTarget',
     });
+
+    const videoModal = document.querySelector('.ts-video-modal');
+    const videoTrigger = document.querySelector('[data-video-trigger]');
+
+    if (videoModal && videoTrigger) {
+        const videoPlayer = videoModal.querySelector('video');
+        const closeButtons = Array.from(videoModal.querySelectorAll('[data-video-close]'));
+        const dialog = videoModal.querySelector('.ts-video-modal__dialog');
+        let previouslyFocusedElement = null;
+
+        const isOpen = () => videoModal.classList.contains('is-open');
+
+        const focusVideoPlayer = () => {
+            if (videoPlayer && typeof videoPlayer.focus === 'function') {
+                requestAnimationFrame(() => {
+                    videoPlayer.focus({ preventScroll: true });
+                });
+            }
+        };
+
+        const openVideoModal = () => {
+            previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+            videoModal.classList.add('is-open');
+            videoModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('ts-modal-open');
+
+            if (videoPlayer) {
+                if (videoPlayer.readyState > 0) {
+                    videoPlayer.currentTime = 0;
+                }
+
+                const playPromise = videoPlayer.play();
+                if (playPromise && typeof playPromise.catch === 'function') {
+                    playPromise.catch(() => {});
+                }
+            }
+
+            focusVideoPlayer();
+        };
+
+        const closeVideoModal = () => {
+            if (!isOpen()) {
+                return;
+            }
+
+            videoModal.classList.remove('is-open');
+            videoModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('ts-modal-open');
+
+            if (videoPlayer) {
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+            }
+
+            if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+                previouslyFocusedElement.focus({ preventScroll: true });
+            }
+
+            previouslyFocusedElement = null;
+        };
+
+        videoTrigger.addEventListener('click', () => {
+            openVideoModal();
+        });
+
+        closeButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                closeVideoModal();
+            });
+        });
+
+        videoModal.addEventListener('click', (event) => {
+            if (!dialog) {
+                return;
+            }
+
+            if (!dialog.contains(event.target)) {
+                closeVideoModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isOpen()) {
+                event.preventDefault();
+                closeVideoModal();
+            }
+        });
+    }
 });
