@@ -581,7 +581,7 @@ body.ts-page {
     background: linear-gradient(135deg, rgba(246, 196, 69, 0.96), rgba(242, 153, 74, 0.85));
     color: #2d2a26;
     top: 18%;
-    right: -12%;
+    right: 6%;
     width: 64%;
     animation-delay: 1.6s;
     z-index: 3;
@@ -893,7 +893,7 @@ body.ts-page {
 
 .ts-metrics__stats {
     display: grid;
-    gap: 1.5rem;
+    gap: clamp(1.75rem, 4vw, 2.5rem);
     justify-items: center;
 }
 
@@ -1797,7 +1797,8 @@ body.ts-page {
 
     .ts-metrics__stats {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 2rem;
+        column-gap: clamp(2rem, 4vw, 3rem);
+        row-gap: clamp(1.75rem, 3vw, 2.5rem);
     }
 }
 
@@ -1893,6 +1894,18 @@ body.ts-page {
     box-shadow: var(--shadow-soft);
     display: grid;
     gap: 2rem;
+}
+
+.ts-map-embed {
+    margin-top: 2.5rem;
+}
+
+.ts-map-embed iframe {
+    width: 100%;
+    min-height: clamp(320px, 45vw, 520px);
+    border: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
 }
 
 .ts-form-grid {
