@@ -362,13 +362,14 @@ body.ts-page.ts-modal-open {
     font-weight: 600;
 }
 
-.ts-nav__cta {
+.ts-nav__cta,
+.ts-nav__cta:visited {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: var(--color-olive);
-    color: #fff;
+    color: #ffffff;
     padding: 0.75rem 1.5rem;
     border-radius: 999px;
     font-weight: 600;
@@ -380,7 +381,7 @@ body.ts-page.ts-modal-open {
 .ts-nav__cta:focus {
     transform: translateY(-2px);
     background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
-    color: #2d2a26;
+    color: #000000;
     box-shadow: 0 18px 28px rgba(242, 153, 74, 0.32);
 }
 
@@ -439,6 +440,7 @@ body.ts-page.ts-modal-open {
     border-radius: 999px;
     padding: 0.85rem 1.75rem;
     font-weight: 600;
+    font-size: 1rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border: none;
     cursor: pointer;
