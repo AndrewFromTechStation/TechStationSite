@@ -544,28 +544,36 @@ body.ts-page.ts-modal-open {
     z-index: -1;
 }
 
+
 .ts-hero__orb--label {
     background: linear-gradient(145deg, rgba(85, 107, 47, 0.95), rgba(60, 74, 31, 0.82));
     color: #fff;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 600;
-    width: 54%;
+    width: 52%;
     aspect-ratio: 1;
-    top: -6%;
-    right: 4%;
+    top: -10%;
+    right: 10%;
     animation-duration: 7.4s;
     animation-delay: 0.4s;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.8rem;
 }
 
 .ts-hero__orb--metric {
     background: rgba(255, 255, 255, 0.94);
     color: var(--color-olive-dark);
-    width: 60%;
+    width: 58%;
     aspect-ratio: 1;
-    top: 56%;
-    left: 66%;
+    top: auto;
+    left: auto;
+    right: 6%;
+    bottom: -8%;
     padding: 2.3rem 2rem;
     animation-duration: 9s;
     z-index: 2;
@@ -584,9 +592,9 @@ body.ts-page.ts-modal-open {
 .ts-hero__orb--accent {
     background: linear-gradient(135deg, rgba(246, 196, 69, 0.96), rgba(242, 153, 74, 0.85));
     color: #2d2a26;
-    top: 18%;
-    right: 6%;
-    width: 64%;
+    top: 28%;
+    left: -12%;
+    width: 66%;
     animation-delay: 1.6s;
     z-index: 3;
 }
@@ -2823,21 +2831,23 @@ body.ts-page.ts-modal-open {
     }
 
     .ts-hero__orb--label {
-        top: 8%;
-        right: 12%;
-        width: 58%;
+        top: 0;
+        right: 16%;
+        width: 56%;
     }
 
     .ts-hero__orb--metric {
-        top: 66%;
+        top: auto;
+        bottom: -6%;
+        right: auto;
         left: 24%;
-        width: 70%;
+        width: 72%;
     }
 
     .ts-hero__orb--accent {
-        top: 32%;
-        right: 4%;
-        width: 74%;
+        top: 36%;
+        left: 2%;
+        width: 76%;
     }
 
     .ts-services__layout {
