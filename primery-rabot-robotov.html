@@ -55,262 +55,460 @@
                     <span class="ts-video-gallery__eyebrow">Коллекция кейсов</span>
                     <h2>Посмотрите, как работают наши роботы</h2>
                     <p>
-                        Мы собрали самые популярные сценарии автоматизации: от финансовых операций до HR и поддержки клиентов.
-                        Нажмите на карточку, чтобы открыть подробное видео и увидеть процесс изнутри.
+                        Собрали короткие ролики с живыми интерфейсами: от финансов и закупок до HR и клиентской поддержки.
+                        Нажмите на карточку, чтобы открыть модальное окно и внимательно рассмотреть процесс.
                     </p>
                 </div>
 
-                <ul class="ts-video-gallery__grid ts-video-gallery__grid--wall">
-                    <li class="ts-video-card" data-animate="fade-up">
+                <div class="ts-video-gallery__stats" data-animate="fade-up" data-animate-delay="0.05">
+                    <div class="ts-gallery-stat">
+                        <span class="ts-gallery-stat__value">9</span>
+                        <span class="ts-gallery-stat__label">готовых сценариев</span>
+                        <span class="ts-gallery-stat__note">Покрываем финансы, продажи, HR и поддержку</span>
+                    </div>
+                    <div class="ts-gallery-stat">
+                        <span class="ts-gallery-stat__value">2–4 недели</span>
+                        <span class="ts-gallery-stat__label">срок запуска</span>
+                        <span class="ts-gallery-stat__note">Настраиваем робота под ваши процессы</span>
+                    </div>
+                    <div class="ts-gallery-stat">
+                        <span class="ts-gallery-stat__value">24/7</span>
+                        <span class="ts-gallery-stat__label">работа без сбоев</span>
+                        <span class="ts-gallery-stat__note">Мониторим качество и присылаем отчёты</span>
+                    </div>
+                </div>
+
+                <div class="ts-video-gallery__filters" data-animate="fade-up" data-animate-delay="0.1">
+                    <button class="ts-gallery-filter is-active" type="button" aria-pressed="true">Все кейсы</button>
+                    <button class="ts-gallery-filter" type="button" aria-pressed="false">Финансы</button>
+                    <button class="ts-gallery-filter" type="button" aria-pressed="false">Операции</button>
+                    <button class="ts-gallery-filter" type="button" aria-pressed="false">Поддержка</button>
+                    <button class="ts-gallery-filter" type="button" aria-pressed="false">Продажи</button>
+                    <button class="ts-gallery-filter" type="button" aria-pressed="false">HR</button>
+                </div>
+
+                <ul class="ts-video-gallery__grid">
+                    <li class="ts-video-card" data-theme="finance" data-animate="fade-up">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/firstvideo.mp4"
                             data-video-title="Робот сверяет банковские выписки"
-                            aria-label="Смотреть видео «Робот сверяет банковские выписки»"
+                            aria-label="Смотреть видео «Робот сверяет банковские выписки». Длительность 0:52"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Финансы</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Финансы</span>
-                                <span class="ts-video-card__title">Робот сверяет банковские выписки</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Финансы</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Контроль платежей</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот сверяет банковские выписки</h3>
                                 <p class="ts-video-card__description">
                                     Автоматическая выгрузка и разбор выписок, сопоставление с платежами и формирование отчётов без
                                     ручного участия.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 0:52</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>0:52</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.1">
+                    <li class="ts-video-card" data-theme="backoffice" data-animate="fade-up" data-animate-delay="0.08">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/secondvideo.mp4"
                             data-video-title="Робот подготавливает бухгалтерскую отчётность"
-                            aria-label="Смотреть видео «Робот подготавливает бухгалтерскую отчётность»"
+                            aria-label="Смотреть видео «Робот подготавливает бухгалтерскую отчётность». Длительность 1:04"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Бэк-офис</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Бэк-офис</span>
-                                <span class="ts-video-card__title">Робот подготавливает бухгалтерскую отчётность</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Бэк-офис</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Отчётность без стресса</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот подготавливает бухгалтерскую отчётность</h3>
                                 <p class="ts-video-card__description">
                                     Сбор первичных документов, проверка показателей и создание итоговых файлов для отправки в налоговую
                                     службу.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 1:04</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>1:04</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.2">
+                    <li class="ts-video-card" data-theme="procurement" data-animate="fade-up" data-animate-delay="0.16">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/thirdvideo.mp4"
                             data-video-title="Робот оформляет заявки на закупку"
-                            aria-label="Смотреть видео «Робот оформляет заявки на закупку»"
+                            aria-label="Смотреть видео «Робот оформляет заявки на закупку». Длительность 0:47"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Закупки</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Закупки</span>
-                                <span class="ts-video-card__title">Робот оформляет заявки на закупку</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Закупки</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">ERP и согласования</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот оформляет заявки на закупку</h3>
                                 <p class="ts-video-card__description">
                                     Получение запросов от менеджеров, проверка лимитов, заполнение форм и отправка на согласование в ERP.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 0:47</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>0:47</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up">
+                    <li class="ts-video-card" data-theme="hr" data-animate="fade-up" data-animate-delay="0.04">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/fourthvideo.mp4"
                             data-video-title="Робот ведёт персональные карточки сотрудников"
-                            aria-label="Смотреть видео «Робот ведёт персональные карточки сотрудников»"
+                            aria-label="Смотреть видео «Робот ведёт персональные карточки сотрудников». Длительность 0:55"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">HR</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">HR</span>
-                                <span class="ts-video-card__title">Робот ведёт персональные карточки сотрудников</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">HR</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Забота о сотрудниках</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот ведёт персональные карточки сотрудников</h3>
                                 <p class="ts-video-card__description">
                                     Обновление кадровых данных, оформление отпусков и подготовка справок для сотрудников в пару кликов.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 0:55</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>0:55</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.1">
+                    <li class="ts-video-card" data-theme="support" data-animate="fade-up" data-animate-delay="0.12">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/fifthvideo.mp4"
                             data-video-title="Робот принимает обращения клиентов"
-                            aria-label="Смотреть видео «Робот принимает обращения клиентов»"
+                            aria-label="Смотреть видео «Робот принимает обращения клиентов». Длительность 0:49"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Поддержка</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Поддержка</span>
-                                <span class="ts-video-card__title">Робот принимает обращения клиентов</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Поддержка</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Быстрая реакция</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот принимает обращения клиентов</h3>
                                 <p class="ts-video-card__description">
                                     Интеллектуальный анализ писем и заявок, распределение по SLA и моментальные ответы без очередей.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 0:49</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>0:49</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.2">
+                    <li class="ts-video-card" data-theme="sales" data-animate="fade-up" data-animate-delay="0.2">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/sixthvideo.mp4"
                             data-video-title="Робот собирает отчёты о продажах"
-                            aria-label="Смотреть видео «Робот собирает отчёты о продажах»"
+                            aria-label="Смотреть видео «Робот собирает отчёты о продажах». Длительность 1:02"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Продажи</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Продажи</span>
-                                <span class="ts-video-card__title">Робот собирает отчёты о продажах</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Продажи</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Ежедневная аналитика</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот собирает отчёты о продажах</h3>
                                 <p class="ts-video-card__description">
                                     Выгрузка данных из CRM, построение аналитики в Power BI и отправка подборок менеджерам к началу дня.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 1:02</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>1:02</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up">
+                    <li class="ts-video-card" data-theme="compliance" data-animate="fade-up" data-animate-delay="0.08">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/seventhvideo.mp4"
                             data-video-title="Робот проверяет контрагентов"
-                            aria-label="Смотреть видео «Робот проверяет контрагентов»"
+                            aria-label="Смотреть видео «Робот проверяет контрагентов». Длительность 0:58"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Комплаенс</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Комплаенс</span>
-                                <span class="ts-video-card__title">Робот проверяет контрагентов</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Комплаенс</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Проверки 24/7</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот проверяет контрагентов</h3>
                                 <p class="ts-video-card__description">
                                     Мониторинг реестров и санкционных списков, сбор выписок и создание заключений по каждой компании.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 0:58</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>0:58</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.1">
+                    <li class="ts-video-card" data-theme="logistics" data-animate="fade-up" data-animate-delay="0.16">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/eighthvideo.mp4"
                             data-video-title="Робот управляет складскими остатками"
-                            aria-label="Смотреть видео «Робот управляет складскими остатками»"
+                            aria-label="Смотреть видео «Робот управляет складскими остатками». Длительность 0:54"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Логистика</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Логистика</span>
-                                <span class="ts-video-card__title">Робот управляет складскими остатками</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Логистика</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Запасы под контролем</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот управляет складскими остатками</h3>
                                 <p class="ts-video-card__description">
                                     Контроль запасов, планирование дозагрузки и уведомления ответственным при риске дефицита.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 0:54</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>0:54</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
 
-                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.2">
+                    <li class="ts-video-card" data-theme="marketing" data-animate="fade-up" data-animate-delay="0.24">
                         <button
                             class="ts-video-card__button"
                             type="button"
                             data-video-trigger
                             data-video-src="assets/videos/ninthvideo.mp4"
                             data-video-title="Робот формирует персональные предложения"
-                            aria-label="Смотреть видео «Робот формирует персональные предложения»"
+                            aria-label="Смотреть видео «Робот формирует персональные предложения». Длительность 1:08"
                         >
-                            <span class="ts-video-card__thumb" aria-hidden="true">
-                                <span class="ts-video-card__glow"></span>
+                            <span class="ts-video-card__preview" aria-hidden="true">
+                                <span class="ts-video-card__badge">Маркетинг</span>
                                 <span class="ts-video-card__play" role="presentation">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
-                            <div class="ts-video-card__content">
-                                <span class="ts-video-card__category">Маркетинг</span>
-                                <span class="ts-video-card__title">Робот формирует персональные предложения</span>
+                            <div class="ts-video-card__body">
+                                <div class="ts-video-card__tags">
+                                    <span class="ts-video-card__tag">Маркетинг</span>
+                                    <span class="ts-video-card__tag ts-video-card__tag--tone">Персональные кампании</span>
+                                </div>
+                                <h3 class="ts-video-card__title">Робот формирует персональные предложения</h3>
                                 <p class="ts-video-card__description">
                                     Анализ поведения клиентов, сегментация и автоматическая отправка писем с персональными офферами.
                                 </p>
-                                <span class="ts-video-card__meta">Длительность: 1:08</span>
+                                <div class="ts-video-card__footer">
+                                    <span class="ts-video-card__meta">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.75-8.44 2.72 1.63-.75 1.23L11 12.4V7h1.5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                        <span>1:08</span>
+                                    </span>
+                                    <span class="ts-video-card__cta">
+                                        Смотреть кейс
+                                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8.59 5.59 13.17 10H5v1.5h8.17l-4.58 4.41L10.5 17l6.5-6.5L10.5 4z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </button>
                     </li>
