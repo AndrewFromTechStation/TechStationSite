@@ -692,9 +692,12 @@ body.ts-page--gallery {
 
 .ts-video-gallery__intro p {
     margin: 0;
-    color: #000;
     font-size: clamp(1rem, 2.4vw, 1.1rem);
     line-height: 1.7;
+}
+
+.ts-video-gallery__intro-description {
+    color: #000000;
 }
 
 .ts-video-gallery__stats {
@@ -3769,6 +3772,7 @@ body.ts-page--gallery {
     color: var(--color-text);
     position: relative;
     z-index: 1;
+    padding-right: clamp(3.25rem, 7vw, 4.5rem);
 }
 
 .ts-video-modal__eyebrow {
