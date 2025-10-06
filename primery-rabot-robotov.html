@@ -51,43 +51,270 @@
     <main>
         <section class="ts-video-gallery" data-animate="section">
             <div class="ts-container">
-                <div class="ts-video-gallery__grid ts-video-gallery__grid--wall">
-                    <div class="ts-video-tile" data-animate="fade-up">
-                        <video src="assets/videos/firstvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up" data-animate-delay="0.1">
-                        <video src="assets/videos/secondvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up" data-animate-delay="0.2">
-                        <video src="assets/videos/thirdvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up">
-                        <video src="assets/videos/fourthvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up" data-animate-delay="0.1">
-                        <video src="assets/videos/fifthvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up" data-animate-delay="0.2">
-                        <video src="assets/videos/sixthvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up">
-                        <video src="assets/videos/seventhvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up" data-animate-delay="0.1">
-                        <video src="assets/videos/eighthvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
-
-                    <div class="ts-video-tile" data-animate="fade-up" data-animate-delay="0.2">
-                        <video src="assets/videos/ninthvideo.mp4" controls preload="metadata" playsinline></video>
-                    </div>
+                <div class="ts-video-gallery__intro" data-animate="fade-up">
+                    <span class="ts-video-gallery__eyebrow">Коллекция кейсов</span>
+                    <h2>Посмотрите, как работают наши роботы</h2>
+                    <p>
+                        Мы собрали самые популярные сценарии автоматизации: от финансовых операций до HR и поддержки клиентов.
+                        Нажмите на карточку, чтобы открыть подробное видео и увидеть процесс изнутри.
+                    </p>
                 </div>
+
+                <ul class="ts-video-gallery__grid ts-video-gallery__grid--wall">
+                    <li class="ts-video-card" data-animate="fade-up">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/firstvideo.mp4"
+                            data-video-title="Робот сверяет банковские выписки"
+                            aria-label="Смотреть видео «Робот сверяет банковские выписки»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Финансы</span>
+                                <span class="ts-video-card__title">Робот сверяет банковские выписки</span>
+                                <p class="ts-video-card__description">
+                                    Автоматическая выгрузка и разбор выписок, сопоставление с платежами и формирование отчётов без
+                                    ручного участия.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 0:52</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.1">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/secondvideo.mp4"
+                            data-video-title="Робот подготавливает бухгалтерскую отчётность"
+                            aria-label="Смотреть видео «Робот подготавливает бухгалтерскую отчётность»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Бэк-офис</span>
+                                <span class="ts-video-card__title">Робот подготавливает бухгалтерскую отчётность</span>
+                                <p class="ts-video-card__description">
+                                    Сбор первичных документов, проверка показателей и создание итоговых файлов для отправки в налоговую
+                                    службу.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 1:04</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.2">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/thirdvideo.mp4"
+                            data-video-title="Робот оформляет заявки на закупку"
+                            aria-label="Смотреть видео «Робот оформляет заявки на закупку»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Закупки</span>
+                                <span class="ts-video-card__title">Робот оформляет заявки на закупку</span>
+                                <p class="ts-video-card__description">
+                                    Получение запросов от менеджеров, проверка лимитов, заполнение форм и отправка на согласование в ERP.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 0:47</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/fourthvideo.mp4"
+                            data-video-title="Робот ведёт персональные карточки сотрудников"
+                            aria-label="Смотреть видео «Робот ведёт персональные карточки сотрудников»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">HR</span>
+                                <span class="ts-video-card__title">Робот ведёт персональные карточки сотрудников</span>
+                                <p class="ts-video-card__description">
+                                    Обновление кадровых данных, оформление отпусков и подготовка справок для сотрудников в пару кликов.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 0:55</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.1">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/fifthvideo.mp4"
+                            data-video-title="Робот принимает обращения клиентов"
+                            aria-label="Смотреть видео «Робот принимает обращения клиентов»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Поддержка</span>
+                                <span class="ts-video-card__title">Робот принимает обращения клиентов</span>
+                                <p class="ts-video-card__description">
+                                    Интеллектуальный анализ писем и заявок, распределение по SLA и моментальные ответы без очередей.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 0:49</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.2">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/sixthvideo.mp4"
+                            data-video-title="Робот собирает отчёты о продажах"
+                            aria-label="Смотреть видео «Робот собирает отчёты о продажах»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Продажи</span>
+                                <span class="ts-video-card__title">Робот собирает отчёты о продажах</span>
+                                <p class="ts-video-card__description">
+                                    Выгрузка данных из CRM, построение аналитики в Power BI и отправка подборок менеджерам к началу дня.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 1:02</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/seventhvideo.mp4"
+                            data-video-title="Робот проверяет контрагентов"
+                            aria-label="Смотреть видео «Робот проверяет контрагентов»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Комплаенс</span>
+                                <span class="ts-video-card__title">Робот проверяет контрагентов</span>
+                                <p class="ts-video-card__description">
+                                    Мониторинг реестров и санкционных списков, сбор выписок и создание заключений по каждой компании.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 0:58</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.1">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/eighthvideo.mp4"
+                            data-video-title="Робот управляет складскими остатками"
+                            aria-label="Смотреть видео «Робот управляет складскими остатками»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Логистика</span>
+                                <span class="ts-video-card__title">Робот управляет складскими остатками</span>
+                                <p class="ts-video-card__description">
+                                    Контроль запасов, планирование дозагрузки и уведомления ответственным при риске дефицита.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 0:54</span>
+                            </div>
+                        </button>
+                    </li>
+
+                    <li class="ts-video-card" data-animate="fade-up" data-animate-delay="0.2">
+                        <button
+                            class="ts-video-card__button"
+                            type="button"
+                            data-video-trigger
+                            data-video-src="assets/videos/ninthvideo.mp4"
+                            data-video-title="Робот формирует персональные предложения"
+                            aria-label="Смотреть видео «Робот формирует персональные предложения»"
+                        >
+                            <span class="ts-video-card__thumb" aria-hidden="true">
+                                <span class="ts-video-card__glow"></span>
+                                <span class="ts-video-card__play" role="presentation">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M8 5v14l11-7L8 5z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="ts-video-card__content">
+                                <span class="ts-video-card__category">Маркетинг</span>
+                                <span class="ts-video-card__title">Робот формирует персональные предложения</span>
+                                <p class="ts-video-card__description">
+                                    Анализ поведения клиентов, сегментация и автоматическая отправка писем с персональными офферами.
+                                </p>
+                                <span class="ts-video-card__meta">Длительность: 1:08</span>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>
@@ -134,6 +361,23 @@
             <p><a href="politika-konfidenczialnosti.html">Политика конфиденциальности</a></p>
         </div>
     </footer>
+
+    <div class="ts-video-modal" id="ts-video-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="ts-video-modal__backdrop" data-video-close></div>
+        <div class="ts-video-modal__dialog" role="document">
+            <button class="ts-video-modal__close" type="button" data-video-close aria-label="Закрыть видео">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="ts-video-modal__header">
+                <span class="ts-video-modal__eyebrow">Видео-демонстрация</span>
+                <h2 class="ts-video-modal__title">Робот сверяет банковские выписки</h2>
+            </div>
+            <video class="ts-video-modal__player" controls preload="metadata">
+                <source src="assets/videos/firstvideo.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает воспроизведение видео.
+            </video>
+        </div>
+    </div>
 
     <script src="assets/js/main.js" defer></script>
 </body>
