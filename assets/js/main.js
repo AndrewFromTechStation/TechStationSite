@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
     const floatingCta = document.querySelector('.ts-floating-cta');
+    const isSubpage = document.body.classList.contains('ts-subpage');
     let scrollTicking = false;
 
     const addMediaQueryListener = (mediaQueryList, callback) => {
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const shouldUseObserver = supportsIntersectionObserver && !prefersReducedMotion.matches;
+    const shouldUseObserver = supportsIntersectionObserver && !prefersReducedMotion.matches && !isSubpage;
 
     anchorLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (!shouldUseObserver) {
+        document.documentElement.classList.remove('has-animations');
         showAnimatedElements();
         syncCountersImmediately();
     }

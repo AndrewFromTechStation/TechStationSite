@@ -54,6 +54,12 @@ body.ts-page {
     margin: 0 auto;
 }
 
+.ts-subpage [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
 [data-animate] {
     opacity: 1;
     transform: none;
@@ -202,9 +208,18 @@ body.ts-page {
 
 .ts-hero {
     position: relative;
-    padding: 3rem 0 6rem;
+    padding: 0 0 6rem;
     background: linear-gradient(135deg, rgba(245, 241, 227, 0.95) 0%, rgba(246, 196, 69, 0.22) 45%, rgba(242, 153, 74, 0.18) 100%);
     overflow: hidden;
+}
+
+.ts-hero__nav {
+    position: relative;
+    z-index: 12;
+    padding: clamp(1rem, 2vw, 1.5rem) 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(60, 74, 31, 0.08);
 }
 
 .ts-hero::before,
@@ -369,6 +384,7 @@ body.ts-page {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3.5rem;
     align-items: center;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
 .ts-hero__text h1 {
@@ -2012,7 +2028,7 @@ body.ts-page {
     position: sticky;
     top: 0;
     z-index: 12;
-    padding: 1.1rem 0;
+    padding: clamp(1rem, 2vw, 1.5rem) 0;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(60, 74, 31, 0.08);
@@ -2053,6 +2069,10 @@ body.ts-page {
     z-index: 2;
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ts-subpage .ts-subheader__scroll-hint {
+    display: none;
 }
 
 .ts-subheader__scroll-hint.is-hidden {
@@ -2833,7 +2853,7 @@ body.ts-page {
 
 @media (max-width: 640px) {
     .ts-hero {
-        padding: 2.75rem 0 3.5rem;
+        padding: 0 0 3.5rem;
     }
 
     .ts-nav {
