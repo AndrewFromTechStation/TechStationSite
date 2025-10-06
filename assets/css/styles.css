@@ -1818,6 +1818,74 @@ body.ts-page {
     background: linear-gradient(135deg, rgba(85, 107, 47, 0.12), rgba(246, 196, 69, 0.15));
 }
 
+.ts-contact-qr {
+    padding: 4rem 0;
+}
+
+.ts-contact-qr__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.ts-contact-qr__card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    display: grid;
+    gap: 1.25rem;
+    text-align: center;
+    width: min(100%, 360px);
+    margin-inline: auto;
+}
+
+.ts-contact-qr__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    border-radius: var(--radius-md);
+    background: rgba(85, 107, 47, 0.08);
+    padding: clamp(1rem, 2vw, 1.75rem);
+}
+
+.ts-contact-qr__image img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.ts-contact-qr__card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.ts-contact-qr__card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+@media (min-width: 720px) {
+    .ts-contact-qr__grid {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .ts-contact-qr__card {
+        width: clamp(280px, 30vw, 360px);
+    }
+}
+
+@media (max-width: 640px) {
+    .ts-contact-qr__image {
+        min-height: 200px;
+    }
+}
+
 .ts-contact__form {
     background: #fff;
     border-radius: var(--radius-lg);
