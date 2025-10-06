@@ -775,6 +775,40 @@ body.ts-page--gallery {
     box-shadow: 0 18px 36px rgba(76, 110, 245, 0.18);
 }
 
+.ts-video-gallery__intro {
+    max-width: 720px;
+    margin: 0 auto clamp(2.5rem, 6vw, 3.5rem);
+    text-align: center;
+}
+
+.ts-video-gallery__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    margin-bottom: 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+}
+
+.ts-video-gallery__intro h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.ts-video-gallery__intro p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.65;
+}
+
 .ts-video-gallery__grid {
     display: grid;
     gap: clamp(1.8rem, 3vw, 2.6rem);
@@ -1093,6 +1127,37 @@ body.ts-page--gallery {
 
     .ts-video-card__preview {
         border-radius: calc(var(--radius-lg) - 0.9rem);
+    }
+}
+
+.ts-video-card:hover .ts-video-card__play,
+.ts-video-card:focus-within .ts-video-card__play {
+    transform: scale(1.05);
+    background: rgba(87, 230, 255, 0.2);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .ts-video-card__button {
+        gap: 1.25rem;
+        padding: 1.5rem;
+    }
+
+    .ts-video-card__thumb {
+        border-radius: calc(var(--radius-lg) - 0.75rem);
+    }
+}
+
+@keyframes ts-pulse {
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
     }
 }
 
