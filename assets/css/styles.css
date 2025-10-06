@@ -362,7 +362,8 @@ body.ts-page.ts-modal-open {
     font-weight: 600;
 }
 
-.ts-nav__cta {
+.ts-nav__cta,
+.ts-nav__cta:visited {
     display: inline-flex;
     align-items: center;
     justify-content: center;
