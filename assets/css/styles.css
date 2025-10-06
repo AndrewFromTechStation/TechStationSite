@@ -554,6 +554,11 @@ body.ts-page {
     animation-duration: 7.4s;
     animation-delay: 0.4s;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.8rem;
 }
 
 .ts-hero__orb--metric {
@@ -584,7 +589,7 @@ body.ts-page {
     background: linear-gradient(135deg, rgba(246, 196, 69, 0.96), rgba(242, 153, 74, 0.85));
     color: #2d2a26;
     top: 28%;
-    left: -6%;
+    left: -12%;
     width: 66%;
     animation-delay: 1.6s;
     z-index: 3;
