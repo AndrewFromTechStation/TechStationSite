@@ -331,6 +331,10 @@ body.ts-page.ts-modal-open {
 }
 
 .ts-nav__links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     font-weight: 500;
     transition: color 0.2s ease;
 }
@@ -346,6 +350,10 @@ body.ts-page.ts-modal-open {
 }
 
 .ts-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     background: var(--color-olive);
     color: #fff;
     padding: 0.75rem 1.5rem;
