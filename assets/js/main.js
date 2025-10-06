@@ -372,10 +372,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const videoModal = document.querySelector('.ts-video-modal');
-    const videoTrigger = document.querySelector('[data-video-trigger]');
+    const videoTriggers = Array.from(document.querySelectorAll('[data-video-trigger]'));
 
-    if (videoModal && videoTrigger) {
+    if (videoModal && videoTriggers.length > 0) {
         const videoPlayer = videoModal.querySelector('video');
+        const videoSource = videoPlayer ? videoPlayer.querySelector('source') : null;
+        const modalTitle = videoModal.querySelector('.ts-video-modal__title');
         const closeButtons = Array.from(videoModal.querySelectorAll('[data-video-close]'));
         const dialog = videoModal.querySelector('.ts-video-modal__dialog');
         let previouslyFocusedElement = null;
@@ -390,8 +392,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        const openVideoModal = () => {
+        const setVideoContent = (trigger) => {
+            if (!videoPlayer || !(trigger instanceof HTMLElement)) {
+                return;
+            }
+
+            const videoSrc = trigger.getAttribute('data-video-src');
+            const videoType = trigger.getAttribute('data-video-type') || 'video/mp4';
+            const videoPoster = trigger.getAttribute('data-video-poster');
+            const videoTitle = trigger.getAttribute('data-video-title');
+
+            if (videoPoster) {
+                videoPlayer.setAttribute('poster', videoPoster);
+            } else {
+                videoPlayer.removeAttribute('poster');
+            }
+
+            if (videoSource) {
+                if (videoSrc) {
+                    videoSource.setAttribute('src', videoSrc);
+                }
+                videoSource.setAttribute('type', videoType);
+                videoPlayer.load();
+            } else if (videoSrc) {
+                videoPlayer.setAttribute('src', videoSrc);
+                videoPlayer.load();
+            }
+
+            if (modalTitle && videoTitle) {
+                modalTitle.textContent = videoTitle;
+            }
+        };
+
+        const openVideoModal = (trigger) => {
             previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+            setVideoContent(trigger);
             videoModal.classList.add('is-open');
             videoModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('ts-modal-open');
@@ -431,8 +466,10 @@ document.addEventListener('DOMContentLoaded', () => {
             previouslyFocusedElement = null;
         };
 
-        videoTrigger.addEventListener('click', () => {
-            openVideoModal();
+        videoTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                openVideoModal(trigger);
+            });
         });
 
         closeButtons.forEach((button) => {
