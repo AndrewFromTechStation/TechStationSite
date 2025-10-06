@@ -3297,6 +3297,40 @@ body.ts-page.ts-modal-open {
     overflow: hidden;
 }
 
+.ts-video-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ts-video-modal__close::before {
+    content: '×';
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+}
+
+.ts-video-modal__close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.ts-video-modal__close:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 .ts-video-modal__player {
     display: block;
     width: 100%;
