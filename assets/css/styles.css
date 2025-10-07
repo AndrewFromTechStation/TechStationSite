@@ -222,7 +222,7 @@ body.ts-page.ts-modal-open {
 .ts-hero__nav {
     position: relative;
     z-index: 12;
-    padding: clamp(1rem, 2vw, 1.5rem) 0;
+    padding: 0.375rem 0;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(60, 74, 31, 0.08);
