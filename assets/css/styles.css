@@ -328,10 +328,16 @@ body.ts-page.ts-modal-open {
 }
 
 .ts-logo {
-    font-weight: 700;
-    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
     color: var(--color-olive-dark);
     white-space: nowrap;
+}
+
+.ts-logo img {
+    display: block;
+    height: 2.5rem;
+    width: auto;
 }
 
 .ts-nav__links {
