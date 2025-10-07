@@ -222,7 +222,7 @@ body.ts-page.ts-modal-open {
 .ts-hero__nav {
     position: relative;
     z-index: 12;
-    padding: clamp(1rem, 2vw, 1.5rem) 0;
+    padding: 0.25rem 0;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(60, 74, 31, 0.08);
@@ -322,16 +322,22 @@ body.ts-page.ts-modal-open {
     display: flex;
     align-items: center;
     gap: 2rem;
-    padding: 0.2rem 0 0.65rem;
+    padding: 0.1rem 0 0.4rem;
     position: relative;
     z-index: 2;
 }
 
 .ts-logo {
-    font-weight: 700;
-    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
     color: var(--color-olive-dark);
     white-space: nowrap;
+}
+
+.ts-logo img {
+    display: block;
+    width: clamp(4.5rem, 12vw, 7.5rem);
+    height: auto;
 }
 
 .ts-nav__links {
@@ -2825,7 +2831,7 @@ body.ts-page--gallery {
     position: sticky;
     top: 0;
     z-index: 12;
-    padding: clamp(1rem, 2vw, 1.5rem) 0;
+    padding: 0.25rem 0;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(60, 74, 31, 0.08);
@@ -3381,10 +3387,6 @@ body.ts-page--gallery {
 }
 
 @media (max-width: 768px) {
-    .ts-subheader__nav {
-        padding: 0.85rem 0;
-    }
-
     .ts-subheader__intro {
         padding: 3.25rem 0 2.75rem;
     }
