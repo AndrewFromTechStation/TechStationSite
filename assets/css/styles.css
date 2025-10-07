@@ -336,8 +336,8 @@ body.ts-page.ts-modal-open {
 
 .ts-logo img {
     display: block;
-    height: 2.5rem;
-    width: auto;
+    width: clamp(3rem, 8vw, 5rem);
+    height: auto;
 }
 
 .ts-nav__links {
