@@ -1,17 +1,17 @@
-<svg width="260" height="120" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <linearGradient id="partnerBg" x1="0" y1="0" x2="260" y2="120" gradientUnits="userSpaceOnUse">
+        <linearGradient id="partnerBg" x1="0" y1="0" x2="320" y2="120" gradientUnits="userSpaceOnUse">
             <stop stop-color="#F6F1E3" />
             <stop offset="1" stop-color="#FFF8DA" />
         </linearGradient>
     </defs>
-    <rect x="2" y="2" width="256" height="116" rx="18" fill="url(#partnerBg)" stroke="#F2A24A" stroke-width="2" />
+    <rect x="2" y="2" width="316" height="116" rx="18" fill="url(#partnerBg)" stroke="#F2A24A" stroke-width="2" />
     <g font-family="'Manrope', 'Arial', sans-serif" fill="#3C4A1F">
         <text x="28" y="54" font-size="26" font-weight="700">SLS</text>
         <text x="94" y="54" font-size="26" font-weight="700" fill="#F2994A">Partner</text>
         <text x="28" y="86" font-size="14" font-weight="600" fill="#5E6B3A">Официальный партнёр Technostation</text>
     </g>
-    <circle cx="208" cy="60" r="22" fill="#F6C445" opacity="0.25" />
-    <circle cx="208" cy="60" r="16" fill="#F2994A" opacity="0.55" />
-    <path d="M208 46L214 60L208 74L202 60L208 46Z" fill="#fffef9" />
+    <circle cx="268" cy="60" r="22" fill="#F6C445" opacity="0.25" />
+    <circle cx="268" cy="60" r="16" fill="#F2994A" opacity="0.55" />
+    <path d="M268 46L274 60L268 74L262 60L268 46Z" fill="#fffef9" />
 </svg>
