@@ -336,7 +336,7 @@ body.ts-page.ts-modal-open {
 
 .ts-logo img {
     display: block;
-    width: clamp(3rem, 8vw, 5rem);
+    width: clamp(4.5rem, 12vw, 7.5rem);
     height: auto;
 }
 
