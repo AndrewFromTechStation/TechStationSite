@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatingCta = document.querySelector('.ts-floating-cta');
     const isSubpage = document.body.classList.contains('ts-subpage');
     const carouselContainers = Array.from(
-        document.querySelectorAll('.ts-usecases__grid, .ts-advantages__grid'),
+        document.querySelectorAll(
+            '.ts-usecases__grid, .ts-advantages__grid, .ts-services__list, .ts-portfolio__list',
+        ),
     );
-    const carouselHintMedia = window.matchMedia('(max-width: 768px)');
+    const carouselHintMedia = window.matchMedia('(max-width: 960px)');
     let scrollTicking = false;
 
     const addMediaQueryListener = (mediaQueryList, callback) => {
@@ -594,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const label = document.createElement('span');
         label.className = 'ts-carousel-hint__text';
-        label.textContent = 'Свайпните';
+        label.textContent = 'Свайпайте';
 
         const arrow = document.createElement('span');
         arrow.className = 'ts-carousel-hint__arrow';
