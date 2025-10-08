@@ -4081,6 +4081,19 @@ body.ts-page--gallery {
         object-fit: contain;
     }
 
+    .ts-blog-card > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem 0;
+    }
+
+    .ts-blog-card img {
+        height: auto;
+        width: min(100%, 320px);
+        object-fit: contain;
+    }
+
     .ts-footer__bottom {
         flex-direction: column;
     }
