@@ -558,10 +558,17 @@ body.ts-page.ts-modal-open {
 
 .ts-hero__media {
     position: relative;
-    width: clamp(240px, 28vw, 360px);
-    aspect-ratio: 1;
+    width: clamp(360px, 42vw, 720px);
+    aspect-ratio: 1 / 1;
     margin-left: auto;
     filter: drop-shadow(0 28px 45px rgba(60, 74, 31, 0.16));
+}
+
+.ts-hero__illustration {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
 }
 
 .ts-hero__orb {
