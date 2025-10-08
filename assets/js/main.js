@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselContainers = Array.from(
         document.querySelectorAll('.ts-usecases__grid, .ts-advantages__grid'),
     );
-    const carouselHintMedia = window.matchMedia('(max-width: 768px)');
+    const carouselHintMedia = window.matchMedia('(max-width: 960px)');
     let scrollTicking = false;
 
     const addMediaQueryListener = (mediaQueryList, callback) => {
@@ -592,16 +592,11 @@ document.addEventListener('DOMContentLoaded', () => {
         hint.className = 'ts-carousel-hint';
         hint.setAttribute('aria-hidden', 'true');
 
-        const label = document.createElement('span');
-        label.className = 'ts-carousel-hint__text';
-        label.textContent = 'Свайпните';
-
         const arrow = document.createElement('span');
         arrow.className = 'ts-carousel-hint__arrow';
         arrow.setAttribute('aria-hidden', 'true');
         arrow.textContent = '→';
 
-        hint.appendChild(label);
         hint.appendChild(arrow);
 
         container.appendChild(hint);
