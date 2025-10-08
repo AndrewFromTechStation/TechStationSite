@@ -1267,6 +1267,16 @@ body.ts-page--gallery {
     line-height: 1.65;
 }
 
+.ts-usecases__grid,
+.ts-advantages__grid {
+    scrollbar-width: none;
+}
+
+.ts-usecases__grid::-webkit-scrollbar,
+.ts-advantages__grid::-webkit-scrollbar {
+    display: none;
+}
+
 .ts-usecase-card:hover,
 .ts-usecase-card:focus-within {
     transform: translateY(-6px);
@@ -3747,6 +3757,110 @@ body.ts-page--gallery {
     .ts-portfolio__panel-media {
         justify-self: center;
         max-width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ts-usecases__grid,
+    .ts-advantages__grid {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(240px, 82vw);
+        grid-template-columns: none;
+        overflow-x: auto;
+        padding-bottom: 0.75rem;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        gap: 1rem;
+    }
+
+    .ts-usecases__grid {
+        margin-inline: -0.75rem;
+        padding-inline: 0.75rem;
+        scroll-padding-inline: 0.75rem;
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .ts-usecase-card,
+    .ts-advantage {
+        scroll-snap-align: start;
+    }
+
+    .ts-usecase-card {
+        min-height: 100%;
+        padding: 1.75rem 1.5rem;
+    }
+
+    .ts-usecase-card__index {
+        width: 2.6rem;
+        height: 2.6rem;
+        font-size: 0.95rem;
+    }
+
+    .ts-usecase-card__content h3 {
+        font-size: 1.05rem;
+    }
+
+    .ts-usecase-card__content p {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .ts-advantages__grid {
+        grid-auto-columns: minmax(260px, 85vw);
+        margin-inline: -1rem;
+        padding-inline: 1rem;
+        scroll-padding-inline: 1rem;
+        gap: 1.1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .ts-advantage {
+        min-height: 100%;
+        padding: 1.85rem 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .ts-advantage__icon {
+        width: 3rem;
+        height: 3rem;
+        justify-self: flex-start;
+    }
+
+    .ts-advantage__content h3 {
+        font-size: 1.05rem;
+    }
+
+    .ts-advantage__content p {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .ts-pricing {
+        position: relative;
+        display: block;
+    }
+}
+
+@media (max-width: 540px) {
+    .ts-usecases__grid,
+    .ts-advantages__grid {
+        grid-auto-columns: minmax(80vw, 1fr);
+    }
+
+    .ts-usecase-card {
+        padding: 1.6rem 1.25rem;
+    }
+
+    .ts-advantage {
+        padding: 1.6rem 1.25rem;
     }
 }
 
