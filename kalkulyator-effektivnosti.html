@@ -9,6 +9,292 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>
+        .ts-calculator--enhanced {
+            background: linear-gradient(160deg, rgba(76, 110, 245, 0.08) 0%, rgba(242, 153, 74, 0.05) 100%);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__card {
+            background: #ffffff;
+            border-radius: 26px;
+            box-shadow: 0 24px 60px rgba(44, 63, 26, 0.14);
+            padding: 2.5rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__card-header h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__card-header h2 span {
+            font-size: 1.6rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__card-header p {
+            color: var(--color-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__processes {
+            max-height: 54vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__processes::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__processes::-webkit-scrollbar-thumb {
+            background: rgba(76, 110, 245, 0.35);
+            border-radius: 999px;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__process {
+            border: 1px solid rgba(76, 110, 245, 0.15);
+            background: linear-gradient(165deg, rgba(237, 242, 255, 0.7) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__process:hover {
+            border-color: rgba(76, 110, 245, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 38px rgba(76, 110, 245, 0.16);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__process-number {
+            background: linear-gradient(135deg, rgba(76, 110, 245, 0.18), rgba(76, 110, 245, 0.35));
+            color: var(--color-accent);
+            font-weight: 700;
+            padding: 0.45rem 1.1rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__remove {
+            background: rgba(242, 71, 87, 0.1);
+            border: 1px solid rgba(242, 71, 87, 0.4);
+            color: #d62839;
+            font-weight: 600;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__remove:hover,
+        .ts-calculator--enhanced .ts-calculator__remove:focus {
+            background: #d62839;
+            color: #fff;
+            border-color: #d62839;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__field span {
+            color: var(--color-text);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__field input,
+        .ts-calculator--enhanced .ts-calculator__field select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(76, 110, 245, 0.22);
+            background: #fff;
+            font-size: 1rem;
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+            appearance: none;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__field input:focus,
+        .ts-calculator--enhanced .ts-calculator__field select:focus {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 4px rgba(76, 110, 245, 0.2);
+            outline: none;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__field select {
+            background-image: linear-gradient(45deg, transparent 50%, var(--color-accent) 50%),
+                linear-gradient(135deg, var(--color-accent) 50%, transparent 50%);
+            background-position: calc(100% - 18px) calc(1.2em), calc(100% - 13px) calc(1.2em);
+            background-size: 6px 6px;
+            background-repeat: no-repeat;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button {
+            padding: 0.95rem 1.5rem;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button--outline {
+            border-color: rgba(76, 110, 245, 0.45);
+            color: var(--color-accent);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button--outline:hover,
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button--outline:focus {
+            background: rgba(76, 110, 245, 0.1);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button--primary {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #364fc7 100%);
+            box-shadow: 0 16px 28px rgba(76, 110, 245, 0.3);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button--primary:hover,
+        .ts-calculator--enhanced .ts-calculator__actions .ts-button--primary:focus {
+            transform: translateY(-2px);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__summary {
+            background: linear-gradient(135deg, rgba(76, 110, 245, 0.16) 0%, rgba(236, 229, 206, 0.75) 100%);
+            border-radius: 18px;
+            padding: 1.5rem;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__summary-item strong {
+            color: var(--color-accent);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__result {
+            border-left: 5px solid var(--color-accent);
+            background: #ffffff;
+            box-shadow: 0 16px 34px rgba(76, 110, 245, 0.12);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__result-label {
+            font-weight: 600;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__breakdown {
+            background: #fff;
+            border-radius: 18px;
+            border: 1px solid rgba(76, 110, 245, 0.16);
+            box-shadow: 0 12px 28px rgba(44, 63, 26, 0.08);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__breakdown h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__breakdown-row {
+            font-size: 1rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__breakdown-row.is-total {
+            border-top: 2px solid rgba(76, 110, 245, 0.2);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__warning {
+            display: none;
+            border-radius: 16px;
+            border-left: 6px solid #f6c445;
+            background: rgba(246, 196, 69, 0.18);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__warning[hidden] {
+            display: none;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__warning:not([hidden]) {
+            display: block;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__badges {
+            gap: 0.5rem;
+        }
+
+        .ts-calculator--enhanced .ts-calculator__badge {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.18), rgba(46, 204, 113, 0.35));
+            color: #1e7b34;
+            box-shadow: 0 10px 18px rgba(46, 204, 113, 0.18);
+        }
+
+        .ts-calculator--enhanced .ts-calculator__badge--accent {
+            background: linear-gradient(135deg, rgba(76, 110, 245, 0.18), rgba(76, 110, 245, 0.32));
+            color: var(--color-accent);
+        }
+
+        .ts-calculator__error-mode {
+            margin-top: 1.5rem;
+            border-radius: 18px;
+            background: rgba(76, 110, 245, 0.08);
+            padding: 1.25rem 1.5rem;
+            display: grid;
+            gap: 1.1rem;
+        }
+
+        .ts-calculator__error-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .ts-calculator__error-toggle input[type='checkbox'] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--color-accent);
+            cursor: pointer;
+        }
+
+        .ts-calculator__error-simple select {
+            cursor: pointer;
+        }
+
+        .ts-calculator__error-detailed {
+            display: none;
+        }
+
+        .ts-calculator__error-detailed.is-visible {
+            display: block;
+        }
+
+        .ts-calculator__error-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem 1.25rem;
+        }
+
+        .ts-calculator__process-note {
+            color: var(--color-muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1200px) {
+            .ts-calculator--enhanced .ts-calculator__card {
+                padding: 2rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__processes {
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .ts-calculator__error-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__card {
+                padding: 1.75rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body class="ts-page ts-subpage ts-calculator">
     <header class="ts-subheader" data-animate="hero">
@@ -48,13 +334,13 @@
     </header>
 
     <main class="ts-subpage__main">
-        <section class="ts-calculator__section" data-animate="section">
+        <section class="ts-calculator__section ts-calculator--enhanced" data-animate="section">
             <div class="ts-container">
                 <div class="ts-calculator__layout" data-animate="fade-up">
                     <div class="ts-calculator__panel">
                         <article class="ts-calculator__card">
                             <header class="ts-calculator__card-header">
-                                <h2>Процессы для автоматизации</h2>
+                                <h2><span aria-hidden="true">📋</span>Процессы для автоматизации</h2>
                                 <p>Опишите процессы, которые планируете роботизировать: трудозатраты, нагрузку и ошибки.</p>
                             </header>
                             <div class="ts-calculator__processes" id="processes-container"></div>
@@ -63,14 +349,16 @@
                                     <span aria-hidden="true">➕</span>
                                     <span>Добавить процесс</span>
                                 </button>
-                                <button class="ts-button ts-button--primary" type="button" onclick="calculate()">Рассчитать эффективность</button>
+                                <button class="ts-button ts-button--primary" type="button" onclick="calculate()">
+                                    💰 Рассчитать эффективность
+                                </button>
                             </div>
                         </article>
                     </div>
                     <aside class="ts-calculator__panel">
                         <article class="ts-calculator__card ts-calculator__card--results" aria-live="polite">
                             <header class="ts-calculator__card-header">
-                                <h2>Результаты расчёта</h2>
+                                <h2><span aria-hidden="true">💰</span>Результаты расчёта</h2>
                                 <p>Получите ключевые показатели эффективности и детализацию экономии.</p>
                             </header>
 
@@ -101,7 +389,7 @@
                             </div>
 
                             <div class="ts-calculator__breakdown" id="breakdown" hidden>
-                                <h3>Детализация</h3>
+                                <h3><span aria-hidden="true">📊</span>Детализация</h3>
                                 <div id="breakdown-content"></div>
                             </div>
 
@@ -196,7 +484,7 @@
         let processCounter = 0;
 
         function addProcess() {
-            processCounter++;
+            processCounter += 1;
             const processId = processCounter;
 
             const processData = {
@@ -205,6 +493,8 @@
                 timePerOperation: 0,
                 operationsPerMonth: 0,
                 salary: 0,
+                errorMode: 'simple',
+                errorLevel: 'medium',
                 errorRate: 0,
                 errorCost: 0
             };
@@ -240,29 +530,49 @@
                     </div>
                     <div class="ts-calculator__form-grid">
                         <label class="ts-calculator__field">
-                            <span>Сотрудников</span>
+                            <span>👥 Сотрудников</span>
                             <input type="number" min="0" value="${process.employees}" onchange="updateProcess(${process.id}, 'employees', this.value)" />
                         </label>
                         <label class="ts-calculator__field">
-                            <span>Время на операцию (час)</span>
+                            <span>⏰ Время на операцию (час)</span>
                             <input type="number" step="0.01" min="0" value="${process.timePerOperation}" onchange="updateProcess(${process.id}, 'timePerOperation', this.value)" />
                         </label>
                         <label class="ts-calculator__field">
-                            <span>Операций в месяц</span>
+                            <span>📊 Операций в месяц</span>
                             <input type="number" min="0" value="${process.operationsPerMonth}" onchange="updateProcess(${process.id}, 'operationsPerMonth', this.value)" />
                         </label>
                         <label class="ts-calculator__field">
-                            <span>Зарплата (₽/мес)</span>
+                            <span>💰 Зарплата (₽/мес)</span>
                             <input type="number" min="0" value="${process.salary}" onchange="updateProcess(${process.id}, 'salary', this.value)" />
                         </label>
-                        <label class="ts-calculator__field">
-                            <span>Процент ошибок (%)</span>
-                            <input type="number" step="0.1" min="0" value="${process.errorRate}" onchange="updateProcess(${process.id}, 'errorRate', this.value)" />
+                    </div>
+                    <div class="ts-calculator__error-mode">
+                        <label class="ts-calculator__error-toggle">
+                            <input type="checkbox" id="errorMode_${process.id}" ${process.errorMode === 'detailed' ? 'checked' : ''} onchange="toggleErrorMode(${process.id}, this.checked)" />
+                            <span>🔍 Расчёт ошибок в детальном режиме</span>
                         </label>
-                        <label class="ts-calculator__field">
-                            <span>Стоимость ошибки (₽)</span>
-                            <input type="number" min="0" value="${process.errorCost}" onchange="updateProcess(${process.id}, 'errorCost', this.value)" />
-                        </label>
+                        <div class="ts-calculator__error-simple" id="errorSimple_${process.id}" style="${process.errorMode === 'detailed' ? 'display:none;' : 'display:block;'}">
+                            <label class="ts-calculator__field">
+                                <span>❌ Как часто происходят ошибки?</span>
+                                <select onchange="updateProcess(${process.id}, 'errorLevel', this.value)">
+                                    <option value="low" ${process.errorLevel === 'low' ? 'selected' : ''}>Редко — около 2% ошибок, стоимость ~5 000 ₽</option>
+                                    <option value="medium" ${process.errorLevel === 'medium' ? 'selected' : ''}>Иногда — около 5% ошибок, стоимость ~10 000 ₽</option>
+                                    <option value="high" ${process.errorLevel === 'high' ? 'selected' : ''}>Часто — около 10% ошибок, стоимость ~20 000 ₽</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="ts-calculator__error-detailed ${process.errorMode === 'detailed' ? 'is-visible' : ''}" id="errorDetailed_${process.id}">
+                            <div class="ts-calculator__error-grid">
+                                <label class="ts-calculator__field">
+                                    <span>📉 Процент ошибок (%)</span>
+                                    <input type="number" step="0.1" min="0" value="${process.errorRate}" onchange="updateProcess(${process.id}, 'errorRate', this.value)" />
+                                </label>
+                                <label class="ts-calculator__field">
+                                    <span>💸 Стоимость ошибки (₽)</span>
+                                    <input type="number" min="0" value="${process.errorCost}" onchange="updateProcess(${process.id}, 'errorCost', this.value)" />
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `
@@ -273,7 +583,28 @@
         function updateProcess(id, field, value) {
             const process = processes.find((item) => item.id === id);
             if (process) {
-                process[field] = parseFloat(value) || 0;
+                if (field === 'errorLevel') {
+                    process[field] = value;
+                } else {
+                    process[field] = parseFloat(value) || 0;
+                }
+            }
+        }
+
+        function toggleErrorMode(id, isDetailed) {
+            const process = processes.find((item) => item.id === id);
+            if (!process) {
+                return;
+            }
+
+            process.errorMode = isDetailed ? 'detailed' : 'simple';
+
+            const simpleBlock = document.getElementById(`errorSimple_${id}`);
+            const detailedBlock = document.getElementById(`errorDetailed_${id}`);
+
+            if (simpleBlock && detailedBlock) {
+                simpleBlock.style.display = isDetailed ? 'none' : 'block';
+                detailedBlock.classList.toggle('is-visible', isDetailed);
             }
         }
 
@@ -282,8 +613,25 @@
             const hourlyRate = process.salary / 168;
             const laborCost = hoursPerYear * hourlyRate * process.employees;
 
-            const errorsPerYear = (process.operationsPerMonth * 12 * process.errorRate) / 100;
-            const totalErrorCost = errorsPerYear * process.errorCost;
+            let errorRate;
+            let errorCost;
+
+            if (process.errorMode === 'simple') {
+                const errorLevels = {
+                    low: { rate: 2, cost: 5000 },
+                    medium: { rate: 5, cost: 10000 },
+                    high: { rate: 10, cost: 20000 }
+                };
+                const level = errorLevels[process.errorLevel] || errorLevels.medium;
+                errorRate = level.rate;
+                errorCost = level.cost;
+            } else {
+                errorRate = process.errorRate;
+                errorCost = process.errorCost;
+            }
+
+            const errorsPerYear = (process.operationsPerMonth * 12 * errorRate) / 100;
+            const totalErrorCost = errorsPerYear * errorCost;
 
             const laborSavings = laborCost * 0.65;
             const errorSavings = totalErrorCost * 0.95;
@@ -308,7 +656,7 @@
 
             const robotDevelopmentCost = 250000 * processes.length;
             const licenseCostPerYear = 350000;
-            const supportHoursPerMonth = 10;
+            const supportHoursPerMonth = 5 * processes.length;
             const supportHourlyRate = 4500;
             const supportCostPerYear = supportHoursPerMonth * supportHourlyRate * 12;
 
@@ -337,7 +685,7 @@
                 roiEl.textContent = '—';
                 roiEl.className = 'ts-calculator__result-value';
 
-                warningEl.textContent = '⚠️ Суммарная экономия может быть недостаточной для внедрения RPA. Добавьте больше процессов или рассмотрите альтернативные решения.';
+                warningEl.textContent = '⚠️ Суммарная экономия может быть недостаточной для RPA. Рекомендуем добавить больше процессов или рассмотреть другие решения.';
                 warningEl.hidden = false;
                 breakdownEl.hidden = true;
                 badgeContainer.innerHTML = '';
@@ -373,8 +721,13 @@
                 paybackEl.className = 'ts-calculator__result-value is-negative';
             }
 
-            roiEl.textContent = `${Math.round(roi3Years)}%`;
-            roiEl.className = `ts-calculator__result-value ${roi3Years >= 0 ? (roi3Years > 50 ? 'is-positive' : '') : 'is-negative'}`;
+            if (roi3Years >= 0) {
+                roiEl.textContent = `${Math.round(roi3Years)}%`;
+                roiEl.className = `ts-calculator__result-value ${roi3Years > 50 ? 'is-positive' : ''}`;
+            } else {
+                roiEl.textContent = `${Math.round(roi3Years)}%`;
+                roiEl.className = 'ts-calculator__result-value is-negative';
+            }
 
             const breakdownContent = `
                 <div class="ts-calculator__breakdown-row">
@@ -394,7 +747,7 @@
                     <strong>${licenseCostPerYear.toLocaleString()} ₽/год</strong>
                 </div>
                 <div class="ts-calculator__breakdown-row">
-                    <span>🛠️ Поддержка (10 ч/мес):</span>
+                    <span>🛠️ Поддержка (${supportHoursPerMonth} ч/мес):</span>
                     <strong>${supportCostPerYear.toLocaleString()} ₽/год</strong>
                 </div>
                 <div class="ts-calculator__breakdown-row is-total">
