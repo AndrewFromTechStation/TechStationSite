@@ -3645,6 +3645,81 @@ body.ts-page--gallery {
         scroll-snap-align: start;
     }
 
+    .ts-carousel-container {
+        position: relative;
+    }
+
+    .ts-carousel-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: clamp(2rem, 10vw, 3.75rem);
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0) 70%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        z-index: 4;
+    }
+
+    .ts-carousel-container:not(.ts-carousel-hint-hidden)::after {
+        opacity: 1;
+    }
+
+    .ts-carousel-container > .ts-carousel-hint {
+        position: absolute;
+        top: 50%;
+        right: clamp(0.75rem, 4vw, 1.5rem);
+        transform: translate3d(0, -50%, 0);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 196, 69, 0.92) 100%);
+        box-shadow: 0 14px 32px rgba(60, 74, 31, 0.25);
+        color: #2f3b21;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        pointer-events: none;
+        z-index: 6;
+        opacity: 1;
+        transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+        white-space: nowrap;
+    }
+
+    .ts-carousel-hint__text {
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .ts-carousel-container > .ts-carousel-hint .ts-carousel-hint__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 999px;
+        background: rgba(52, 63, 33, 0.95);
+        color: #ffffff;
+        font-size: 0.85rem;
+        line-height: 1;
+        animation: ts-carousel-hint 2.4s ease-in-out infinite;
+    }
+
+    .ts-carousel-container.ts-carousel-hint-hidden > .ts-carousel-hint {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate3d(0, -50%, 0) scale(0.9);
+    }
+
+    .ts-carousel-container.ts-carousel-hint-hidden::after {
+        opacity: 0;
+    }
+
     .ts-nav__checkbox:checked + .ts-nav__toggle span:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
@@ -3811,60 +3886,6 @@ body.ts-page--gallery {
     .ts-usecase-card,
     .ts-advantage {
         scroll-snap-align: start;
-    }
-
-    .ts-usecases__grid,
-    .ts-advantages__grid {
-        position: relative;
-    }
-
-    .ts-carousel-hint {
-        position: absolute;
-        top: 50%;
-        right: clamp(0.45rem, 2vw, 1rem);
-        transform: translate3d(0, -50%, 0);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.45rem 0.9rem;
-        border-radius: 999px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 196, 69, 0.92) 100%);
-        box-shadow: 0 14px 32px rgba(60, 74, 31, 0.25);
-        color: #2f3b21;
-        font-size: 0.78rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        pointer-events: none;
-        z-index: 6;
-        opacity: 1;
-        transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
-    }
-
-    .ts-carousel-hint__text {
-        line-height: 1;
-        white-space: nowrap;
-    }
-
-    .ts-carousel-hint__arrow {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.4rem;
-        height: 1.4rem;
-        border-radius: 999px;
-        background: rgba(52, 63, 33, 0.95);
-        color: #ffffff;
-        font-size: 0.85rem;
-        line-height: 1;
-        animation: ts-carousel-hint 2.4s ease-in-out infinite;
-    }
-
-    .ts-usecases__grid.ts-carousel-hint-hidden .ts-carousel-hint,
-    .ts-advantages__grid.ts-carousel-hint-hidden .ts-carousel-hint {
-        opacity: 0;
-        visibility: hidden;
-        transform: translate3d(0, -50%, 0) scale(0.9);
     }
 
     .ts-usecase-card {
