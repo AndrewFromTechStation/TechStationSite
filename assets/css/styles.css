@@ -3410,6 +3410,10 @@ body.ts-page--gallery {
         padding: 3.25rem 0 2.75rem;
     }
 
+    .ts-subheader__intro h1 {
+        font-size: clamp(2rem, 7vw, 2.6rem);
+    }
+
     .ts-subheader__summary {
         font-size: 1rem;
     }
