@@ -4003,6 +4003,19 @@ body.ts-page--gallery {
         height: 180px;
     }
 
+    .ts-blog-card > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem 0;
+    }
+
+    .ts-blog-card img {
+        height: auto;
+        width: min(100%, 320px);
+        object-fit: contain;
+    }
+
     .ts-footer__bottom {
         flex-direction: column;
     }
@@ -4489,13 +4502,21 @@ body.ts-page--gallery {
         padding: 1.35rem 1.25rem 1.5rem;
     }
 
-    .ts-team-card img,
-    .ts-blog-card img {
+    .ts-team-card img {
         height: 160px;
     }
 
     .ts-blog-card {
         padding-bottom: 1.1rem;
+    }
+
+    .ts-blog-card > a {
+        padding: 0.75rem 0.85rem 0;
+    }
+
+    .ts-blog-card img {
+        height: auto;
+        width: min(100%, 300px);
     }
 
     .ts-contact__form {
