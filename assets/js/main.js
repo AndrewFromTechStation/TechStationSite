@@ -1,3 +1,175 @@
+const recaptchaSiteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+
+const recaptchaState = {
+    forms: [],
+    widgetIds: new Map(),
+    errors: new WeakMap(),
+    ready: false,
+    scriptRequested: false,
+};
+
+const showRecaptchaError = (form, message) => {
+    const errorEl = recaptchaState.errors.get(form);
+    if (!errorEl) {
+        return;
+    }
+
+    if (message) {
+        errorEl.textContent = message;
+    }
+
+    errorEl.classList.add('is-visible');
+    errorEl.setAttribute('role', 'alert');
+};
+
+const hideRecaptchaError = (form) => {
+    const errorEl = recaptchaState.errors.get(form);
+    if (!errorEl) {
+        return;
+    }
+
+    errorEl.classList.remove('is-visible');
+    errorEl.removeAttribute('role');
+};
+
+const renderRecaptchaForForm = (form) => {
+    if (!recaptchaState.ready || recaptchaState.widgetIds.has(form)) {
+        return;
+    }
+
+    const container = form.querySelector('.g-recaptcha');
+    if (!container || !window.grecaptcha || typeof window.grecaptcha.render !== 'function') {
+        return;
+    }
+
+    const widgetId = window.grecaptcha.render(container, {
+        sitekey: recaptchaSiteKey,
+        callback: () => {
+            hideRecaptchaError(form);
+        },
+        'expired-callback': () => {
+            showRecaptchaError(form);
+        },
+        'error-callback': () => {
+            showRecaptchaError(form);
+        },
+    });
+
+    recaptchaState.widgetIds.set(form, widgetId);
+};
+
+const ensureRecaptchaScript = () => {
+    if (recaptchaState.scriptRequested || recaptchaState.forms.length === 0) {
+        return;
+    }
+
+    const existingScript = document.querySelector('script[src*="recaptcha/api.js"]');
+    if (existingScript) {
+        recaptchaState.scriptRequested = true;
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js?onload=tsInitRecaptcha&render=explicit';
+    script.async = true;
+    script.defer = true;
+    script.onerror = () => {
+        recaptchaState.ready = false;
+        recaptchaState.scriptRequested = false;
+        recaptchaState.forms.forEach((form) => {
+            showRecaptchaError(form, 'Не удалось загрузить reCAPTCHA. Попробуйте обновить страницу.');
+        });
+    };
+
+    document.head.appendChild(script);
+    recaptchaState.scriptRequested = true;
+};
+
+const setupRecaptchaForForm = (form) => {
+    if (!(form instanceof HTMLFormElement) || recaptchaState.forms.includes(form)) {
+        return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton) {
+        return;
+    }
+
+    let container = form.querySelector('.g-recaptcha');
+    let errorEl = form.querySelector('.ts-form-recaptcha__error');
+
+    if (!container) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'ts-form-field ts-form-field--full ts-form-recaptcha';
+
+        container = document.createElement('div');
+        container.className = 'g-recaptcha';
+        container.dataset.sitekey = recaptchaSiteKey;
+
+        wrapper.appendChild(container);
+
+        errorEl = document.createElement('p');
+        errorEl.className = 'ts-form-recaptcha__error';
+        errorEl.textContent = 'Подтвердите, что вы не робот.';
+        errorEl.setAttribute('aria-live', 'polite');
+        wrapper.appendChild(errorEl);
+
+        form.insertBefore(wrapper, submitButton);
+    } else if (!container.dataset.sitekey) {
+        container.dataset.sitekey = recaptchaSiteKey;
+    }
+
+    if (!errorEl) {
+        errorEl = document.createElement('p');
+        errorEl.className = 'ts-form-recaptcha__error';
+        errorEl.textContent = 'Подтвердите, что вы не робот.';
+        errorEl.setAttribute('aria-live', 'polite');
+        container.insertAdjacentElement('afterend', errorEl);
+    }
+
+    recaptchaState.forms.push(form);
+    recaptchaState.errors.set(form, errorEl);
+
+    form.addEventListener('submit', (event) => {
+        const hasRecaptcha = window.grecaptcha && typeof window.grecaptcha.getResponse === 'function';
+        const widgetId = recaptchaState.widgetIds.get(form);
+
+        if (!hasRecaptcha || typeof widgetId === 'undefined') {
+            event.preventDefault();
+            ensureRecaptchaScript();
+            showRecaptchaError(form);
+            return;
+        }
+
+        const response = window.grecaptcha.getResponse(widgetId);
+        if (!response) {
+            event.preventDefault();
+            showRecaptchaError(form);
+        } else {
+            hideRecaptchaError(form);
+        }
+    });
+
+    form.addEventListener('reset', () => {
+        const widgetId = recaptchaState.widgetIds.get(form);
+        if (window.grecaptcha && typeof window.grecaptcha.reset === 'function' && typeof widgetId !== 'undefined') {
+            window.grecaptcha.reset(widgetId);
+        }
+        hideRecaptchaError(form);
+    });
+
+    if (recaptchaState.ready) {
+        renderRecaptchaForForm(form);
+    }
+};
+
+window.tsInitRecaptcha = () => {
+    recaptchaState.ready = true;
+    recaptchaState.forms.forEach((form) => {
+        renderRecaptchaForForm(form);
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('ts-nav-toggle');
     const animatedElements = document.querySelectorAll('[data-animate]');
@@ -111,6 +283,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
+
+    const contactForms = Array.from(document.querySelectorAll('.ts-contact__form'));
+
+    if (contactForms.length > 0) {
+        contactForms.forEach((form) => {
+            setupRecaptchaForForm(form);
+        });
+
+        ensureRecaptchaScript();
+
+        if (window.grecaptcha && typeof window.grecaptcha.render === 'function') {
+            window.tsInitRecaptcha();
+        }
+    }
 
     syncCarouselAnimationForMobile();
     addMediaQueryListener(carouselMobileMedia, syncCarouselAnimationForMobile);
