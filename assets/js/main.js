@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
     const floatingCta = document.querySelector('.ts-floating-cta');
     const isSubpage = document.body.classList.contains('ts-subpage');
+    const carouselContainers = Array.from(
+        document.querySelectorAll('.ts-usecases__grid, .ts-advantages__grid'),
+    );
     let scrollTicking = false;
 
     const addMediaQueryListener = (mediaQueryList, callback) => {
@@ -77,6 +80,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
+
+    const markCarouselHintHidden = (container) => {
+        if (!container.classList.contains('ts-carousel-hint-hidden')) {
+            container.classList.add('ts-carousel-hint-hidden');
+        }
+    };
+
+    carouselContainers.forEach((container) => {
+        if (container.scrollWidth <= container.clientWidth + 1) {
+            markCarouselHintHidden(container);
+            return;
+        }
+
+        const onCarouselScroll = () => {
+            if (container.scrollLeft > 4) {
+                markCarouselHintHidden(container);
+                container.removeEventListener('scroll', onCarouselScroll);
+            }
+        };
+
+        container.addEventListener('scroll', onCarouselScroll, { passive: true });
+
+        const onPointerIntent = () => {
+            markCarouselHintHidden(container);
+            container.removeEventListener('touchstart', onPointerIntent);
+            container.removeEventListener('mousedown', onPointerIntent);
+        };
+
+        container.addEventListener('touchstart', onPointerIntent, { passive: true });
+        container.addEventListener('mousedown', onPointerIntent);
+
+        container.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                markCarouselHintHidden(container);
+            }
+        });
+    });
 
     const onScroll = () => {
         if (scrollTicking) {

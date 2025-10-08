@@ -285,6 +285,26 @@
             }
         }
 
+        @media (max-width: 820px) {
+            .ts-calculator--enhanced .ts-calculator__card {
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__process {
+                padding: 1.25rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__actions .ts-button {
+                width: 100%;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__card-header h2 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+        }
+
         @media (max-width: 720px) {
             .ts-calculator__error-grid {
                 grid-template-columns: 1fr;
@@ -296,6 +316,44 @@
 
             .ts-calculator--enhanced .ts-calculator__actions {
                 flex-direction: column;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .ts-calculator--enhanced .ts-calculator__card {
+                padding: 1.4rem;
+                gap: 1.25rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__process {
+                padding: 1.1rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__field input,
+            .ts-calculator--enhanced .ts-calculator__field select {
+                padding: 0.75rem 0.85rem;
+                font-size: 0.95rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__summary {
+                padding: 1.25rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__result {
+                padding: 1rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__result-value {
+                font-size: 1.35rem;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__process-number {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .ts-calculator--enhanced .ts-calculator__card-header h2 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -486,6 +544,15 @@
     <script>
         let processes = [];
         let processCounter = 0;
+
+        function scrollResultsIntoView() {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                const resultCard = document.querySelector('.ts-calculator__card--results');
+                if (resultCard) {
+                    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
 
         function addProcess() {
             processCounter += 1;
@@ -693,6 +760,7 @@
                 warningEl.hidden = false;
                 breakdownEl.hidden = true;
                 badgeContainer.innerHTML = '';
+                scrollResultsIntoView();
                 return;
             }
 
@@ -772,6 +840,7 @@
                 badgeHTML += '<span class="ts-calculator__badge ts-calculator__badge--accent">🎯 Эффект масштаба: экономия на лицензии!</span>';
             }
             badgeContainer.innerHTML = badgeHTML;
+            scrollResultsIntoView();
         }
 
         addProcess();
