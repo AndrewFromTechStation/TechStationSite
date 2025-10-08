@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
     <style>
         .ts-calculator--enhanced {
-            background: linear-gradient(160deg, rgba(76, 110, 245, 0.08) 0%, rgba(242, 153, 74, 0.05) 100%);
+            background: linear-gradient(160deg, rgba(85, 107, 47, 0.14) 0%, rgba(246, 196, 69, 0.12) 45%, rgba(242, 153, 74, 0.1) 100%);
+            --calc-accent: var(--color-olive);
+            --calc-accent-strong: var(--color-olive-dark);
+            --calc-highlight: var(--color-yellow);
+            --calc-highlight-soft: rgba(246, 196, 69, 0.25);
         }
 
         .ts-calculator--enhanced .ts-calculator__card {
@@ -47,27 +51,27 @@
         }
 
         .ts-calculator--enhanced .ts-calculator__processes::-webkit-scrollbar-thumb {
-            background: rgba(76, 110, 245, 0.35);
+            background: rgba(85, 107, 47, 0.4);
             border-radius: 999px;
         }
 
         .ts-calculator--enhanced .ts-calculator__process {
-            border: 1px solid rgba(76, 110, 245, 0.15);
-            background: linear-gradient(165deg, rgba(237, 242, 255, 0.7) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border: 1px solid rgba(85, 107, 47, 0.18);
+            background: linear-gradient(165deg, rgba(245, 241, 227, 0.82) 0%, rgba(255, 255, 255, 0.95) 100%);
             border-radius: 20px;
             padding: 1.75rem;
             transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
         .ts-calculator--enhanced .ts-calculator__process:hover {
-            border-color: rgba(76, 110, 245, 0.45);
+            border-color: rgba(85, 107, 47, 0.45);
             transform: translateY(-4px);
-            box-shadow: 0 18px 38px rgba(76, 110, 245, 0.16);
+            box-shadow: 0 18px 38px rgba(85, 107, 47, 0.18);
         }
 
         .ts-calculator--enhanced .ts-calculator__process-number {
-            background: linear-gradient(135deg, rgba(76, 110, 245, 0.18), rgba(76, 110, 245, 0.35));
-            color: var(--color-accent);
+            background: linear-gradient(135deg, rgba(85, 107, 47, 0.22), rgba(246, 196, 69, 0.38));
+            color: var(--calc-accent-strong);
             font-weight: 700;
             padding: 0.45rem 1.1rem;
         }
@@ -95,7 +99,7 @@
             width: 100%;
             padding: 0.85rem 1rem;
             border-radius: 14px;
-            border: 1px solid rgba(76, 110, 245, 0.22);
+            border: 1px solid rgba(85, 107, 47, 0.22);
             background: #fff;
             font-size: 1rem;
             transition: box-shadow 0.25s ease, border-color 0.25s ease;
@@ -104,14 +108,14 @@
 
         .ts-calculator--enhanced .ts-calculator__field input:focus,
         .ts-calculator--enhanced .ts-calculator__field select:focus {
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 4px rgba(76, 110, 245, 0.2);
+            border-color: var(--calc-accent-strong);
+            box-shadow: 0 0 0 4px rgba(85, 107, 47, 0.2);
             outline: none;
         }
 
         .ts-calculator--enhanced .ts-calculator__field select {
-            background-image: linear-gradient(45deg, transparent 50%, var(--color-accent) 50%),
-                linear-gradient(135deg, var(--color-accent) 50%, transparent 50%);
+            background-image: linear-gradient(45deg, transparent 50%, var(--calc-accent-strong) 50%),
+                linear-gradient(135deg, var(--calc-accent-strong) 50%, transparent 50%);
             background-position: calc(100% - 18px) calc(1.2em), calc(100% - 13px) calc(1.2em);
             background-size: 6px 6px;
             background-repeat: no-repeat;
@@ -131,18 +135,18 @@
         }
 
         .ts-calculator--enhanced .ts-calculator__actions .ts-button--outline {
-            border-color: rgba(76, 110, 245, 0.45);
-            color: var(--color-accent);
+            border-color: rgba(85, 107, 47, 0.45);
+            color: var(--calc-accent-strong);
         }
 
         .ts-calculator--enhanced .ts-calculator__actions .ts-button--outline:hover,
         .ts-calculator--enhanced .ts-calculator__actions .ts-button--outline:focus {
-            background: rgba(76, 110, 245, 0.1);
+            background: rgba(85, 107, 47, 0.1);
         }
 
         .ts-calculator--enhanced .ts-calculator__actions .ts-button--primary {
-            background: linear-gradient(135deg, var(--color-accent) 0%, #364fc7 100%);
-            box-shadow: 0 16px 28px rgba(76, 110, 245, 0.3);
+            background: linear-gradient(135deg, var(--calc-accent) 0%, var(--color-orange) 100%);
+            box-shadow: 0 16px 28px rgba(60, 74, 31, 0.28);
         }
 
         .ts-calculator--enhanced .ts-calculator__actions .ts-button--primary:hover,
@@ -151,7 +155,7 @@
         }
 
         .ts-calculator--enhanced .ts-calculator__summary {
-            background: linear-gradient(135deg, rgba(76, 110, 245, 0.16) 0%, rgba(236, 229, 206, 0.75) 100%);
+            background: linear-gradient(135deg, rgba(85, 107, 47, 0.16) 0%, rgba(246, 196, 69, 0.28) 100%);
             border-radius: 18px;
             padding: 1.5rem;
             display: grid;
@@ -159,13 +163,13 @@
         }
 
         .ts-calculator--enhanced .ts-calculator__summary-item strong {
-            color: var(--color-accent);
+            color: var(--calc-accent-strong);
         }
 
         .ts-calculator--enhanced .ts-calculator__result {
-            border-left: 5px solid var(--color-accent);
+            border-left: 5px solid var(--calc-accent);
             background: #ffffff;
-            box-shadow: 0 16px 34px rgba(76, 110, 245, 0.12);
+            box-shadow: 0 16px 34px rgba(60, 74, 31, 0.18);
         }
 
         .ts-calculator--enhanced .ts-calculator__result-label {
@@ -175,7 +179,7 @@
         .ts-calculator--enhanced .ts-calculator__breakdown {
             background: #fff;
             border-radius: 18px;
-            border: 1px solid rgba(76, 110, 245, 0.16);
+            border: 1px solid rgba(85, 107, 47, 0.18);
             box-shadow: 0 12px 28px rgba(44, 63, 26, 0.08);
         }
 
@@ -183,7 +187,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--color-accent);
+            color: var(--calc-accent-strong);
         }
 
         .ts-calculator--enhanced .ts-calculator__breakdown-row {
@@ -191,7 +195,7 @@
         }
 
         .ts-calculator--enhanced .ts-calculator__breakdown-row.is-total {
-            border-top: 2px solid rgba(76, 110, 245, 0.2);
+            border-top: 2px solid rgba(85, 107, 47, 0.25);
         }
 
         .ts-calculator--enhanced .ts-calculator__warning {
@@ -220,14 +224,14 @@
         }
 
         .ts-calculator--enhanced .ts-calculator__badge--accent {
-            background: linear-gradient(135deg, rgba(76, 110, 245, 0.18), rgba(76, 110, 245, 0.32));
-            color: var(--color-accent);
+            background: linear-gradient(135deg, rgba(85, 107, 47, 0.2), rgba(246, 196, 69, 0.35));
+            color: var(--calc-accent-strong);
         }
 
         .ts-calculator__error-mode {
             margin-top: 1.5rem;
             border-radius: 18px;
-            background: rgba(76, 110, 245, 0.08);
+            background: rgba(85, 107, 47, 0.12);
             padding: 1.25rem 1.5rem;
             display: grid;
             gap: 1.1rem;
@@ -238,13 +242,13 @@
             align-items: center;
             gap: 0.8rem;
             font-weight: 600;
-            color: var(--color-accent);
+            color: var(--calc-accent-strong);
         }
 
         .ts-calculator__error-toggle input[type='checkbox'] {
             width: 20px;
             height: 20px;
-            accent-color: var(--color-accent);
+            accent-color: var(--calc-accent);
             cursor: pointer;
         }
 
