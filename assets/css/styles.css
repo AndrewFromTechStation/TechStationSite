@@ -217,19 +217,21 @@ body.ts-page.ts-modal-open {
 @keyframes ts-carousel-hint {
     0%,
     100% {
-        transform: translate3d(0, -50%, 0);
-        opacity: 0.45;
+        transform: translateX(0);
+        opacity: 0.9;
     }
-    35% {
+    40% {
+        transform: translateX(8px);
         opacity: 1;
     }
-    55% {
-        transform: translate3d(8px, -50%, 0);
-        opacity: 0.75;
+    65% {
+        transform: translateX(-3px);
+        opacity: 0.82;
     }
-    80% {
-        opacity: 0.35;
-    }
+}
+
+.ts-carousel-hint {
+    display: none;
 }
 
 .ts-hero {
@@ -3816,43 +3818,53 @@ body.ts-page--gallery {
         position: relative;
     }
 
-    .ts-usecases__grid::after,
-    .ts-advantages__grid::after {
-        content: '';
+    .ts-carousel-hint {
         position: absolute;
         top: 50%;
-        right: 0.35rem;
+        right: clamp(0.45rem, 2vw, 1rem);
         transform: translate3d(0, -50%, 0);
-        width: 2.6rem;
-        height: 2.6rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.9rem;
         border-radius: 999px;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(245, 241, 227, 0.92) 55%, rgba(246, 196, 69, 0.6) 100%);
-        box-shadow: 0 12px 28px rgba(60, 74, 31, 0.22);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 196, 69, 0.92) 100%);
+        box-shadow: 0 14px 32px rgba(60, 74, 31, 0.25);
+        color: #2f3b21;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
         pointer-events: none;
-        z-index: 2;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2355622b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='8 4 16 12 8 20'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 16px 16px;
-        animation: ts-carousel-hint 2.6s ease-in-out infinite;
-        opacity: 0.9;
-        transition: opacity 0.35s ease, visibility 0.35s ease;
+        z-index: 6;
+        opacity: 1;
+        transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
     }
 
-    .ts-usecases__grid:active::after,
-    .ts-usecases__grid:focus-within::after,
-    .ts-usecases__grid:hover::after,
-    .ts-advantages__grid:active::after,
-    .ts-advantages__grid:focus-within::after,
-    .ts-advantages__grid:hover::after {
-        opacity: 0;
+    .ts-carousel-hint__text {
+        line-height: 1;
+        white-space: nowrap;
     }
 
-    .ts-usecases__grid.ts-carousel-hint-hidden::after,
-    .ts-advantages__grid.ts-carousel-hint-hidden::after {
+    .ts-carousel-hint__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 999px;
+        background: rgba(52, 63, 33, 0.95);
+        color: #ffffff;
+        font-size: 0.85rem;
+        line-height: 1;
+        animation: ts-carousel-hint 2.4s ease-in-out infinite;
+    }
+
+    .ts-usecases__grid.ts-carousel-hint-hidden .ts-carousel-hint,
+    .ts-advantages__grid.ts-carousel-hint-hidden .ts-carousel-hint {
         opacity: 0;
         visibility: hidden;
-        animation: none;
+        transform: translate3d(0, -50%, 0) scale(0.9);
     }
 
     .ts-usecase-card {
