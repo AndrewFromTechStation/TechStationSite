@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="case5-bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#102412" />
+      <stop offset="100%" stop-color="#2f5f36" />
+    </linearGradient>
+    <linearGradient id="case5-grid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8cffa5" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#f0ff9b" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="case5-block" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6d26f" />
+      <stop offset="100%" stop-color="#ff9c4a" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#case5-bg)" />
+  <path d="M80 320h480" stroke="url(#case5-grid)" stroke-width="2" opacity="0.6" />
+  <path d="M120 260h400" stroke="url(#case5-grid)" stroke-width="2" opacity="0.6" />
+  <path d="M160 200h320" stroke="url(#case5-grid)" stroke-width="2" opacity="0.6" />
+  <g transform="translate(140 110)" fill="#0c1a0e" opacity="0.65">
+    <rect x="0" y="0" width="360" height="220" rx="24" />
+  </g>
+  <g transform="translate(176 140)">
+    <rect x="0" y="0" width="108" height="148" rx="18" fill="url(#case5-block)" />
+    <rect x="132" y="24" width="112" height="124" rx="18" fill="url(#case5-block)" opacity="0.8" />
+    <rect x="268" y="48" width="84" height="100" rx="18" fill="url(#case5-block)" opacity="0.6" />
+    <g transform="translate(0 172)" fill="#f5fdd8" opacity="0.35">
+      <rect x="14" y="6" width="80" height="12" rx="6" />
+      <rect x="146" y="6" width="64" height="12" rx="6" />
+      <rect x="278" y="6" width="56" height="12" rx="6" />
+    </g>
+  </g>
+  <g fill="#8cffa5" opacity="0.4">
+    <rect x="60" y="344" width="160" height="12" rx="6" />
+    <rect x="240" y="360" width="120" height="12" rx="6" opacity="0.65" />
+    <rect x="380" y="346" width="150" height="12" rx="6" opacity="0.5" />
+    <rect x="540" y="358" width="60" height="12" rx="6" opacity="0.45" />
+  </g>
+</svg>
