@@ -1565,16 +1565,19 @@ body.ts-page--gallery {
 }
 
 .ts-metrics__wrapper {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 3rem;
-    align-items: center;
     position: relative;
-    background: linear-gradient(135deg, rgba(245, 241, 227, 0.9), rgba(246, 196, 69, 0.25));
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    background: radial-gradient(circle at 18% 12%, rgba(246, 196, 69, 0.35), rgba(246, 196, 69, 0)) 0 0 / 280px 280px no-repeat,
+        radial-gradient(circle at 82% 88%, rgba(155, 191, 57, 0.28), rgba(155, 191, 57, 0)) 100% 100% / 320px 320px no-repeat,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
     border-radius: var(--radius-lg);
-    padding: clamp(2rem, 5vw, 3.5rem);
-    overflow: hidden;
+    padding: clamp(2.25rem, 6vw, 3.75rem);
     box-shadow: 0 40px 80px rgba(60, 74, 31, 0.18);
+    overflow: hidden;
 }
 
 .ts-metrics__wrapper::before {
@@ -1582,58 +1585,124 @@ body.ts-page--gallery {
     position: absolute;
     inset: 1px;
     border-radius: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     pointer-events: none;
-}
-
-.ts-metrics__visual {
-    position: relative;
-    max-width: 360px;
-    margin: 0 auto;
-}
-
-.ts-metrics__visual img {
-    display: block;
-    width: 100%;
-    filter: drop-shadow(0 28px 45px rgba(60, 74, 31, 0.25));
-}
-
-.ts-metrics__glow {
-    position: absolute;
-    inset: -20%;
-    background: radial-gradient(circle, rgba(246, 196, 69, 0.35) 0%, rgba(246, 196, 69, 0) 70%);
-    filter: blur(10px);
-    z-index: -1;
-}
-
-.ts-metrics__stats {
-    display: grid;
-    gap: clamp(1.75rem, 4vw, 2.5rem);
-    justify-items: center;
-}
-
-.ts-metrics__stats article {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: var(--radius-md);
-    padding: 1.75rem 2.25rem;
-    text-align: center;
-    box-shadow: 0 24px 48px rgba(60, 74, 31, 0.12);
-    backdrop-filter: blur(12px);
-    position: relative;
-    overflow: hidden;
+    backdrop-filter: blur(6px);
     z-index: 0;
 }
 
-.ts-metrics__stats article::before {
+.ts-metrics__wrapper::after {
+    content: '';
+    position: absolute;
+    inset-inline: 20%;
+    bottom: 0;
+    height: 120px;
+    background: linear-gradient(180deg, rgba(246, 196, 69, 0) 0%, rgba(246, 196, 69, 0.16) 100%);
+    filter: blur(18px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ts-metrics__intro {
+    display: grid;
+    gap: 0.75rem;
+    max-width: min(560px, 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.ts-metrics__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(85, 107, 47, 0.12);
+    color: var(--color-olive-dark);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+.ts-metrics__intro h2 {
+    margin: 0;
+}
+
+.ts-metrics__intro p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.ts-metrics__stats {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 100%;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.ts-metric-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-md);
+    padding: clamp(1.85rem, 3vw, 2.4rem);
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    box-shadow: 0 24px 48px rgba(60, 74, 31, 0.12);
+    backdrop-filter: blur(14px);
+    overflow: hidden;
+}
+
+.ts-metric-card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    border: 1px solid rgba(85, 107, 47, 0.15);
+    border: 1px solid rgba(85, 107, 47, 0.18);
     z-index: 0;
 }
 
-.ts-metrics__stats article > * {
+.ts-metric-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(246, 196, 69, 0.18), rgba(246, 196, 69, 0));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.ts-metric-card:hover::after,
+.ts-metric-card:focus-within::after {
+    opacity: 1;
+}
+
+.ts-metric-card__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(246, 196, 69, 0.8), rgba(246, 196, 69, 0.35));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55), 0 18px 36px rgba(246, 196, 69, 0.35);
+    position: relative;
+    z-index: 1;
+}
+
+.ts-metric-card__icon::before {
+    content: '';
+    position: absolute;
+    inset: 18%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    opacity: 0.45;
+}
+
+.ts-metric-card__value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
     position: relative;
     z-index: 1;
 }
@@ -1645,6 +1714,7 @@ body.ts-page--gallery {
     display: inline-flex;
     align-items: baseline;
     gap: 0.25rem;
+    font-feature-settings: 'tnum' 1;
 }
 
 .ts-counter::after {
@@ -1655,8 +1725,11 @@ body.ts-page--gallery {
 }
 
 .ts-metrics__stats p {
-    margin: 0.75rem 0 0;
+    margin: 0;
     color: var(--color-muted);
+    text-align: center;
+    max-width: 18ch;
+    z-index: 1;
 }
 
 .ts-overview {
@@ -2543,14 +2616,11 @@ body.ts-page--gallery {
     }
 
     .ts-metrics__wrapper {
-        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
-        padding: clamp(3rem, 6vw, 4rem);
+        padding: clamp(3rem, 6vw, 4.25rem);
     }
 
     .ts-metrics__stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        column-gap: clamp(2rem, 4vw, 3rem);
-        row-gap: clamp(1.75rem, 3vw, 2.5rem);
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
     }
 }
 
@@ -3514,11 +3584,11 @@ body.ts-page--gallery {
     }
 
     .ts-metrics__wrapper {
-        padding: 2.25rem;
+        padding: clamp(2rem, 6vw, 2.5rem);
     }
 
     .ts-metrics__stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
     }
 
     .ts-grid--overview {
@@ -3951,7 +4021,7 @@ body.ts-page--gallery {
         gap: 1.5rem;
     }
 
-    .ts-metrics__stats article {
+    .ts-metric-card {
         padding: 1.4rem 1.6rem;
     }
 

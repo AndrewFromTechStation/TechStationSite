@@ -34,15 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const syncCountersImmediately = () => {
         counterElements.forEach((counterEl) => {
-            const target = Number(counterEl.dataset.counterTarget || counterEl.textContent);
+            const target = Number(counterEl.dataset.counterTarget ?? counterEl.textContent);
             if (!Number.isNaN(target)) {
-                counterEl.textContent = target.toLocaleString('ru-RU');
+                counterEl.textContent = formatCounterValue(counterEl, target);
             }
         });
     };
 
     const shouldUseObserver =
         supportsIntersectionObserver && !prefersReducedMotion.matches && !isSubpage && !isGalleryPage;
+
+    const formatCounterValue = (counterEl, value) => {
+        const decimals = Number(counterEl.dataset.counterDecimals ?? '0');
+        return value.toLocaleString('ru-RU', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals,
+        });
+    };
 
     anchorLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
@@ -123,27 +131,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
 
     const animateCounter = (counterEl) => {
-        const target = Number(counterEl.dataset.counterTarget || counterEl.textContent);
+        const target = Number(counterEl.dataset.counterTarget ?? counterEl.textContent);
         if (Number.isNaN(target)) {
             return;
         }
 
-        const duration = 1800;
+        const startValueRaw = Number(counterEl.dataset.counterStart ?? 0);
+        const startValue = Number.isNaN(startValueRaw) ? 0 : startValueRaw;
+        const durationRaw = Number(counterEl.dataset.counterDuration ?? 1600);
+        const duration = Number.isFinite(durationRaw) && durationRaw > 0 ? durationRaw : 1600;
+        const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
         const startTime = performance.now();
-        const startValue = 0;
-
-        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
         const update = (now) => {
             const progress = Math.min((now - startTime) / duration, 1);
-            const eased = easeOutCubic(progress);
-            const value = Math.round(startValue + (target - startValue) * eased);
-            counterEl.textContent = value.toLocaleString('ru-RU');
+            const eased = easeOutQuint(progress);
+            const value = startValue + (target - startValue) * eased;
+
+            counterEl.textContent = formatCounterValue(counterEl, progress < 1 ? value : target);
 
             if (progress < 1) {
                 requestAnimationFrame(update);
-            } else {
-                counterEl.textContent = target.toLocaleString('ru-RU');
             }
         };
 
