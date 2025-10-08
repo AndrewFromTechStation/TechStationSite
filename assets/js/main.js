@@ -594,16 +594,11 @@ document.addEventListener('DOMContentLoaded', () => {
         hint.className = 'ts-carousel-hint';
         hint.setAttribute('aria-hidden', 'true');
 
-        const label = document.createElement('span');
-        label.className = 'ts-carousel-hint__text';
-        label.textContent = 'Свайпайте';
-
         const arrow = document.createElement('span');
         arrow.className = 'ts-carousel-hint__arrow';
         arrow.setAttribute('aria-hidden', 'true');
         arrow.textContent = '→';
 
-        hint.appendChild(label);
         hint.appendChild(arrow);
 
         container.appendChild(hint);
