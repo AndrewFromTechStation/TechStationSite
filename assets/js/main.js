@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatingCta = document.querySelector('.ts-floating-cta');
     const isSubpage = document.body.classList.contains('ts-subpage');
     const carouselContainers = Array.from(
-        document.querySelectorAll('.ts-usecases__grid, .ts-advantages__grid'),
+        document.querySelectorAll(
+            '.ts-usecases__grid, .ts-advantages__grid, .ts-services__list, .ts-portfolio__list',
+        ),
     );
     const carouselMobileMedia = window.matchMedia('(max-width: 960px)');
     let scrollTicking = false;
