@@ -545,6 +545,15 @@
         let processes = [];
         let processCounter = 0;
 
+        function scrollResultsIntoView() {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                const resultCard = document.querySelector('.ts-calculator__card--results');
+                if (resultCard) {
+                    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
         function addProcess() {
             processCounter += 1;
             const processId = processCounter;
@@ -751,6 +760,7 @@
                 warningEl.hidden = false;
                 breakdownEl.hidden = true;
                 badgeContainer.innerHTML = '';
+                scrollResultsIntoView();
                 return;
             }
 
@@ -830,6 +840,7 @@
                 badgeHTML += '<span class="ts-calculator__badge ts-calculator__badge--accent">🎯 Эффект масштаба: экономия на лицензии!</span>';
             }
             badgeContainer.innerHTML = badgeHTML;
+            scrollResultsIntoView();
         }
 
         addProcess();
