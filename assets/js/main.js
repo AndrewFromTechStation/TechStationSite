@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
     const floatingCta = document.querySelector('.ts-floating-cta');
     const isSubpage = document.body.classList.contains('ts-subpage');
+    const isGalleryPage = document.body.classList.contains('ts-page--gallery');
     const carouselContainers = Array.from(
         document.querySelectorAll(
             '.ts-usecases__grid, .ts-advantages__grid, .ts-services__list, .ts-portfolio__list, .ts-video-gallery__grid',
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const shouldUseObserver = supportsIntersectionObserver && !prefersReducedMotion.matches && !isSubpage;
+    const shouldUseObserver =
+        supportsIntersectionObserver && !prefersReducedMotion.matches && !isSubpage && !isGalleryPage;
 
     anchorLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
