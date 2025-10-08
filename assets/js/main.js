@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
     const floatingCta = document.querySelector('.ts-floating-cta');
     const isSubpage = document.body.classList.contains('ts-subpage');
+    const carouselContainers = Array.from(
+        document.querySelectorAll('.ts-usecases__grid, .ts-advantages__grid'),
+    );
     let scrollTicking = false;
 
     const addMediaQueryListener = (mediaQueryList, callback) => {
@@ -77,6 +80,85 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
+
+    const hideCarouselHint = (container, persist = false) => {
+        if (persist) {
+            container.dataset.carouselHintDismissed = 'true';
+        }
+
+        if (!container.classList.contains('ts-carousel-hint-hidden')) {
+            container.classList.add('ts-carousel-hint-hidden');
+        }
+    };
+
+    const showCarouselHint = (container) => {
+        container.classList.remove('ts-carousel-hint-hidden');
+    };
+
+    const shouldShowCarouselHint = (container) => container.scrollWidth - container.clientWidth > 8;
+
+    const evaluateCarouselHint = (container) => {
+        if (container.dataset.carouselHintDismissed === 'true') {
+            hideCarouselHint(container);
+            return;
+        }
+
+        if (shouldShowCarouselHint(container)) {
+            showCarouselHint(container);
+        } else {
+            hideCarouselHint(container);
+        }
+    };
+
+    let carouselHintFrame = null;
+
+    const queueCarouselHintRefresh = () => {
+        if (carouselHintFrame !== null) {
+            return;
+        }
+
+        carouselHintFrame = requestAnimationFrame(() => {
+            carouselHintFrame = null;
+            carouselContainers.forEach((container) => {
+                evaluateCarouselHint(container);
+            });
+        });
+    };
+
+    carouselContainers.forEach((container) => {
+        const dismissCarouselHint = () => {
+            hideCarouselHint(container, true);
+        };
+
+        const onCarouselScroll = () => {
+            if (container.scrollLeft > 4) {
+                dismissCarouselHint();
+                container.removeEventListener('scroll', onCarouselScroll);
+            }
+        };
+
+        container.addEventListener('scroll', onCarouselScroll, { passive: true });
+
+        const onPointerIntent = () => {
+            dismissCarouselHint();
+            container.removeEventListener('touchstart', onPointerIntent);
+            container.removeEventListener('mousedown', onPointerIntent);
+        };
+
+        container.addEventListener('touchstart', onPointerIntent, { passive: true });
+        container.addEventListener('mousedown', onPointerIntent);
+
+        container.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                dismissCarouselHint();
+            }
+        });
+    });
+
+    queueCarouselHintRefresh();
+    window.addEventListener('load', queueCarouselHintRefresh);
+    window.addEventListener('resize', queueCarouselHintRefresh);
+    window.addEventListener('orientationchange', queueCarouselHintRefresh);
 
     const onScroll = () => {
         if (scrollTicking) {
