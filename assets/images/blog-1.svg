@@ -9,5 +9,5 @@
   <rect x="72" y="72" width="360" height="56" rx="20" fill="rgba(255,255,255,0.8)" />
   <rect x="72" y="148" width="300" height="32" rx="16" fill="rgba(255,255,255,0.6)" />
   <rect x="72" y="200" width="260" height="24" rx="12" fill="rgba(255,255,255,0.4)" />
-  <text x="72" y="280" font-family="'Manrope', sans-serif" font-size="48" font-weight="700" fill="#2D2A26">Статья ${i}</text>
+  <text x="72" y="280" font-family="'Manrope', sans-serif" font-size="48" font-weight="700" fill="#2D2A26">Статья</text>
 </svg>
