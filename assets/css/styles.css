@@ -3847,6 +3847,12 @@ body.ts-page--gallery {
         position: relative;
         display: block;
     }
+
+    .has-animations .ts-pricing[data-animate],
+    .has-animations .ts-pricing [data-animate] {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 @media (max-width: 540px) {
