@@ -3852,10 +3852,11 @@ body.ts-page--gallery {
     }
 
     .ts-grid--team {
-        justify-items: center;
+        justify-items: stretch;
     }
 
     .ts-team-card {
+        width: 100%;
         justify-items: center;
         text-align: center;
     }
