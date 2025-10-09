@@ -1,4 +1,4 @@
-const recaptchaSiteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+const recaptchaSiteKey = '6LeTbeQrAAAAAM3nmwf9iMPosxKcJw9WB54T7BIj';
 
 const recaptchaState = {
     forms: [],
