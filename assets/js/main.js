@@ -95,6 +95,14 @@ const setupRecaptchaForForm = (form) => {
         return;
     }
 
+    const submitUrl = form.dataset.submitUrl || form.getAttribute('action') || 'send_mail.php';
+    form.dataset.submitUrl = submitUrl;
+
+    if (!form.dataset.preventNativeSubmit) {
+        form.setAttribute('action', 'javascript:void(0);');
+        form.dataset.preventNativeSubmit = 'true';
+    }
+
     if (!submitButton.dataset.originalText) {
         const buttonText = submitButton.textContent || '';
         submitButton.dataset.originalText = buttonText.trim();
@@ -194,7 +202,7 @@ const setupRecaptchaForForm = (form) => {
         }
 
         try {
-            const action = form.getAttribute('action') || 'send_mail.php';
+            const action = form.dataset.submitUrl || 'send_mail.php';
             const formData = new FormData(form);
             const responseRaw = await fetch(action, {
                 method: 'POST',
