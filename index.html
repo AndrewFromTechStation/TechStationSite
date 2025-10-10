@@ -1264,39 +1264,41 @@
             </div>
         </section>
 
-        <section class="ts-contact" id="ts-contact" data-animate="section">
-            <div class="ts-container">
-                <div class="ts-section-header" data-animate="fade-up">
-                    <h2>Связаться с нами</h2>
-                </div>
-                <form class="ts-contact__form" action="#" method="post" data-animate="fade-up" data-animate-delay="0.1">
-                    <div class="ts-form-grid">
-                        <label class="ts-form-field">
-                            <span class="ts-form-label">Имя*</span>
-                            <input type="text" name="name" placeholder="Имя*" required />
-                        </label>
-                        <label class="ts-form-field">
-                            <span class="ts-form-label">Телефон*</span>
-                            <input type="tel" name="phone" placeholder="Телефон*" required />
-                        </label>
-                        <label class="ts-form-field">
-                            <span class="ts-form-label">E-mail</span>
-                            <input type="email" name="email" placeholder="E-mail" />
-                        </label>
-                        <label class="ts-form-field ts-form-field--full">
-                            <span class="ts-form-label">Сообщение</span>
-                            <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
-                        </label>
-                        <label class="ts-form-checkbox ts-form-field--full">
-                            <input type="checkbox" required />
-                            <span class="ts-checkbox"></span>
-                            <span>Даю согласие на обработку персональных данных в соответствии с Политикой конфиденциальности и Согласием на обработку персональных данных.</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="ts-button ts-button--primary">Отправить</button>
-                </form>
-            </div>
-        </section>
+       <section class="ts-contact" id="ts-contact" data-animate="section">
+  <div class="ts-container">
+    <div class="ts-section-header" data-animate="fade-up">
+      <h2>Связаться с нами</h2>
+    </div>
+
+    <form class="ts-contact__form" action="send_mail.php" method="POST" data-animate="fade-up" data-animate-delay="0.1">
+      <div class="ts-form-grid">
+        <label class="ts-form-field">
+          <span class="ts-form-label">Имя*</span>
+          <input type="text" name="name" placeholder="Имя*" required />
+        </label>
+        <label class="ts-form-field">
+          <span class="ts-form-label">Телефон*</span>
+          <input type="tel" name="phone" placeholder="Телефон*" required />
+        </label>
+        <label class="ts-form-field">
+          <span class="ts-form-label">E-mail</span>
+          <input type="email" name="email" placeholder="E-mail" />
+        </label>
+        <label class="ts-form-field ts-form-field--full">
+          <span class="ts-form-label">Сообщение</span>
+          <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
+        </label>
+        <label class="ts-form-checkbox ts-form-field--full">
+          <input type="checkbox" required />
+          <span class="ts-checkbox"></span>
+          <span>Даю согласие на обработку персональных данных...</span>
+        </label>
+      </div>
+      <button type="submit" class="ts-button ts-button--primary">Отправить</button>
+    </form>
+  </div>
+</section>
+
     </main>
 
     <footer class="ts-footer">
