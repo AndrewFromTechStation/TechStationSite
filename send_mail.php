@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = htmlspecialchars($_POST['email'] ?? '');
     $message = htmlspecialchars($_POST['message'] ?? '');
 
-    $to = "jd@ai-rpa.ru";
+    $to = "info@ai-rpa.ru";
     $subject = "Новая заявка из формы";
 
     $fromName = "ai-rpa.ru";
@@ -32,3 +32,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
