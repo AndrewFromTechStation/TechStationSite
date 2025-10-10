@@ -161,25 +161,31 @@
                             </ol>
                         </div>
                     </div>
-                    <form class="ts-contact__form" data-animate="fade-up" data-animate-delay="0.1">
-                        <div class="ts-form__group">
-                            <label for="contract-name">Имя</label>
-                            <input id="contract-name" type="text" name="name" placeholder="Введите ваше имя" required />
+                    <form class="ts-contact__form" action="send_mail.php" method="POST" data-animate="fade-up" data-animate-delay="0.1">
+                        <div class="ts-form-grid">
+                            <label class="ts-form-field">
+                                <span class="ts-form-label">Имя*</span>
+                                <input type="text" name="name" placeholder="Имя*" required />
+                            </label>
+                            <label class="ts-form-field">
+                                <span class="ts-form-label">Телефон*</span>
+                                <input type="tel" name="phone" placeholder="Телефон*" required />
+                            </label>
+                            <label class="ts-form-field">
+                                <span class="ts-form-label">E-mail</span>
+                                <input type="email" name="email" placeholder="E-mail" />
+                            </label>
+                            <label class="ts-form-field ts-form-field--full">
+                                <span class="ts-form-label">Сообщение</span>
+                                <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
+                            </label>
+                            <label class="ts-form-checkbox ts-form-field--full">
+                                <input type="checkbox" required />
+                                <span class="ts-checkbox"></span>
+                                <span>Даю согласие на обработку персональных данных в соответствии с Политикой конфиденциальности.</span>
+                            </label>
                         </div>
-                        <div class="ts-form__group">
-                            <label for="contract-email">E-mail</label>
-                            <input id="contract-email" type="email" name="email" placeholder="Введите ваш E-mail" required />
-                        </div>
-                        <div class="ts-form__group">
-                            <label for="contract-phone">Телефон</label>
-                            <input id="contract-phone" type="tel" name="phone" placeholder="Введите ваш телефон" required />
-                        </div>
-                        <div class="ts-form__group">
-                            <label for="contract-message">Расскажите о задаче</label>
-                            <textarea id="contract-message" name="message" rows="4" placeholder="Опишите, как вы хотите сотрудничать"></textarea>
-                        </div>
-                        <button class="ts-button ts-button--primary" type="submit">Отправить заявку</button>
-                        <p class="ts-form__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+                        <button class="ts-button ts-button--primary" type="submit">Отправить</button>
                     </form>
                 </div>
             </div>

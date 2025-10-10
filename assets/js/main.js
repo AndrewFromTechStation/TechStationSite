@@ -130,23 +130,76 @@ const setupRecaptchaForForm = (form) => {
     recaptchaState.forms.push(form);
     recaptchaState.errors.set(form, errorEl);
 
-    form.addEventListener('submit', (event) => {
+    const getMessageBox = () => {
+        let messageBox = form.querySelector('.ts-form-message');
+        if (!messageBox) {
+            messageBox = document.createElement('div');
+            messageBox.className = 'ts-form-message';
+            messageBox.setAttribute('aria-live', 'polite');
+            form.appendChild(messageBox);
+        }
+        return messageBox;
+    };
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const messageBox = getMessageBox();
         const hasRecaptcha = window.grecaptcha && typeof window.grecaptcha.getResponse === 'function';
         const widgetId = recaptchaState.widgetIds.get(form);
 
         if (!hasRecaptcha || typeof widgetId === 'undefined') {
-            event.preventDefault();
             ensureRecaptchaScript();
             showRecaptchaError(form);
+            messageBox.textContent = '⚠️ Подтвердите, что вы не робот.';
+            messageBox.className = 'ts-form-message error';
             return;
         }
 
         const response = window.grecaptcha.getResponse(widgetId);
         if (!response) {
-            event.preventDefault();
             showRecaptchaError(form);
-        } else {
-            hideRecaptchaError(form);
+            messageBox.textContent = '⚠️ Подтвердите, что вы не робот.';
+            messageBox.className = 'ts-form-message error';
+            return;
+        }
+
+        hideRecaptchaError(form);
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton ? submitButton.textContent : '';
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+        }
+
+        try {
+            const action = form.getAttribute('action') || 'send_mail.php';
+            const formData = new FormData(form);
+            const responseRaw = await fetch(action, {
+                method: 'POST',
+                body: formData,
+            });
+
+            const resultText = (await responseRaw.text()).trim();
+
+            if (resultText === 'success') {
+                messageBox.textContent = '✅ Ваше сообщение отправлено! Спасибо.';
+                messageBox.className = 'ts-form-message success';
+                form.reset();
+            } else {
+                messageBox.textContent = '⚠️ Ошибка при отправке. Попробуйте позже.';
+                messageBox.className = 'ts-form-message error';
+            }
+        } catch (error) {
+            messageBox.textContent = '⚠️ Ошибка сети. Попробуйте ещё раз.';
+            messageBox.className = 'ts-form-message error';
+        }
+
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
         }
     });
 
