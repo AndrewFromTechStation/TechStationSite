@@ -1360,5 +1360,29 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+document.querySelector('.ts-contact__form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  const response = await fetch('send_mail.php', {
+    method: 'POST',
+    body: formData
+  });
+
+  const result = await response.text();
+
+  if (result.trim() === 'success') {
+    alert('✅ Ваше сообщение отправлено! Спасибо.');
+    form.reset();
+  } else {
+    alert('❌ Произошла ошибка при отправке. Попробуйте позже.');
+  }
+});
+</script>
+
 </body>
 </html>
