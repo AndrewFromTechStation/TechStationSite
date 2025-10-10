@@ -1368,20 +1368,55 @@ document.querySelector('.ts-contact__form').addEventListener('submit', async fun
 
   const form = e.target;
   const formData = new FormData(form);
+  const messageBox = form.querySelector('.ts-form-message') || (() => {
+    const box = document.createElement('div');
+    box.className = 'ts-form-message';
+    box.setAttribute('aria-live', 'polite');
+    form.appendChild(box);
+    return box;
+  })();
 
-  const response = await fetch('send_mail.php', {
-    method: 'POST',
-    body: formData
-  });
+  // Проверяем капчу (ты уже подключаешь её в main.js)
+  const hasCaptcha = window.grecaptcha && typeof window.grecaptcha.getResponse === 'function';
+  const response = hasCaptcha ? window.grecaptcha.getResponse() : '';
 
-  const result = await response.text();
-
-  if (result.trim() === 'success') {
-    alert('✅ Ваше сообщение отправлено! Спасибо.');
-    form.reset();
-  } else {
-    alert('❌ Произошла ошибка при отправке. Попробуйте позже.');
+  if (!response) {
+    messageBox.textContent = '⚠️ Подтвердите, что вы не робот.';
+    messageBox.className = 'ts-form-message error';
+    return;
   }
+
+  // Блокируем кнопку на время отправки
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  button.textContent = 'Отправка...';
+
+  try {
+    const res = await fetch('send_mail.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await res.text();
+
+    if (result.trim() === 'success') {
+      messageBox.textContent = '✅ Ваше сообщение отправлено! Спасибо.';
+      messageBox.className = 'ts-form-message success';
+      form.reset();
+
+      // Сброс капчи
+      if (window.grecaptcha) window.grecaptcha.reset();
+    } else {
+      messageBox.textContent = '⚠️ Ошибка при отправке. Попробуйте позже.';
+      messageBox.className = 'ts-form-message error';
+    }
+  } catch (err) {
+    messageBox.textContent = '⚠️ Ошибка сети. Попробуйте ещё раз.';
+    messageBox.className = 'ts-form-message error';
+  }
+
+  button.disabled = false;
+  button.textContent = 'Отправить';
 });
 </script>
 
