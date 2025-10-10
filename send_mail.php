@@ -1,32 +1,53 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Кому отправляем
-    $to = "info@ai-rpa.ru"; // ← сюда придёт письмо
-    $subject = "Новое сообщение с сайта ai-rpa.ru";
+    $mail = new PHPMailer(true);
 
-    // Получаем данные формы
-    $name = htmlspecialchars($_POST['name'] ?? '');
-    $phone = htmlspecialchars($_POST['phone'] ?? '');
-    $email = htmlspecialchars($_POST['email'] ?? '');
-    $message = htmlspecialchars($_POST['message'] ?? '');
+    try {
+        // Настройки SMTP
+        $mail->isSMTP();
+        $mail->Host = 'mail.ai-rpa.ru';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'no-reply@ai-rpa.ru'; // логин почты
+        $mail->Password = 'ТВОЙ_ПАРОЛЬ'; // пароль от почтового ящика
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->CharSet = 'UTF-8';
 
-    // Формируем тело письма
-    $body = "Имя: $name\n";
-    $body .= "Телефон: $phone\n";
-    $body .= "Email: $email\n\n";
-    $body .= "Сообщение:\n$message\n";
+        // От кого
+        $mail->setFrom('no-reply@ai-rpa.ru', 'Сайт ai-rpa.ru');
+        // Кому
+        $mail->addAddress('info@ai-rpa.ru');
 
-    // Заголовки письма
-    $headers = "From: no-reply@ai-rpa.ru\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
+        // Данные из формы
+        $name = htmlspecialchars($_POST['name'] ?? '');
+        $phone = htmlspecialchars($_POST['phone'] ?? '');
+        $email = htmlspecialchars($_POST['email'] ?? '');
+        $message = htmlspecialchars($_POST['message'] ?? '');
 
-    // Отправляем письмо
-    if (mail($to, $subject, $body, $headers)) {
+        // Письмо
+        $mail->isHTML(true);
+        $mail->Subject = 'Новое сообщение с сайта ai-rpa.ru';
+        $mail->Body = "
+            <h3>Новое сообщение с сайта ai-rpa.ru</h3>
+            <p><b>Имя:</b> {$name}</p>
+            <p><b>Телефон:</b> {$phone}</p>
+            <p><b>Email:</b> {$email}</p>
+            <p><b>Сообщение:</b><br>" . nl2br($message) . "</p>
+        ";
+
+        $mail->send();
         echo "success";
-    } else {
-        echo "error";
+
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
     }
 }
 ?>
