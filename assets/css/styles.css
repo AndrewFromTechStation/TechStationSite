@@ -2718,6 +2718,44 @@ body.ts-page--gallery {
     gap: 2rem;
 }
 
+.ts-form-message {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    box-shadow: 0 10px 30px rgba(12, 37, 63, 0.08);
+    background: rgba(9, 27, 44, 0.04);
+    color: #0c253f;
+    line-height: 1.5;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ts-form-message.success {
+    background: linear-gradient(135deg, rgba(230, 244, 234, 0.95), rgba(217, 237, 226, 0.95));
+    color: #1f7a42;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ts-form-message.error {
+    background: linear-gradient(135deg, rgba(255, 235, 238, 0.95), rgba(255, 218, 224, 0.95));
+    color: #ba1a1a;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ts-form-message__emoji {
+    font-size: 1.35rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+}
+
 .ts-map-embed {
     margin-top: 2.5rem;
 }
@@ -4643,30 +4681,5 @@ body.ts-page--gallery {
     .ts-footer__bottom {
         gap: 0.75rem;
     }
-    
-    .ts-form-message {
-  margin-top: 15px;
-  font-size: 15px;
-  padding: 10px 14px;
-  border-radius: 6px;
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-}
-
-.ts-form-message.success {
-  background: #e8f5e9;
-  color: #2e7d32;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.ts-form-message.error {
-  background: #ffebee;
-  color: #c62828;
-  opacity: 1;
-  transform: translateY(0);
-}
 
 }

@@ -95,6 +95,11 @@ const setupRecaptchaForForm = (form) => {
         return;
     }
 
+    if (!submitButton.dataset.originalText) {
+        const buttonText = submitButton.textContent || '';
+        submitButton.dataset.originalText = buttonText.trim();
+    }
+
     let container = form.querySelector('.g-recaptcha');
     let errorEl = form.querySelector('.ts-form-recaptcha__error');
 
@@ -132,12 +137,20 @@ const setupRecaptchaForForm = (form) => {
 
     const getMessageBox = () => {
         let messageBox = form.querySelector('.ts-form-message');
+
         if (!messageBox) {
             messageBox = document.createElement('div');
             messageBox.className = 'ts-form-message';
             messageBox.setAttribute('aria-live', 'polite');
-            form.appendChild(messageBox);
+
+            const submitWrapper = submitButton.closest('.ts-form-actions');
+            if (submitWrapper) {
+                submitWrapper.insertAdjacentElement('afterend', messageBox);
+            } else {
+                submitButton.insertAdjacentElement('afterend', messageBox);
+            }
         }
+
         return messageBox;
     };
 
@@ -145,29 +158,35 @@ const setupRecaptchaForForm = (form) => {
         event.preventDefault();
 
         const messageBox = getMessageBox();
+        messageBox.innerHTML = '';
+        messageBox.className = 'ts-form-message';
+        messageBox.removeAttribute('role');
         const hasRecaptcha = window.grecaptcha && typeof window.grecaptcha.getResponse === 'function';
         const widgetId = recaptchaState.widgetIds.get(form);
 
         if (!hasRecaptcha || typeof widgetId === 'undefined') {
             ensureRecaptchaScript();
             showRecaptchaError(form);
-            messageBox.textContent = '⚠️ Подтвердите, что вы не робот.';
+            messageBox.innerHTML =
+                '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Подтвердите, что вы не робот.</span>';
             messageBox.className = 'ts-form-message error';
+            messageBox.setAttribute('role', 'alert');
             return;
         }
 
         const response = window.grecaptcha.getResponse(widgetId);
         if (!response) {
             showRecaptchaError(form);
-            messageBox.textContent = '⚠️ Подтвердите, что вы не робот.';
+            messageBox.innerHTML =
+                '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Подтвердите, что вы не робот.</span>';
             messageBox.className = 'ts-form-message error';
+            messageBox.setAttribute('role', 'alert');
             return;
         }
 
         hideRecaptchaError(form);
 
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton ? submitButton.textContent : '';
+        const originalButtonText = submitButton ? submitButton.dataset.originalText ?? submitButton.textContent : '';
 
         if (submitButton) {
             submitButton.disabled = true;
@@ -185,16 +204,22 @@ const setupRecaptchaForForm = (form) => {
             const resultText = (await responseRaw.text()).trim();
 
             if (resultText === 'success') {
-                messageBox.textContent = '✅ Ваше сообщение отправлено! Спасибо.';
+                messageBox.innerHTML =
+                    '<span class="ts-form-message__emoji" aria-hidden="true">✨</span><span>Спасибо! Ваше сообщение отправлено, мы свяжемся с вами в ближайшее время.</span>';
                 messageBox.className = 'ts-form-message success';
+                messageBox.setAttribute('role', 'status');
                 form.reset();
             } else {
-                messageBox.textContent = '⚠️ Ошибка при отправке. Попробуйте позже.';
+                messageBox.innerHTML =
+                    '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Ошибка при отправке. Попробуйте позже.</span>';
                 messageBox.className = 'ts-form-message error';
+                messageBox.setAttribute('role', 'alert');
             }
         } catch (error) {
-            messageBox.textContent = '⚠️ Ошибка сети. Попробуйте ещё раз.';
+            messageBox.innerHTML =
+                '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Ошибка сети. Попробуйте ещё раз.</span>';
             messageBox.className = 'ts-form-message error';
+            messageBox.setAttribute('role', 'alert');
         }
 
         if (submitButton) {
