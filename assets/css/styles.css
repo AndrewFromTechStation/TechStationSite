@@ -2800,6 +2800,10 @@ body.ts-page--gallery {
     resize: none;
 }
 
+.ts-page textarea {
+    resize: none !important;
+}
+
 .ts-form-field input:focus,
 .ts-form-field textarea:focus {
     border-color: var(--color-olive);
