@@ -2797,6 +2797,7 @@ body.ts-page--gallery {
     font-size: 1rem;
     transition: border 0.2s ease, box-shadow 0.2s ease;
     font-family: inherit;
+    resize: none;
 }
 
 .ts-form-field input:focus,
