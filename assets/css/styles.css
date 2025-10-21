@@ -5285,7 +5285,7 @@ body.ts-page--gallery {
 .ts-ai-agents-vinyl {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1.25rem, 3vw, 1.75rem);
+    gap: clamp(1.75rem, 4vw, 2.5rem);
     margin: 0;
     color: inherit;
     justify-items: center;
@@ -5392,8 +5392,8 @@ body.ts-page--gallery {
 .ts-ai-agents-vinyl__text text {
     font-family: inherit;
     text-transform: uppercase;
-    letter-spacing: 0.45em;
-    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+    letter-spacing: 0.38em;
+    font-size: clamp(0.5rem, 1.05vw, 0.64rem);
     font-weight: 600;
     fill: rgba(246, 196, 69, 0.85);
 }
