@@ -4952,7 +4952,7 @@ body.ts-page--gallery {
     --ai-agents-highlight: rgba(246, 196, 69, 0.85);
     --ai-agents-text: #f6f3ea;
     color: var(--color-text);
-    background-color: var(--color-cream);
+    background: var(--color-cream);
     animation: ts-ai-agents-page-tone 2.6s ease forwards;
     animation-delay: 0.2s;
 }
@@ -4970,6 +4970,26 @@ body.ts-page--gallery {
     background: linear-gradient(145deg, rgba(245, 241, 227, 0.95), rgba(85, 107, 47, 0.32));
     color: inherit;
     animation: ts-ai-agents-surface-tone 2.8s ease forwards;
+}
+
+.ts-ai-agents-main {
+    position: relative;
+    isolation: isolate;
+    background: radial-gradient(circle at 18% 0%, rgba(246, 196, 69, 0.08), transparent 55%),
+        radial-gradient(circle at 82% 10%, rgba(246, 196, 69, 0.05), transparent 45%),
+        linear-gradient(180deg, rgba(10, 10, 10, 0.96) 0%, rgba(7, 7, 7, 0.98) 38%, #040404 100%);
+}
+
+.ts-ai-agents-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(245, 241, 227, 0.92) 0%, rgba(245, 241, 227, 0.82) 28%, rgba(5, 5, 5, 0.4) 62%, rgba(4, 4, 4, 0));
+    opacity: 1;
+    animation: ts-ai-agents-main-tone 2.6s ease forwards;
+    animation-delay: 0.18s;
 }
 
 .ts-ai-agents-page .ts-subheader::before {
@@ -5413,6 +5433,20 @@ body.ts-page--gallery {
     100% {
         background-color: var(--ai-agents-dark);
         color: var(--ai-agents-text);
+    }
+}
+
+@keyframes ts-ai-agents-main-tone {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    55% {
+        opacity: 0.55;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0);
     }
 }
 
