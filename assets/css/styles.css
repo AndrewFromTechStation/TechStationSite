@@ -168,6 +168,23 @@ body.ts-page.ts-modal-open {
         transform: none !important;
     }
 
+    .ts-ai-agents-page {
+        animation: none !important;
+        background: var(--ai-agents-dark, #050505) !important;
+        color: var(--ai-agents-text, #f6f3ea) !important;
+    }
+
+    .ts-ai-agents-main::before,
+    .ts-ai-agents-hero,
+    .ts-ai-agents-page .ts-subheader__nav,
+    .ts-ai-agents-page .ts-subheader__nav .ts-nav,
+    .ts-ai-agents-page .ts-subheader__intro,
+    .ts-ai-agents-page .ts-ai-agents-main {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
     .ts-floating-cta,
     .ts-floating-cta::before,
     .ts-floating-cta::after,
@@ -4981,10 +4998,10 @@ body.ts-page--gallery {
     --ai-agents-dark-soft: #0d0f12;
     --ai-agents-highlight: rgba(246, 196, 69, 0.85);
     --ai-agents-text: #f6f3ea;
-    color: var(--color-text);
-    background: var(--color-cream);
-    animation: ts-ai-agents-page-tone 2.6s ease forwards;
-    animation-delay: 0.2s;
+    color: var(--ai-agents-text);
+    background: #000;
+    color-scheme: dark;
+    min-height: 100vh;
 }
 
 .ts-ai-agents-page a {
@@ -4997,9 +5014,16 @@ body.ts-page--gallery {
 }
 
 .ts-ai-agents-hero {
-    background: linear-gradient(145deg, rgba(245, 241, 227, 0.95), rgba(85, 107, 47, 0.32));
+    background: linear-gradient(145deg, rgba(6, 6, 6, 0.92), rgba(32, 38, 20, 0.48));
     color: inherit;
-    animation: ts-ai-agents-surface-tone 2.8s ease forwards;
+    animation: ts-ai-agents-surface-tone 2.8s ease 0.95s forwards;
+}
+
+.ts-ai-agents-page .ts-subheader__intro,
+.ts-ai-agents-page .ts-ai-agents-main {
+    opacity: 0;
+    animation: ts-ai-agents-content-reveal 1.4s ease forwards;
+    animation-delay: 1s;
 }
 
 .ts-ai-agents-main {
@@ -5016,8 +5040,8 @@ body.ts-page--gallery {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(245, 241, 227, 0.92) 0%, rgba(245, 241, 227, 0.82) 28%, rgba(5, 5, 5, 0.4) 62%, rgba(4, 4, 4, 0));
-    opacity: 1;
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.85) 0%, rgba(10, 10, 10, 0.82) 32%, rgba(6, 6, 6, 0.7) 64%, rgba(4, 4, 4, 0));
+    opacity: 0;
     animation: ts-ai-agents-main-tone 2.6s ease forwards;
     animation-delay: 0.18s;
 }
@@ -5033,10 +5057,20 @@ body.ts-page--gallery {
 }
 
 .ts-ai-agents-page .ts-subheader__nav {
-    background: rgba(255, 255, 255, 0.85);
-    border-bottom: 1px solid rgba(60, 74, 31, 0.08);
-    animation: ts-ai-agents-nav-tone 2.4s ease forwards;
+    background: rgba(5, 5, 5, 0.78);
+    border-bottom: 1px solid rgba(246, 196, 69, 0.22);
+    animation: ts-ai-agents-nav-tone 1.4s cubic-bezier(0.55, 0.02, 0.2, 1) forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    transform: translateY(-12px);
     backdrop-filter: blur(18px);
+}
+
+.ts-ai-agents-page .ts-subheader__nav .ts-nav {
+    opacity: 0;
+    transform: translateY(-8px);
+    animation: ts-ai-agents-nav-reveal 1.2s ease forwards;
+    animation-delay: 0.75s;
 }
 
 .ts-ai-agents-page .ts-nav__links a,
@@ -5588,40 +5622,25 @@ body.ts-page--gallery {
     box-shadow: 0 18px 36px rgba(5, 5, 5, 0.45);
 }
 
-@keyframes ts-ai-agents-page-tone {
-    0% {
-        background-color: var(--color-cream);
-        color: var(--color-text);
-    }
-    55% {
-        background-color: #1a1814;
-        color: var(--ai-agents-text);
-    }
-    100% {
-        background-color: var(--ai-agents-dark);
-        color: var(--ai-agents-text);
-    }
-}
-
 @keyframes ts-ai-agents-main-tone {
     0% {
-        opacity: 1;
+        opacity: 0;
         transform: translateY(0);
     }
     55% {
         opacity: 0.55;
     }
     100% {
-        opacity: 0;
+        opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes ts-ai-agents-surface-tone {
     0% {
-        background: rgba(255, 255, 255, 0.62);
-        color: var(--color-text);
-        border-color: rgba(85, 107, 47, 0.18);
+        background: rgba(6, 6, 6, 0.88);
+        color: var(--ai-agents-text);
+        border-color: rgba(246, 196, 69, 0.24);
     }
     60% {
         background: rgba(18, 18, 20, 0.78);
@@ -5637,19 +5656,38 @@ body.ts-page--gallery {
 
 @keyframes ts-ai-agents-nav-tone {
     0% {
-        background: rgba(255, 255, 255, 0.85);
-        border-bottom-color: rgba(60, 74, 31, 0.08);
-        color: var(--color-text);
-    }
-    55% {
-        background: rgba(18, 18, 20, 0.72);
-        border-bottom-color: rgba(246, 196, 69, 0.12);
+        background: rgba(0, 0, 0, 0);
+        border-bottom-color: rgba(0, 0, 0, 0);
         color: var(--ai-agents-text);
+        opacity: 0;
+        transform: translateY(-12px);
     }
     100% {
         background: rgba(5, 5, 5, 0.78);
         border-bottom-color: rgba(246, 196, 69, 0.22);
         color: var(--ai-agents-text);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ts-ai-agents-nav-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ts-ai-agents-content-reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
@@ -5667,11 +5705,11 @@ body.ts-page--gallery {
 
 @keyframes ts-ai-agents-form-tone {
     0% {
-        background: rgba(255, 255, 255, 0.6);
-        border-color: rgba(85, 107, 47, 0.18);
+        background: rgba(6, 6, 6, 0.45);
+        border-color: rgba(246, 196, 69, 0.16);
     }
     60% {
-        background: rgba(15, 15, 16, 0.72);
+        background: rgba(6, 6, 6, 0.72);
         border-color: rgba(246, 196, 69, 0.28);
     }
     100% {
