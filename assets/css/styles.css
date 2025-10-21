@@ -5683,7 +5683,7 @@ body.ts-page--gallery {
         transform: translateY(0);
     }
     55% {
-        opacity: 0.55;
+        opacity: 0.45;
     }
     100% {
         opacity: 1;
