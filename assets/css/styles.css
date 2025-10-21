@@ -5073,8 +5073,8 @@ body.ts-page--gallery {
     padding: 1.75rem 1.6rem;
     border-radius: var(--radius-lg);
     border: 1px solid rgba(246, 196, 69, 0.25);
-    background: rgba(255, 255, 255, 0.55);
-    color: var(--color-text);
+    background: rgba(6, 6, 6, 0.88);
+    color: var(--ai-agents-text);
     overflow: hidden;
     animation: ts-ai-agents-surface-tone 2.8s ease forwards;
 }
@@ -5190,8 +5190,8 @@ body.ts-page--gallery {
     border-radius: var(--radius-lg);
     padding: clamp(1.8rem, 3vw, 2.25rem);
     border: 1px solid rgba(246, 196, 69, 0.22);
-    background: rgba(255, 255, 255, 0.55);
-    color: var(--color-text);
+    background: rgba(6, 6, 6, 0.88);
+    color: var(--ai-agents-text);
     animation: ts-ai-agents-surface-tone 2.6s ease forwards;
 }
 
@@ -5338,8 +5338,8 @@ body.ts-page--gallery {
 }
 
 .ts-ai-agents-contact .ts-contact__form {
-    background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(246, 196, 69, 0.22);
+    background: rgba(6, 6, 6, 0.88);
+    border: 1px solid rgba(246, 196, 69, 0.32);
     animation: ts-ai-agents-form-tone 2.8s ease forwards;
 }
 
