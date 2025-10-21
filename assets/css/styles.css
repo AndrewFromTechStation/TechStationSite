@@ -5182,8 +5182,8 @@ body.ts-page--gallery {
 }
 
 .ts-ai-agents-hero__stats.is-visible {
-    opacity: 0;
-    transform: translateY(24px);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ts-ai-agents-hero__stat {
@@ -5214,8 +5214,8 @@ body.ts-page--gallery {
 }
 
 .ts-ai-agents-hero__stat.is-visible {
-    opacity: 0;
-    transform: translateY(18px);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ts-ai-agents-hero__stat span {
