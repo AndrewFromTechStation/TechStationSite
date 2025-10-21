@@ -66,6 +66,35 @@ body.ts-page.ts-modal-open {
     transition: none !important;
 }
 
+.ts-theme-transition {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: var(--ai-agents-dark, #050505);
+    --ts-theme-x: 50%;
+    --ts-theme-y: 50%;
+    --ts-theme-radius: 160vmax;
+    clip-path: circle(0% at var(--ts-theme-x) var(--ts-theme-y));
+    animation: ts-theme-ripple 0.7s ease-out forwards;
+}
+
+@keyframes ts-theme-ripple {
+    from {
+        clip-path: circle(0% at var(--ts-theme-x) var(--ts-theme-y));
+    }
+    to {
+        clip-path: circle(var(--ts-theme-radius) at var(--ts-theme-x) var(--ts-theme-y));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ts-theme-transition {
+        animation: none;
+        clip-path: circle(var(--ts-theme-radius) at var(--ts-theme-x) var(--ts-theme-y));
+    }
+}
+
 [data-animate] {
     opacity: 1;
     transform: none;

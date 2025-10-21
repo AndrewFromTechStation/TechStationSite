@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     const scrollHints = document.querySelectorAll('.ts-subheader__scroll-hint');
     const floatingCta = document.querySelector('.ts-floating-cta');
+    const aiAgentsLinks = document.querySelectorAll('a[href="/AI_Agents"], a[href="/AI_Agents/"]');
     const isSubpage = document.body.classList.contains('ts-subpage');
     const isGalleryPage = document.body.classList.contains('ts-page--gallery');
     const carouselContainers = Array.from(
@@ -329,6 +330,79 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    const handleAiAgentsLinkClick = (event, link) => {
+        if (prefersReducedMotion.matches) {
+            return;
+        }
+
+        if (event.defaultPrevented) {
+            return;
+        }
+
+        if (link.target && link.target !== '' && link.target !== '_self') {
+            return;
+        }
+
+        if (event.button !== 0) {
+            return;
+        }
+
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+            return;
+        }
+
+        const href = link.getAttribute('href');
+        if (!href) {
+            return;
+        }
+
+        event.preventDefault();
+
+        if (navToggle && navToggle.checked) {
+            navToggle.checked = false;
+        }
+
+        const overlay = document.createElement('div');
+        overlay.className = 'ts-theme-transition';
+
+        const rect = link.getBoundingClientRect();
+        const clientX = event.clientX || rect.left + rect.width / 2;
+        const clientY = event.clientY || rect.top + rect.height / 2;
+        const xPercent = (clientX / window.innerWidth) * 100;
+        const yPercent = (clientY / window.innerHeight) * 100;
+
+        overlay.style.setProperty('--ts-theme-x', `${xPercent}%`);
+        overlay.style.setProperty('--ts-theme-y', `${yPercent}%`);
+
+        document.body.appendChild(overlay);
+
+        let hasNavigated = false;
+        const navigate = () => {
+            if (hasNavigated) {
+                return;
+            }
+            hasNavigated = true;
+            window.location.href = href;
+        };
+
+        const fallbackTimer = window.setTimeout(navigate, 650);
+
+        overlay.addEventListener(
+            'animationend',
+            () => {
+                window.clearTimeout(fallbackTimer);
+                navigate();
+            },
+            { once: true },
+        );
+    };
+
+    aiAgentsLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            handleAiAgentsLinkClick(event, link);
         });
     });
 
