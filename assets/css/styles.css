@@ -4942,3 +4942,622 @@ body.ts-page--gallery {
     }
 
 }
+
+/* --------------------------------------------------------------
+   AI Agents landing page styling
+---------------------------------------------------------------- */
+.ts-ai-agents-page {
+    --ai-agents-dark: #050505;
+    --ai-agents-dark-soft: #0d0f12;
+    --ai-agents-highlight: rgba(246, 196, 69, 0.85);
+    --ai-agents-text: #f6f3ea;
+    color: var(--color-text);
+    background: var(--color-cream);
+    animation: ts-ai-agents-page-tone 2.6s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.ts-ai-agents-page a {
+    color: var(--color-yellow);
+}
+
+.ts-ai-agents-page a:hover,
+.ts-ai-agents-page a:focus {
+    color: var(--color-orange);
+}
+
+.ts-ai-agents-hero {
+    background: linear-gradient(145deg, rgba(245, 241, 227, 0.95), rgba(85, 107, 47, 0.32));
+    color: inherit;
+    animation: ts-ai-agents-surface-tone 2.8s ease forwards;
+}
+
+.ts-ai-agents-main {
+    position: relative;
+    isolation: isolate;
+    background: radial-gradient(circle at 18% 0%, rgba(246, 196, 69, 0.08), transparent 55%),
+        radial-gradient(circle at 82% 10%, rgba(246, 196, 69, 0.05), transparent 45%),
+        linear-gradient(180deg, rgba(10, 10, 10, 0.96) 0%, rgba(7, 7, 7, 0.98) 38%, #040404 100%);
+}
+
+.ts-ai-agents-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(245, 241, 227, 0.92) 0%, rgba(245, 241, 227, 0.82) 28%, rgba(5, 5, 5, 0.4) 62%, rgba(4, 4, 4, 0));
+    opacity: 1;
+    animation: ts-ai-agents-main-tone 2.6s ease forwards;
+    animation-delay: 0.18s;
+}
+
+.ts-ai-agents-page .ts-subheader::before {
+    background: radial-gradient(circle at 30% 35%, rgba(246, 196, 69, 0.45), rgba(246, 196, 69, 0));
+    opacity: 0.75;
+}
+
+.ts-ai-agents-page .ts-subheader::after {
+    background: radial-gradient(circle at 60% 40%, rgba(85, 107, 47, 0.28), rgba(85, 107, 47, 0));
+    opacity: 0.8;
+}
+
+.ts-ai-agents-page .ts-subheader__nav {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(60, 74, 31, 0.08);
+    animation: ts-ai-agents-nav-tone 2.4s ease forwards;
+    backdrop-filter: blur(18px);
+}
+
+.ts-ai-agents-page .ts-nav__links a,
+.ts-ai-agents-page .ts-nav__toggle span,
+.ts-ai-agents-page .ts-nav__cta {
+    color: var(--ai-agents-text);
+}
+
+.ts-ai-agents-page .ts-nav__links a,
+.ts-ai-agents-page .ts-nav__cta {
+    transition: color 0.3s ease, background 0.4s ease, box-shadow 0.4s ease, transform 0.25s ease;
+}
+
+.ts-ai-agents-page .ts-nav__links a:hover,
+.ts-ai-agents-page .ts-nav__links a:focus,
+.ts-ai-agents-page .ts-nav__links a[aria-current='page'] {
+    color: var(--color-yellow);
+}
+
+.ts-ai-agents-page .ts-nav__toggle span {
+    background: currentColor;
+}
+
+.ts-ai-agents-page .ts-nav__cta,
+.ts-ai-agents-page .ts-nav__cta:visited {
+    background: rgba(246, 196, 69, 0.22);
+    color: var(--ai-agents-text);
+    box-shadow: 0 16px 28px rgba(5, 5, 5, 0.25);
+}
+
+.ts-ai-agents-page .ts-nav__cta:hover,
+.ts-ai-agents-page .ts-nav__cta:focus {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+    color: #060606;
+    box-shadow: 0 24px 40px rgba(242, 153, 74, 0.38);
+}
+
+.ts-ai-agents-page .ts-logo {
+    color: var(--ai-agents-text);
+}
+
+.ts-ai-agents-page .ts-subheader__intro {
+    color: var(--ai-agents-text);
+}
+
+.ts-ai-agents-page .ts-subheader__summary {
+    color: rgba(246, 243, 234, 0.78);
+}
+
+.ts-ai-agents-page .ts-subheader__back {
+    background: rgba(8, 8, 8, 0.45);
+    color: var(--ai-agents-text);
+    box-shadow: 0 18px 34px rgba(5, 5, 5, 0.45);
+}
+
+.ts-ai-agents-page .ts-subheader__back:hover,
+.ts-ai-agents-page .ts-subheader__back:focus {
+    box-shadow: 0 24px 46px rgba(5, 5, 5, 0.55);
+}
+
+.ts-ai-agents-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: rgba(246, 196, 69, 0.18);
+    color: var(--ai-agents-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ts-ai-agents-hero__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.ts-ai-agents-hero__stat {
+    position: relative;
+    padding: 1.75rem 1.6rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(246, 196, 69, 0.25);
+    background: rgba(6, 6, 6, 0.88);
+    color: var(--ai-agents-text);
+    overflow: hidden;
+    animation: ts-ai-agents-surface-tone 2.8s ease forwards;
+}
+
+.ts-ai-agents-hero__stat span {
+    display: block;
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.ts-ai-agents-hero__stat p {
+    margin: 0;
+    color: inherit;
+    line-height: 1.6;
+}
+
+.ts-ai-agents-section {
+    position: relative;
+    padding: clamp(3.25rem, 7vw, 5rem) 0;
+    color: inherit;
+}
+
+.ts-ai-agents-section__inner {
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: center;
+}
+
+.ts-ai-agents-section__content > * {
+    margin-top: 0;
+}
+
+.ts-ai-agents-section__content h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin-bottom: 1.25rem;
+}
+
+.ts-ai-agents-section__content p {
+    margin-bottom: 1.25rem;
+    color: rgba(246, 243, 234, 0.8);
+    line-height: 1.7;
+}
+
+.ts-ai-agents-list {
+    display: grid;
+    gap: 0.9rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ts-ai-agents-list li {
+    position: relative;
+    padding-left: 1.65rem;
+    color: rgba(246, 243, 234, 0.85);
+}
+
+.ts-ai-agents-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+    box-shadow: 0 0 16px rgba(246, 196, 69, 0.55);
+}
+
+.ts-ai-agents-section__media {
+    display: flex;
+    justify-content: center;
+}
+
+.ts-ai-agents-glow {
+    position: relative;
+    width: clamp(240px, 38vw, 320px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(246, 196, 69, 0.22), rgba(246, 196, 69, 0));
+    display: grid;
+    place-items: center;
+    animation: ts-ai-agents-glow-pulse 6s ease-in-out infinite;
+}
+
+.ts-ai-agents-glow__ring {
+    position: absolute;
+    inset: 10%;
+    border-radius: 50%;
+    border: 1px dashed rgba(246, 196, 69, 0.25);
+    backdrop-filter: blur(6px);
+}
+
+.ts-ai-agents-glow__core {
+    width: 48%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(246, 196, 69, 0.45), rgba(10, 10, 10, 0.15));
+    box-shadow: 0 0 40px rgba(246, 196, 69, 0.55);
+}
+
+.ts-ai-agents-section--grid .ts-ai-agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.ts-ai-agents-card,
+.ts-ai-agents-highlight,
+.ts-ai-agents-offer,
+.ts-ai-agents-benefit {
+    border-radius: var(--radius-lg);
+    padding: clamp(1.8rem, 3vw, 2.25rem);
+    border: 1px solid rgba(246, 196, 69, 0.22);
+    background: rgba(6, 6, 6, 0.88);
+    color: var(--ai-agents-text);
+    animation: ts-ai-agents-surface-tone 2.6s ease forwards;
+}
+
+.ts-ai-agents-card h3,
+.ts-ai-agents-highlight h3,
+.ts-ai-agents-offer h3,
+.ts-ai-agents-benefit h3 {
+    margin-top: 0;
+    color: inherit;
+    font-size: 1.35rem;
+}
+
+.ts-ai-agents-card p,
+.ts-ai-agents-benefit p,
+.ts-ai-agents-offer ul,
+.ts-ai-agents-highlight ul {
+    color: rgba(246, 243, 234, 0.82);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.ts-ai-agents-section--split .ts-ai-agents-section__inner {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.ts-ai-agents-steps {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: rgba(246, 243, 234, 0.82);
+    display: grid;
+    gap: 1rem;
+}
+
+.ts-ai-agents-steps li {
+    line-height: 1.65;
+}
+
+.ts-ai-agents-steps strong {
+    color: var(--color-yellow);
+}
+
+.ts-ai-agents-highlight ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.ts-ai-agents-highlight ul li {
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+.ts-ai-agents-highlight ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: rgba(246, 196, 69, 0.65);
+    box-shadow: 0 0 12px rgba(246, 196, 69, 0.45);
+}
+
+.ts-ai-agents-offers__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.ts-ai-agents-offer__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(246, 196, 69, 0.2);
+    color: var(--color-yellow);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.1rem;
+}
+
+.ts-ai-agents-offer ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 1.75rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.ts-ai-agents-offer ul li {
+    position: relative;
+    padding-left: 1.35rem;
+}
+
+.ts-ai-agents-offer ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+}
+
+.ts-ai-agents-benefits__grid {
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.ts-ai-agents-benefit {
+    min-height: 180px;
+}
+
+.ts-ai-agents-section .ts-section-header h2,
+.ts-ai-agents-section .ts-section-header p {
+    color: rgba(246, 243, 234, 0.9);
+}
+
+.ts-ai-agents-contact {
+    position: relative;
+    background: none;
+    padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.ts-ai-agents-contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(246, 196, 69, 0.18), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(12, 12, 12, 0.7), rgba(5, 5, 5, 0.95));
+    opacity: 0.9;
+    z-index: -1;
+    animation: ts-ai-agents-contact-tone 2.8s ease forwards;
+}
+
+.ts-ai-agents-contact .ts-section-header p {
+    color: rgba(246, 243, 234, 0.78);
+}
+
+.ts-ai-agents-contact .ts-contact__form {
+    background: rgba(6, 6, 6, 0.88);
+    border: 1px solid rgba(246, 196, 69, 0.32);
+    animation: ts-ai-agents-form-tone 2.8s ease forwards;
+}
+
+.ts-ai-agents-page .ts-form-label {
+    color: rgba(246, 243, 234, 0.82);
+}
+
+.ts-ai-agents-page .ts-form-field input,
+.ts-ai-agents-page .ts-form-field textarea {
+    background: rgba(5, 5, 5, 0.65);
+    border-color: rgba(246, 196, 69, 0.32);
+    color: var(--ai-agents-text);
+}
+
+.ts-ai-agents-page .ts-form-field input::placeholder,
+.ts-ai-agents-page .ts-form-field textarea::placeholder {
+    color: rgba(246, 243, 234, 0.48);
+}
+
+.ts-ai-agents-page .ts-form-field input:focus,
+.ts-ai-agents-page .ts-form-field textarea:focus {
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(246, 196, 69, 0.25);
+}
+
+.ts-ai-agents-page .ts-form-checkbox {
+    color: rgba(246, 243, 234, 0.72);
+}
+
+.ts-ai-agents-page .ts-form-checkbox .ts-checkbox {
+    border-color: rgba(246, 196, 69, 0.32);
+}
+
+.ts-ai-agents-page .ts-form-checkbox input:checked + .ts-checkbox::after {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+}
+
+.ts-ai-agents-page .ts-button.ts-button--primary {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+    color: #060606;
+    box-shadow: 0 18px 32px rgba(242, 153, 74, 0.35);
+}
+
+.ts-ai-agents-page .ts-button.ts-button--ghost {
+    border-color: rgba(246, 196, 69, 0.45);
+    color: var(--ai-agents-text);
+    background: rgba(5, 5, 5, 0.55);
+}
+
+.ts-ai-agents-page .ts-button.ts-button--ghost:hover,
+.ts-ai-agents-page .ts-button.ts-button--ghost:focus {
+    background: linear-gradient(135deg, rgba(246, 196, 69, 0.15), rgba(242, 153, 74, 0.18));
+    color: var(--ai-agents-text);
+}
+
+.ts-ai-agents-page .ts-floating-cta {
+    background: linear-gradient(135deg, rgba(246, 196, 69, 0.6), rgba(242, 153, 74, 0.75));
+    color: #060606;
+    box-shadow: 0 18px 36px rgba(5, 5, 5, 0.45);
+}
+
+@keyframes ts-ai-agents-page-tone {
+    0% {
+        background-color: var(--color-cream);
+        color: var(--color-text);
+    }
+    55% {
+        background-color: #1a1814;
+        color: var(--ai-agents-text);
+    }
+    100% {
+        background-color: var(--ai-agents-dark);
+        color: var(--ai-agents-text);
+    }
+}
+
+@keyframes ts-ai-agents-main-tone {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    55% {
+        opacity: 0.55;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ts-ai-agents-surface-tone {
+    0% {
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--color-text);
+        border-color: rgba(85, 107, 47, 0.18);
+    }
+    60% {
+        background: rgba(18, 18, 20, 0.78);
+        color: var(--ai-agents-text);
+        border-color: rgba(246, 196, 69, 0.3);
+    }
+    100% {
+        background: rgba(6, 6, 6, 0.88);
+        color: var(--ai-agents-text);
+        border-color: rgba(246, 196, 69, 0.42);
+    }
+}
+
+@keyframes ts-ai-agents-nav-tone {
+    0% {
+        background: rgba(255, 255, 255, 0.85);
+        border-bottom-color: rgba(60, 74, 31, 0.08);
+        color: var(--color-text);
+    }
+    55% {
+        background: rgba(18, 18, 20, 0.72);
+        border-bottom-color: rgba(246, 196, 69, 0.12);
+        color: var(--ai-agents-text);
+    }
+    100% {
+        background: rgba(5, 5, 5, 0.78);
+        border-bottom-color: rgba(246, 196, 69, 0.22);
+        color: var(--ai-agents-text);
+    }
+}
+
+@keyframes ts-ai-agents-contact-tone {
+    0% {
+        opacity: 0;
+    }
+    45% {
+        opacity: 0.65;
+    }
+    100% {
+        opacity: 0.95;
+    }
+}
+
+@keyframes ts-ai-agents-form-tone {
+    0% {
+        background: rgba(255, 255, 255, 0.6);
+        border-color: rgba(85, 107, 47, 0.18);
+    }
+    60% {
+        background: rgba(15, 15, 16, 0.72);
+        border-color: rgba(246, 196, 69, 0.28);
+    }
+    100% {
+        background: rgba(6, 6, 6, 0.88);
+        border-color: rgba(246, 196, 69, 0.38);
+    }
+}
+
+@keyframes ts-ai-agents-glow-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 960px) {
+    .ts-ai-agents-section__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .ts-ai-agents-section__content {
+        order: 2;
+    }
+
+    .ts-ai-agents-section__media {
+        order: 1;
+    }
+
+    .ts-ai-agents-section__content h2 {
+        font-size: clamp(1.8rem, 5vw, 2.4rem);
+    }
+
+    .ts-ai-agents-list,
+    .ts-ai-agents-highlight ul,
+    .ts-ai-agents-offer ul {
+        text-align: left;
+    }
+}
+
+@media (max-width: 640px) {
+    .ts-ai-agents-hero__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .ts-ai-agents-offers__grid,
+    .ts-ai-agents-benefits__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
