@@ -1,0 +1,115 @@
+# Включаем mod_rewrite
+RewriteEngine On
+# Опционально: отключаем MultiViews, чтобы Apache не «угадывал» файлы
+Options -MultiViews
+
+### 1) Канонизация главной (только если запрошен index.html в адресной строке)
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?]
+RewriteRule ^index\.html$ / [R=301,L]
+
+### 2) 301 редиректы со старых файлов на «красивые» URL
+# ВАЖНО: срабатывают только если пользователь реально запросил .html
+RewriteCond %{THE_REQUEST} \s/+o-nas\.html[\s?]
+RewriteRule ^o-nas\.html$ /about_us [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+kontakty\.html[\s?]
+RewriteRule ^kontakty\.html$ /contacts [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+primery-rabot-robotov\.html[\s?]
+RewriteRule ^primery-rabot-robotov\.html$ /cases [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+rpa-resources\.html[\s?]
+RewriteRule ^rpa-resources\.html$ /information [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+rpa-success-stories\.html[\s?]
+RewriteRule ^rpa-success-stories\.html$ /information/examples_of_successful_implementations [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+rpa-implementation-tips\.html[\s?]
+RewriteRule ^rpa-implementation-tips\.html$ /information/tips_for_successful_RPA_implementation [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+global-rpa-trends-forecast\.html[\s?]
+RewriteRule ^global-rpa-trends-forecast\.html$ /information/global_RPA_market_research [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+rpa-future-trends\.html[\s?]
+RewriteRule ^rpa-future-trends\.html$ /information/RPA_future_trends [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+rpa-in-russia-and-public-sector\.html[\s?]
+RewriteRule ^rpa-in-russia-and-public-sector\.html$ /information/application_of_RPA_in_russian_companies_and_the_public_sector [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+technology-stack-and-languages\.html[\s?]
+RewriteRule ^technology-stack-and-languages\.html$ /information/our_stack [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+politika-konfidenczialnosti\.html[\s?]
+RewriteRule ^politika-konfidenczialnosti\.html$ /privacy_policy [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+assets/docs/statya-9-soglasie-na-obrabotku-pd\.pdf[\s?]
+RewriteRule ^assets/docs/statya-9-soglasie-na-obrabotku-pd\.pdf$ /privacy_policy/article_9 [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+kalkulyator-effektivnosti\.html[\s?]
+RewriteRule ^kalkulyator-effektivnosti\.html$ /calculate_your_ROI [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+oczenka-proekta\.html[\s?]
+RewriteRule ^oczenka-proekta\.html$ /project_evaluation [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+xochu-poprobovat\.html[\s?]
+RewriteRule ^xochu-poprobovat\.html$ /want_to_try [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+pervyie-shagi\.html[\s?]
+RewriteRule ^pervyie-shagi\.html$ /first_steps [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+progress\.html[\s?]
+RewriteRule ^progress\.html$ /progress [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+maksimum\.html[\s?]
+RewriteRule ^maksimum\.html$ /maximum [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+individualnyij-podxod\.html[\s?]
+RewriteRule ^individualnyij-podxod\.html$ /individual_approach [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+prodazha-ii-agentov\.html[\s?]
+RewriteRule ^prodazha-ii-agentov\.html$ /AI_Agents [R=301,L]
+
+# Общее правило: любые другие *.html -> без .html (например, /about.html -> /about)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?]
+RewriteRule ^ %1 [R=301,L]
+
+### 3) Не трогаем реальные файлы/папки (css/js/img и т.п.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+### 4) Внутренние сопоставления «красивых» URL к физическим файлам
+RewriteRule ^about_us/?$ o-nas.html [L]
+RewriteRule ^contacts/?$ kontakty.html [L]
+RewriteRule ^cases/?$ primery-rabot-robotov.html [L]
+
+RewriteRule ^information/?$ rpa-resources.html [L]
+RewriteRule ^information/examples_of_successful_implementations/?$ rpa-success-stories.html [L]
+RewriteRule ^information/tips_for_successful_RPA_implementation/?$ rpa-implementation-tips.html [L]
+RewriteRule ^information/global_RPA_market_research/?$ global-rpa-trends-forecast.html [L]
+RewriteRule ^information/RPA_future_trends/?$ rpa-future-trends.html [L]
+RewriteRule ^information/application_of_RPA_in_russian_companies_and_the_public_sector/?$ rpa-in-russia-and-public-sector.html [L]
+RewriteRule ^information/our_stack/?$ technology-stack-and-languages.html [L]
+
+RewriteRule ^privacy_policy/?$ politika-konfidenczialnosti.html [L]
+RewriteRule ^privacy_policy/article_9/?$ assets/docs/statya-9-soglasie-na-obrabotku-pd.pdf [L]
+
+RewriteRule ^calculate_your_ROI/?$ kalkulyator-effektivnosti.html [L]
+RewriteRule ^project_evaluation/?$ oczenka-proekta.html [L]
+RewriteRule ^want_to_try/?$ xochu-poprobovat.html [L]
+RewriteRule ^first_steps/?$ pervyie-shagi.html [L]
+RewriteRule ^progress/?$ progress.html [L]
+RewriteRule ^maximum/?$ maksimum.html [L]
+RewriteRule ^individual_approach/?$ individualnyij-podxod.html [L]
+RewriteRule ^AI_Agents/?$ prodazha-ii-agentov.html [L]
+
+# Фолбэк: если есть одноимённый .html — обслуживаем его (для будущих страниц)
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+### 5) Стартовая страница
+DirectoryIndex index.html
+
+### 6) Кастомная 404 по красивому адресу /404
+ErrorDocument 404 /404
+RewriteRule ^404/?$ 404.html [L]
