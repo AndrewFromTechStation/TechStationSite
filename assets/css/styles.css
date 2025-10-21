@@ -5000,8 +5000,8 @@ body.ts-page--gallery {
     --ai-agents-text: #f6f3ea;
     color: var(--ai-agents-text);
     background: #000;
-    animation: ts-ai-agents-page-tone 2.6s ease forwards;
-    animation-delay: 0.2s;
+    color-scheme: dark;
+    min-height: 100vh;
 }
 
 .ts-ai-agents-page a {
@@ -5040,7 +5040,7 @@ body.ts-page--gallery {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(245, 241, 227, 0.92) 0%, rgba(245, 241, 227, 0.82) 28%, rgba(5, 5, 5, 0.4) 62%, rgba(4, 4, 4, 0));
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.85) 0%, rgba(10, 10, 10, 0.82) 32%, rgba(6, 6, 6, 0.7) 64%, rgba(4, 4, 4, 0));
     opacity: 0;
     animation: ts-ai-agents-main-tone 2.6s ease forwards;
     animation-delay: 0.18s;
@@ -5622,17 +5622,6 @@ body.ts-page--gallery {
     box-shadow: 0 18px 36px rgba(5, 5, 5, 0.45);
 }
 
-@keyframes ts-ai-agents-page-tone {
-    0% {
-        background-color: #000;
-        color: var(--ai-agents-text);
-    }
-    100% {
-        background-color: var(--ai-agents-dark);
-        color: var(--ai-agents-text);
-    }
-}
-
 @keyframes ts-ai-agents-main-tone {
     0% {
         opacity: 0;
@@ -5716,11 +5705,11 @@ body.ts-page--gallery {
 
 @keyframes ts-ai-agents-form-tone {
     0% {
-        background: rgba(255, 255, 255, 0.6);
-        border-color: rgba(85, 107, 47, 0.18);
+        background: rgba(6, 6, 6, 0.45);
+        border-color: rgba(246, 196, 69, 0.16);
     }
     60% {
-        background: rgba(15, 15, 16, 0.72);
+        background: rgba(6, 6, 6, 0.72);
         border-color: rgba(246, 196, 69, 0.28);
     }
     100% {
