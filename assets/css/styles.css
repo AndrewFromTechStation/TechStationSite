@@ -179,7 +179,9 @@ body.ts-page.ts-modal-open {
     .ts-ai-agents-page .ts-subheader__nav,
     .ts-ai-agents-page .ts-subheader__nav .ts-nav,
     .ts-ai-agents-page .ts-subheader__intro,
-    .ts-ai-agents-page .ts-ai-agents-main {
+    .ts-ai-agents-page .ts-ai-agents-main,
+    .ts-ai-agents-hero__stats,
+    .ts-ai-agents-hero__stat {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
@@ -5022,8 +5024,27 @@ body.ts-page--gallery {
 .ts-ai-agents-page .ts-subheader__intro,
 .ts-ai-agents-page .ts-ai-agents-main {
     opacity: 0;
-    animation: ts-ai-agents-content-reveal 1.4s ease forwards;
-    animation-delay: 1s;
+    animation-fill-mode: both;
+}
+
+.ts-ai-agents-page .ts-subheader__intro {
+    transform: translateY(28px);
+    animation: ts-ai-agents-fade-up 0.9s ease forwards;
+    animation-delay: 0.32s;
+}
+
+.ts-ai-agents-page .ts-subheader__intro.is-visible {
+    opacity: 0;
+    transform: translateY(28px);
+}
+
+.ts-ai-agents-page .ts-ai-agents-main {
+    animation: ts-ai-agents-content-reveal 1.1s ease forwards;
+    animation-delay: 0.72s;
+}
+
+.ts-ai-agents-page .ts-ai-agents-main.is-visible {
+    opacity: 0;
 }
 
 .ts-ai-agents-main {
@@ -5043,7 +5064,8 @@ body.ts-page--gallery {
     background: linear-gradient(180deg, rgba(18, 18, 18, 0.85) 0%, rgba(10, 10, 10, 0.82) 32%, rgba(6, 6, 6, 0.7) 64%, rgba(4, 4, 4, 0));
     opacity: 0;
     animation: ts-ai-agents-main-tone 2.6s ease forwards;
-    animation-delay: 0.18s;
+    animation-delay: 0.12s;
+    animation-fill-mode: both;
 }
 
 .ts-ai-agents-page .ts-subheader::before {
@@ -5060,7 +5082,8 @@ body.ts-page--gallery {
     background: rgba(5, 5, 5, 0.78);
     border-bottom: 1px solid rgba(246, 196, 69, 0.22);
     animation: ts-ai-agents-nav-tone 1.4s cubic-bezier(0.55, 0.02, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.18s;
+    animation-fill-mode: both;
     opacity: 0;
     transform: translateY(-12px);
     backdrop-filter: blur(18px);
@@ -5069,8 +5092,9 @@ body.ts-page--gallery {
 .ts-ai-agents-page .ts-subheader__nav .ts-nav {
     opacity: 0;
     transform: translateY(-8px);
-    animation: ts-ai-agents-nav-reveal 1.2s ease forwards;
-    animation-delay: 0.75s;
+    animation: ts-ai-agents-nav-reveal 0.9s ease forwards;
+    animation-delay: 0.28s;
+    animation-fill-mode: both;
 }
 
 .ts-ai-agents-page .ts-nav__links a,
@@ -5150,6 +5174,16 @@ body.ts-page--gallery {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
     margin-top: clamp(1.75rem, 3vw, 2.5rem);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: ts-ai-agents-fade-up 0.9s ease forwards;
+    animation-delay: 0.48s;
+    animation-fill-mode: both;
+}
+
+.ts-ai-agents-hero__stats.is-visible {
+    opacity: 0;
+    transform: translateY(24px);
 }
 
 .ts-ai-agents-hero__stat {
@@ -5160,7 +5194,28 @@ body.ts-page--gallery {
     background: rgba(6, 6, 6, 0.88);
     color: var(--ai-agents-text);
     overflow: hidden;
-    animation: ts-ai-agents-surface-tone 2.8s ease forwards;
+    animation: ts-ai-agents-surface-tone 2.4s ease forwards;
+    animation-delay: 0.56s;
+    animation-fill-mode: both;
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.ts-ai-agents-hero__stat:nth-child(2) {
+    animation-delay: 0.68s;
+}
+
+.ts-ai-agents-hero__stat:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.ts-ai-agents-hero__stat:nth-child(4) {
+    animation-delay: 0.92s;
+}
+
+.ts-ai-agents-hero__stat.is-visible {
+    opacity: 0;
+    transform: translateY(18px);
 }
 
 .ts-ai-agents-hero__stat span {
@@ -5675,6 +5730,17 @@ body.ts-page--gallery {
     0% {
         opacity: 0;
         transform: translateY(-8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ts-ai-agents-fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(28px);
     }
     100% {
         opacity: 1;
