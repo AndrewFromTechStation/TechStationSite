@@ -5194,23 +5194,16 @@ body.ts-page--gallery {
     background: rgba(6, 6, 6, 0.88);
     color: var(--ai-agents-text);
     overflow: hidden;
+    --ai-agents-stat-delay: 0.56s;
     animation: ts-ai-agents-surface-tone 2.4s ease forwards;
-    animation-delay: 0.56s;
+    animation-delay: var(--ai-agents-stat-delay);
     animation-fill-mode: both;
     opacity: 0;
     transform: translateY(18px);
 }
 
-.ts-ai-agents-hero__stat:nth-child(2) {
-    animation-delay: 0.68s;
-}
-
-.ts-ai-agents-hero__stat:nth-child(3) {
-    animation-delay: 0.8s;
-}
-
-.ts-ai-agents-hero__stat:nth-child(4) {
-    animation-delay: 0.92s;
+.ts-ai-agents-hero__stat[data-animate-delay] {
+    --ai-agents-stat-delay: var(--animate-delay);
 }
 
 .ts-ai-agents-hero__stat.is-visible {
