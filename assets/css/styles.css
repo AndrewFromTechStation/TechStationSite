@@ -2893,23 +2893,6 @@ body.ts-page--gallery {
     background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
 }
 
-.ts-form-recaptcha {
-    grid-column: 1 / -1;
-    display: grid;
-    gap: 0.75rem;
-}
-
-.ts-form-recaptcha__error {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #d93025;
-    display: none;
-}
-
-.ts-form-recaptcha__error.is-visible {
-    display: block;
-}
-
 .ts-footer {
     background: #1f211b;
     color: #fefbf0;
