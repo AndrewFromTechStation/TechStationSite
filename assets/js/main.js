@@ -1,92 +1,91 @@
-const recaptchaSiteKey = '6LeTbeQrAAAAAM3nmwf9iMPosxKcJw9WB54T7BIj';
+const recaptchaSiteKey = '6LfcMfMrAAAAABpKYI5dFG3d3VAYMOpd2pGDtqK9';
 
-const recaptchaState = {
-    forms: [],
-    widgetIds: new Map(),
-    errors: new WeakMap(),
-    ready: false,
-    scriptRequested: false,
-};
+let recaptchaReadyPromise = null;
 
-const showRecaptchaError = (form, message) => {
-    const errorEl = recaptchaState.errors.get(form);
-    if (!errorEl) {
-        return;
+const ensureRecaptchaReady = () => {
+    if (recaptchaReadyPromise) {
+        return recaptchaReadyPromise;
     }
 
-    if (message) {
-        errorEl.textContent = message;
-    }
+    const recaptchaScriptSrc = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(recaptchaSiteKey)}`;
 
-    errorEl.classList.add('is-visible');
-    errorEl.setAttribute('role', 'alert');
-};
+    recaptchaReadyPromise = new Promise((resolve, reject) => {
+        let scriptElement = null;
 
-const hideRecaptchaError = (form) => {
-    const errorEl = recaptchaState.errors.get(form);
-    if (!errorEl) {
-        return;
-    }
+        const handleError = (message) => {
+            if (scriptElement && scriptElement.dataset.tsRecaptcha === 'true') {
+                scriptElement.remove();
+            }
+            recaptchaReadyPromise = null;
+            reject(new Error(message || 'Не удалось загрузить reCAPTCHA.'));
+        };
 
-    errorEl.classList.remove('is-visible');
-    errorEl.removeAttribute('role');
-};
+        const handleReady = () => {
+            if (window.grecaptcha && typeof window.grecaptcha.ready === 'function') {
+                window.grecaptcha.ready(() => resolve(window.grecaptcha));
+            } else {
+                handleError('reCAPTCHA недоступна.');
+            }
+        };
 
-const renderRecaptchaForForm = (form) => {
-    if (!recaptchaState.ready || recaptchaState.widgetIds.has(form)) {
-        return;
-    }
+        if (window.grecaptcha) {
+            handleReady();
+            return;
+        }
 
-    const container = form.querySelector('.g-recaptcha');
-    if (!container || !window.grecaptcha || typeof window.grecaptcha.render !== 'function') {
-        return;
-    }
+        const managedScript = document.querySelector('script[data-ts-recaptcha="true"]');
+        if (managedScript) {
+            scriptElement = managedScript;
+            scriptElement.addEventListener('load', handleReady, { once: true });
+            scriptElement.addEventListener(
+                'error',
+                () => handleError('Не удалось загрузить reCAPTCHA.'),
+                { once: true },
+            );
+            return;
+        }
 
-    const widgetId = window.grecaptcha.render(container, {
-        sitekey: recaptchaSiteKey,
-        callback: () => {
-            hideRecaptchaError(form);
-        },
-        'expired-callback': () => {
-            showRecaptchaError(form);
-        },
-        'error-callback': () => {
-            showRecaptchaError(form);
-        },
+        const matchingScript =
+            document.querySelector(`script[src="${recaptchaScriptSrc}"]`) ||
+            document.querySelector('script[src*="recaptcha/api.js"]');
+
+        if (matchingScript) {
+            scriptElement = matchingScript;
+            scriptElement.dataset.tsRecaptcha = 'true';
+            scriptElement.addEventListener('load', handleReady, { once: true });
+            scriptElement.addEventListener(
+                'error',
+                () => handleError('Не удалось загрузить reCAPTCHA.'),
+                { once: true },
+            );
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = recaptchaScriptSrc;
+        script.async = true;
+        script.defer = true;
+        script.dataset.tsRecaptcha = 'true';
+        scriptElement = script;
+        script.addEventListener('load', handleReady, { once: true });
+        script.addEventListener(
+            'error',
+            () => handleError('Не удалось загрузить reCAPTCHA.'),
+            { once: true },
+        );
+        document.head.appendChild(script);
     });
 
-    recaptchaState.widgetIds.set(form, widgetId);
+    return recaptchaReadyPromise;
 };
 
-const ensureRecaptchaScript = () => {
-    if (recaptchaState.scriptRequested || recaptchaState.forms.length === 0) {
-        return;
-    }
-
-    const existingScript = document.querySelector('script[src*="recaptcha/api.js"]');
-    if (existingScript) {
-        recaptchaState.scriptRequested = true;
-        return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://www.google.com/recaptcha/api.js?onload=tsInitRecaptcha&render=explicit';
-    script.async = true;
-    script.defer = true;
-    script.onerror = () => {
-        recaptchaState.ready = false;
-        recaptchaState.scriptRequested = false;
-        recaptchaState.forms.forEach((form) => {
-            showRecaptchaError(form, 'Не удалось загрузить reCAPTCHA. Попробуйте обновить страницу.');
-        });
-    };
-
-    document.head.appendChild(script);
-    recaptchaState.scriptRequested = true;
+const executeRecaptcha = async (action) => {
+    const grecaptcha = await ensureRecaptchaReady();
+    return grecaptcha.execute(recaptchaSiteKey, { action });
 };
 
-const setupRecaptchaForForm = (form) => {
-    if (!(form instanceof HTMLFormElement) || recaptchaState.forms.includes(form)) {
+const setupSecureForm = (form) => {
+    if (!(form instanceof HTMLFormElement) || form.dataset.secureFormInitialized === 'true') {
         return;
     }
 
@@ -108,40 +107,24 @@ const setupRecaptchaForForm = (form) => {
         submitButton.dataset.originalText = buttonText.trim();
     }
 
-    let container = form.querySelector('.g-recaptcha');
-    let errorEl = form.querySelector('.ts-form-recaptcha__error');
+    const recaptchaAction =
+        form.dataset.recaptchaAction || (submitUrl.includes('ai_agents') ? 'ai_agents_form' : 'contact_form');
 
-    if (!container) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'ts-form-field ts-form-field--full ts-form-recaptcha';
+    const ensureHiddenInput = (name) => {
+        let input = form.querySelector(`input[name="${name}"]`);
+        if (!input) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            form.appendChild(input);
+        }
+        return input;
+    };
 
-        container = document.createElement('div');
-        container.className = 'g-recaptcha';
-        container.dataset.sitekey = recaptchaSiteKey;
-
-        wrapper.appendChild(container);
-
-        errorEl = document.createElement('p');
-        errorEl.className = 'ts-form-recaptcha__error';
-        errorEl.textContent = 'Подтвердите, что вы не робот.';
-        errorEl.setAttribute('aria-live', 'polite');
-        wrapper.appendChild(errorEl);
-
-        form.insertBefore(wrapper, submitButton);
-    } else if (!container.dataset.sitekey) {
-        container.dataset.sitekey = recaptchaSiteKey;
-    }
-
-    if (!errorEl) {
-        errorEl = document.createElement('p');
-        errorEl.className = 'ts-form-recaptcha__error';
-        errorEl.textContent = 'Подтвердите, что вы не робот.';
-        errorEl.setAttribute('aria-live', 'polite');
-        container.insertAdjacentElement('afterend', errorEl);
-    }
-
-    recaptchaState.forms.push(form);
-    recaptchaState.errors.set(form, errorEl);
+    const tokenInput = ensureHiddenInput('recaptcha_token');
+    const actionInput = ensureHiddenInput('recaptcha_action');
+    actionInput.value = recaptchaAction;
+    actionInput.defaultValue = recaptchaAction;
 
     const getMessageBox = () => {
         let messageBox = form.querySelector('.ts-form-message');
@@ -162,6 +145,21 @@ const setupRecaptchaForForm = (form) => {
         return messageBox;
     };
 
+    const setSubmitting = (isSubmitting) => {
+        if (!submitButton) {
+            return;
+        }
+
+        const originalButtonText = submitButton.dataset.originalText ?? submitButton.textContent ?? '';
+        if (isSubmitting) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+        } else {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
+    };
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -169,37 +167,24 @@ const setupRecaptchaForForm = (form) => {
         messageBox.innerHTML = '';
         messageBox.className = 'ts-form-message';
         messageBox.removeAttribute('role');
-        const hasRecaptcha = window.grecaptcha && typeof window.grecaptcha.getResponse === 'function';
-        const widgetId = recaptchaState.widgetIds.get(form);
 
-        if (!hasRecaptcha || typeof widgetId === 'undefined') {
-            ensureRecaptchaScript();
-            showRecaptchaError(form);
+        try {
+            const token = await executeRecaptcha(recaptchaAction);
+            if (!token) {
+                throw new Error('Token is empty');
+            }
+
+            tokenInput.value = token;
+        } catch (error) {
             messageBox.innerHTML =
-                '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Подтвердите, что вы не робот.</span>';
+                '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Не удалось подтвердить, что вы не робот. Обновите страницу и попробуйте ещё раз.</span>';
             messageBox.className = 'ts-form-message error';
             messageBox.setAttribute('role', 'alert');
+            tokenInput.value = '';
             return;
         }
 
-        const response = window.grecaptcha.getResponse(widgetId);
-        if (!response) {
-            showRecaptchaError(form);
-            messageBox.innerHTML =
-                '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Подтвердите, что вы не робот.</span>';
-            messageBox.className = 'ts-form-message error';
-            messageBox.setAttribute('role', 'alert');
-            return;
-        }
-
-        hideRecaptchaError(form);
-
-        const originalButtonText = submitButton ? submitButton.dataset.originalText ?? submitButton.textContent : '';
-
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Отправка...';
-        }
+        setSubmitting(true);
 
         try {
             const action = form.dataset.submitUrl || 'send_mail.php';
@@ -228,32 +213,14 @@ const setupRecaptchaForForm = (form) => {
                 '<span class="ts-form-message__emoji" aria-hidden="true">⚠️</span><span>Ошибка сети. Попробуйте ещё раз.</span>';
             messageBox.className = 'ts-form-message error';
             messageBox.setAttribute('role', 'alert');
-        }
-
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = originalButtonText;
+        } finally {
+            setSubmitting(false);
+            tokenInput.value = '';
+            actionInput.value = recaptchaAction;
         }
     });
 
-    form.addEventListener('reset', () => {
-        const widgetId = recaptchaState.widgetIds.get(form);
-        if (window.grecaptcha && typeof window.grecaptcha.reset === 'function' && typeof widgetId !== 'undefined') {
-            window.grecaptcha.reset(widgetId);
-        }
-        hideRecaptchaError(form);
-    });
-
-    if (recaptchaState.ready) {
-        renderRecaptchaForForm(form);
-    }
-};
-
-window.tsInitRecaptcha = () => {
-    recaptchaState.ready = true;
-    recaptchaState.forms.forEach((form) => {
-        renderRecaptchaForForm(form);
-    });
+    form.dataset.secureFormInitialized = 'true';
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -448,14 +415,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForms.length > 0) {
         contactForms.forEach((form) => {
-            setupRecaptchaForForm(form);
+            setupSecureForm(form);
         });
 
-        ensureRecaptchaScript();
-
-        if (window.grecaptcha && typeof window.grecaptcha.render === 'function') {
-            window.tsInitRecaptcha();
-        }
+        ensureRecaptchaReady().catch(() => {
+            // Ошибка загрузки обрабатывается во время отправки формы.
+        });
     }
 
     syncCarouselAnimationForMobile();
