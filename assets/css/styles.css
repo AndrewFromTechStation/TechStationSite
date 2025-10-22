@@ -5289,11 +5289,12 @@ body.ts-page--gallery {
     margin: 0;
     color: inherit;
     justify-items: center;
+    padding-top: 4vw;
 }
 
 .ts-ai-agents-vinyl__disc {
     position: relative;
-    width: clamp(240px, 38vw, 320px);
+    width: clamp(240px, 38vw, 500px);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     background: radial-gradient(circle at 50% 50%, rgba(18, 18, 18, 0.2) 0%, rgba(0, 0, 0, 0.85) 45%, rgba(0, 0, 0, 0.95) 70%, rgba(0, 0, 0, 1) 100%);
@@ -5435,7 +5436,7 @@ body.ts-page--gallery {
 
 @media (min-width: 720px) {
     .ts-ai-agents-vinyl {
-        grid-template-columns: auto minmax(200px, 260px);
+        grid-template-columns: auto minmax(500px, 360px);
         align-items: center;
         justify-content: center;
         text-align: left;
@@ -5821,4 +5822,3 @@ body.ts-page--gallery {
         grid-template-columns: 1fr;
     }
 }
-
