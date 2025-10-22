@@ -14,7 +14,7 @@
     --radius-lg: 32px;
     --radius-md: 20px;
     --radius-sm: 12px;
-    --shadow-soft: 0 20px 50px rgba(60, 74, 31, 0.12);
+    --shadow-soft: 0 24px 60px rgba(44, 52, 20, 0.18);
     --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.12);
     color-scheme: light;
 }
@@ -5942,9 +5942,10 @@ body.ts-page--gallery {
     list-style: none;
     margin: clamp(2rem, 4vw, 2.8rem) 0 clamp(1.5rem, 3vw, 2.2rem);
     padding: 0;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: clamp(1.2rem, 3vw, 1.8rem);
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
 }
 
 .ts-solution-benefit {
@@ -5954,6 +5955,8 @@ body.ts-page--gallery {
     padding: clamp(1.5rem, 3vw, 2rem);
     display: grid;
     gap: 0.75rem;
+    flex: 0 1 clamp(280px, 28vw, 320px);
+    max-width: clamp(280px, 28vw, 320px);
 }
 
 .ts-solution-benefit__icon {
@@ -6041,6 +6044,12 @@ body.ts-page--gallery {
     }
 
     .ts-solution-benefits {
-        grid-template-columns: minmax(0, 1fr);
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ts-solution-benefit {
+        max-width: none;
+        flex: 1 1 100%;
     }
 }
