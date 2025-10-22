@@ -902,6 +902,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeButtons = Array.from(videoModal.querySelectorAll('[data-video-close]'));
         const dialog = videoModal.querySelector('.ts-video-modal__dialog');
         let previouslyFocusedElement = null;
+        let shouldRestoreFocusAfterClose = false;
+        let lastInteractionWasKeyboard = false;
+
+        const markKeyboardInteraction = () => {
+            lastInteractionWasKeyboard = true;
+        };
+
+        const markPointerInteraction = () => {
+            lastInteractionWasKeyboard = false;
+        };
+
+        document.addEventListener('keydown', markKeyboardInteraction, true);
+        document.addEventListener('pointerdown', markPointerInteraction, true);
+        document.addEventListener('mousedown', markPointerInteraction, true);
+        document.addEventListener('touchstart', markPointerInteraction, true);
 
         const isOpen = () => videoModal.classList.contains('is-open');
 
@@ -946,7 +961,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const openVideoModal = (trigger) => {
-            previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+            shouldRestoreFocusAfterClose = lastInteractionWasKeyboard;
+            previouslyFocusedElement =
+                shouldRestoreFocusAfterClose && document.activeElement instanceof HTMLElement
+                    ? document.activeElement
+                    : null;
             setVideoContent(trigger);
             videoModal.classList.add('is-open');
             videoModal.setAttribute('aria-hidden', 'false');
@@ -980,11 +999,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 videoPlayer.currentTime = 0;
             }
 
-            if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+            if (
+                shouldRestoreFocusAfterClose &&
+                previouslyFocusedElement &&
+                typeof previouslyFocusedElement.focus === 'function'
+            ) {
                 previouslyFocusedElement.focus({ preventScroll: true });
             }
 
             previouslyFocusedElement = null;
+            shouldRestoreFocusAfterClose = false;
         };
 
         videoTriggers.forEach((trigger) => {
