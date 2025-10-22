@@ -68,6 +68,8 @@ RewriteRule ^individualnyij-podxod\.html$ /individual_approach [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+prodazha-ii-agentov\.html[\s?]
 RewriteRule ^prodazha-ii-agentov\.html$ /AI_Agents [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+avtomatizaciya-finansovoj-otchetnosti\.html[\s?]
+RewriteRule ^avtomatizaciya-finansovoj-otchetnosti\.html$ /financial_reporting_automation [R=301,L]
 
 # Общее правило: любые другие *.html -> без .html (например, /about.html -> /about)
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?]
@@ -102,6 +104,7 @@ RewriteRule ^progress/?$ progress.html [L]
 RewriteRule ^maximum/?$ maksimum.html [L]
 RewriteRule ^individual_approach/?$ individualnyij-podxod.html [L]
 RewriteRule ^AI_Agents/?$ prodazha-ii-agentov.html [L]
+RewriteRule ^financial_reporting_automation/?$ avtomatizaciya-finansovoj-otchetnosti.html [L]
 
 # Фолбэк: если есть одноимённый .html — обслуживаем его (для будущих страниц)
 RewriteCond %{REQUEST_FILENAME}.html -f
