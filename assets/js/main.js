@@ -1,3 +1,138 @@
+(() => {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    const elementPrototype = window.Element ? window.Element.prototype : null;
+
+    if (elementPrototype && !elementPrototype.matches) {
+        elementPrototype.matches =
+            elementPrototype.msMatchesSelector ||
+            elementPrototype.webkitMatchesSelector ||
+            function matches(selector) {
+                const matchesList = (this.document || this.ownerDocument).querySelectorAll(selector);
+                let index = matchesList.length;
+                while (--index >= 0 && matchesList.item(index) !== this) {}
+                return index > -1;
+            };
+    }
+
+    if (elementPrototype && !elementPrototype.closest) {
+        elementPrototype.closest = function closest(selector) {
+            let current = this;
+            while (current && current.nodeType === 1) {
+                if (current.matches(selector)) {
+                    return current;
+                }
+                current = current.parentElement || current.parentNode;
+            }
+            return null;
+        };
+    }
+
+    if (typeof NodeList !== 'undefined' && NodeList.prototype && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = Array.prototype.forEach;
+    }
+
+    if (!('requestAnimationFrame' in window)) {
+        window.requestAnimationFrame = (callback) => window.setTimeout(() => callback(Date.now()), 16);
+        window.cancelAnimationFrame = (handle) => window.clearTimeout(handle);
+    } else if (!('cancelAnimationFrame' in window)) {
+        window.cancelAnimationFrame = (handle) => window.clearTimeout(handle);
+    }
+
+    if (typeof window.fetch !== 'function') {
+        window.fetch = (input, init = {}) =>
+            new Promise((resolve, reject) => {
+                try {
+                    const url = typeof input === 'string' ? input : String(input.url || input);
+                    const request = new XMLHttpRequest();
+                    request.open(init.method || 'GET', url, true);
+
+                    if (init.credentials === 'include') {
+                        request.withCredentials = true;
+                    }
+
+                    if (init.headers && typeof init.headers === 'object') {
+                        Object.keys(init.headers).forEach((key) => {
+                            const value = init.headers[key];
+                            if (typeof value !== 'undefined') {
+                                request.setRequestHeader(key, value);
+                            }
+                        });
+                    }
+
+                    request.onload = () => {
+                        const rawHeaders = request.getAllResponseHeaders();
+                        const headerMap = {};
+
+                        if (rawHeaders) {
+                            rawHeaders
+                                .trim()
+                                .split(/\r?\n/)
+                                .forEach((line) => {
+                                    const separatorIndex = line.indexOf(':');
+                                    if (separatorIndex > -1) {
+                                        const name = line.slice(0, separatorIndex).trim().toLowerCase();
+                                        const value = line.slice(separatorIndex + 1).trim();
+                                        headerMap[name] = value;
+                                    }
+                                });
+                        }
+
+                        const responseText = request.responseText;
+                        const response = {
+                            ok: request.status >= 200 && request.status < 300,
+                            status: request.status,
+                            statusText: request.statusText,
+                            url: request.responseURL,
+                            headers: {
+                                get: (name) => headerMap[(name || '').toLowerCase()] || null,
+                                has: (name) => Object.prototype.hasOwnProperty.call(headerMap, (name || '').toLowerCase()),
+                            },
+                            text: () => Promise.resolve(responseText),
+                            json: () =>
+                                new Promise((resolveJson, rejectJson) => {
+                                    if (!responseText) {
+                                        resolveJson(null);
+                                        return;
+                                    }
+                                    try {
+                                        resolveJson(JSON.parse(responseText));
+                                    } catch (error) {
+                                        rejectJson(error);
+                                    }
+                                }),
+                        };
+
+                        resolve(response);
+                    };
+
+                    request.onerror = () => reject(new TypeError('Network request failed'));
+                    request.onabort = () => reject(new Error('Request aborted'));
+
+                    if (init.signal && typeof init.signal.addEventListener === 'function') {
+                        init.signal.addEventListener(
+                            'abort',
+                            () => {
+                                request.abort();
+                            },
+                            { once: true },
+                        );
+                    }
+
+                    if (init.body !== undefined) {
+                        request.send(init.body);
+                    } else {
+                        request.send();
+                    }
+                } catch (error) {
+                    reject(error);
+                }
+            });
+    }
+})();
+
 const recaptchaSiteKey = '6LfcMfMrAAAAABpKYI5dFG3d3VAYMOpd2pGDtqK9';
 
 let recaptchaReadyPromise = null;
@@ -227,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('ts-nav-toggle');
     const animatedElements = document.querySelectorAll('[data-animate]');
     const counterElements = document.querySelectorAll('.ts-counter');
-    const countersPlayed = new WeakSet();
+    const countersPlayedStore = typeof WeakSet !== 'undefined' ? new WeakSet() : new Set();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const supportsIntersectionObserver = 'IntersectionObserver' in window;
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -243,6 +378,40 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     const carouselMobileMedia = window.matchMedia('(max-width: 960px)');
     let scrollTicking = false;
+    const docEl = document.documentElement || document.body;
+    const supportsSmoothScroll = !!(docEl && docEl.style && 'scrollBehavior' in docEl.style);
+    const nowProvider =
+        typeof performance !== 'undefined' && typeof performance.now === 'function'
+            ? () => performance.now()
+            : () => Date.now();
+
+    const markCounterPlayed = (element) => {
+        if (element && countersPlayedStore && typeof countersPlayedStore.add === 'function') {
+            countersPlayedStore.add(element);
+        }
+    };
+
+    const hasCounterPlayed = (element) => {
+        if (!element || !countersPlayedStore || typeof countersPlayedStore.has !== 'function') {
+            return false;
+        }
+        return countersPlayedStore.has(element);
+    };
+
+    const scrollToTarget = (target) => {
+        if (!(target instanceof Element)) {
+            return;
+        }
+
+        if (supportsSmoothScroll && typeof target.scrollIntoView === 'function') {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+
+        const rect = target.getBoundingClientRect();
+        const currentScrollTop = window.pageYOffset || (docEl && docEl.scrollTop) || 0;
+        window.scrollTo(0, rect.top + currentScrollTop);
+    };
 
     const addMediaQueryListener = (mediaQueryList, callback) => {
         if (typeof mediaQueryList.addEventListener === 'function') {
@@ -296,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navToggle.checked = false;
             }
 
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            scrollToTarget(target);
         });
     });
 
@@ -374,7 +543,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const updateScrollUi = () => {
-        const scrollOffset = window.scrollY || window.pageYOffset;
+        const scrollOffset =
+            typeof window.scrollY === 'number'
+                ? window.scrollY
+                : window.pageYOffset || (docEl && docEl.scrollTop) || 0;
 
         scrollHints.forEach((hint) => {
             if (scrollOffset > 80) {
@@ -452,10 +624,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const durationRaw = Number(counterEl.dataset.counterDuration ?? 1600);
         const duration = Number.isFinite(durationRaw) && durationRaw > 0 ? durationRaw : 1600;
         const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
-        const startTime = performance.now();
+        const startTime = nowProvider();
 
-        const update = (now) => {
-            const progress = Math.min((now - startTime) / duration, 1);
+        const update = (timestamp) => {
+            const currentTime = typeof timestamp === 'number' ? timestamp : nowProvider();
+            const progress = Math.min((currentTime - startTime) / duration, 1);
             const eased = easeOutQuint(progress);
             const value = startValue + (target - startValue) * eased;
 
@@ -487,8 +660,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (target.dataset.animate === 'counter') {
                             const counterEl = target.querySelector('.ts-counter');
-                            if (counterEl && !countersPlayed.has(counterEl)) {
-                                countersPlayed.add(counterEl);
+                            if (counterEl && !hasCounterPlayed(counterEl)) {
+                                markCounterPlayed(counterEl);
                                 animateCounter(counterEl);
                             }
                         }

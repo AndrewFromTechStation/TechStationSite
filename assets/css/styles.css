@@ -34,6 +34,10 @@ body.ts-page {
     background-color: #fffef9;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 .ts-page a {
@@ -77,15 +81,18 @@ body.ts-page.ts-modal-open {
     --ts-theme-y: 50%;
     --ts-theme-radius: 160vmax;
     clip-path: circle(0% at var(--ts-theme-x) var(--ts-theme-y));
+    -webkit-clip-path: circle(0% at var(--ts-theme-x) var(--ts-theme-y));
     animation: ts-theme-ripple 0.7s ease-out forwards;
 }
 
 @keyframes ts-theme-ripple {
     from {
         clip-path: circle(0% at var(--ts-theme-x) var(--ts-theme-y));
+        -webkit-clip-path: circle(0% at var(--ts-theme-x) var(--ts-theme-y));
     }
     to {
         clip-path: circle(var(--ts-theme-radius) at var(--ts-theme-x) var(--ts-theme-y));
+        -webkit-clip-path: circle(var(--ts-theme-radius) at var(--ts-theme-x) var(--ts-theme-y));
     }
 }
 
@@ -93,6 +100,7 @@ body.ts-page.ts-modal-open {
     .ts-theme-transition {
         animation: none;
         clip-path: circle(var(--ts-theme-radius) at var(--ts-theme-x) var(--ts-theme-y));
+        -webkit-clip-path: circle(var(--ts-theme-radius) at var(--ts-theme-x) var(--ts-theme-y));
     }
 }
 
@@ -275,6 +283,7 @@ body.ts-page.ts-modal-open {
     z-index: 12;
     padding: 0.25rem 0;
     background: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(60, 74, 31, 0.08);
 }
@@ -324,6 +333,7 @@ body.ts-page.ts-modal-open {
 }
 
 .ts-subpage-hero__nav {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 12;
@@ -532,6 +542,7 @@ body.ts-page.ts-modal-open {
     background: rgba(255, 255, 255, 0.6);
     border: 2px solid rgba(85, 107, 47, 0.18);
     color: var(--color-olive-dark);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
 
@@ -631,6 +642,7 @@ body.ts-page.ts-modal-open {
     text-align: center;
     padding: 1.8rem;
     overflow: hidden;
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
     box-shadow: 0 32px 60px rgba(60, 74, 31, 0.15);
     animation: ts-float 8s ease-in-out infinite;
@@ -1036,6 +1048,7 @@ body.ts-page--gallery {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
 }
 
@@ -1637,6 +1650,7 @@ body.ts-page--gallery {
     border-radius: inherit;
     border: 1px solid rgba(255, 255, 255, 0.5);
     pointer-events: none;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     z-index: 0;
 }
@@ -1702,6 +1716,7 @@ body.ts-page--gallery {
     gap: 1rem;
     justify-items: center;
     box-shadow: 0 24px 48px rgba(60, 74, 31, 0.12);
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     overflow: hidden;
 }
@@ -1841,6 +1856,7 @@ body.ts-page--gallery {
     border-radius: var(--radius-xl);
     background: linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(246, 196, 69, 0.18));
     box-shadow: 0 32px 68px rgba(60, 74, 31, 0.16);
+    position: -webkit-sticky;
     position: sticky;
     top: clamp(5.75rem, 6vw, 6.75rem);
     align-self: flex-start;
@@ -3058,11 +3074,13 @@ body.ts-page--gallery {
 }
 
 .ts-subheader__nav {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 12;
     padding: 0.25rem 0;
     background: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(60, 74, 31, 0.08);
 }
@@ -3124,6 +3142,7 @@ body.ts-page--gallery {
     padding-top: 10px;
     position: relative;
     overflow: hidden;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
     box-shadow: 0 12px 30px rgba(60, 74, 31, 0.12);
@@ -3201,6 +3220,7 @@ body.ts-page--gallery {
 }
 
 .ts-price-detail__aside {
+    position: -webkit-sticky;
     position: sticky;
     top: 7rem;
     align-self: start;
@@ -3421,6 +3441,7 @@ body.ts-page--gallery {
 }
 
 .ts-article-menu {
+    position: -webkit-sticky;
     position: sticky;
     top: 132px;
     display: grid;
@@ -3820,8 +3841,8 @@ body.ts-page--gallery {
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-width: none;
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
     }
 
     .ts-nav__links::-webkit-scrollbar {
@@ -4337,6 +4358,7 @@ body.ts-page--gallery {
 }
 
 .ts-calculator__card--results {
+    position: -webkit-sticky;
     position: sticky;
     top: 6rem;
 }
@@ -4598,6 +4620,7 @@ body.ts-page--gallery {
     justify-content: center;
     padding: 24px;
     background-color: rgba(20, 24, 38, 0.62);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     opacity: 0;
     pointer-events: none;
@@ -4640,6 +4663,40 @@ body.ts-page--gallery {
     filter: blur(0.5px);
     z-index: 0;
     pointer-events: none;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
+    .ts-hero__nav,
+    .ts-subheader__nav {
+        background-color: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    .ts-ai-agents-page .ts-subheader__nav {
+        background-color: rgba(5, 5, 5, 0.92) !important;
+    }
+
+    .ts-button--ghost,
+    .ts-video-card__badge,
+    .ts-subheader__scroll-icon {
+        background-color: rgba(255, 255, 255, 0.78) !important;
+    }
+
+    .ts-hero__orb,
+    .ts-metric-card {
+        background-color: rgba(255, 255, 255, 0.92) !important;
+    }
+
+    .ts-metrics__wrapper::before {
+        background-color: rgba(255, 255, 255, 0.65);
+    }
+
+    .ts-video-modal {
+        background-color: rgba(20, 24, 38, 0.82) !important;
+    }
+
+    .ts-nav__links {
+        background-color: rgba(245, 241, 227, 0.95) !important;
+    }
 }
 
 .ts-video-modal__player {
@@ -5212,6 +5269,7 @@ body.ts-page--gallery {
     animation-fill-mode: both;
     opacity: 0;
     transform: translateY(-12px);
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
 }
 
