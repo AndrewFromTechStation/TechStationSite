@@ -3,16 +3,269 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RPA-робот для сверки финансовой отчетности — Technostation: AI-RPA</title>
+    <title>Автосвод управленческой отчетности в 1С — Technostation: AI-RPA</title>
     <meta
         name="description"
-        content="Автоматизируйте сбор, проверку и консолидацию финансовой отчетности: робот Technostation загружает БДДС и БДР в 1С без ручных ошибок."
+        content="Робот Technostation собирает, проверяет и загружает БДДС, БДР и другие управленческие отчеты в 1С. Быстро, прозрачно и безопасно для компаний с 1+ юрлицом."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        .ts-hero-metrics {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+        .ts-hero-metric {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.25rem;
+        }
+        .ts-hero-metric strong {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .ts-button--secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .ts-button--secondary:hover,
+        .ts-button--secondary:focus {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .ts-modules-grid,
+        .ts-reports-grid,
+        .ts-suitability-grid,
+        .ts-pricing-grid,
+        .ts-trust-list,
+        .ts-gallery,
+        .ts-diff-table {
+            display: grid;
+        }
+        .ts-modules-grid {
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .ts-module-card {
+            border: 1px solid rgba(16, 34, 67, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            background: #fff;
+            box-shadow: 0 12px 32px rgba(20, 33, 63, 0.06);
+        }
+        .ts-module-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        .ts-module-card p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .ts-video-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: #0f1629;
+            color: #fff;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            align-items: stretch;
+        }
+        .ts-video-card__media {
+            position: relative;
+            padding-top: 56.25%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .ts-video-card__media iframe,
+        .ts-video-card__media video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .ts-video-card__body {
+            padding: 2rem;
+        }
+        .ts-video-card__body h3 {
+            color: #fff;
+        }
+        .ts-gallery {
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .ts-gallery__item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            border: 1px solid rgba(16, 34, 67, 0.08);
+        }
+        .ts-gallery__item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .ts-gallery__caption {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+        .ts-reports-grid {
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .ts-report-card {
+            border-radius: 16px;
+            background: #f5f7fb;
+            padding: 1.25rem;
+            border: 1px solid rgba(16, 34, 67, 0.08);
+        }
+        .ts-suitability-grid {
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .ts-suitability-card {
+            border-radius: 18px;
+            padding: 1.75rem;
+            background: #fff;
+            border: 1px solid rgba(16, 34, 67, 0.1);
+            box-shadow: 0 18px 40px rgba(20, 33, 63, 0.08);
+        }
+        .ts-diff-table {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .ts-diff-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid rgba(16, 34, 67, 0.1);
+            padding: 1.5rem;
+        }
+        .ts-trust-list {
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        .ts-trust-item {
+            border-left: 4px solid #4f8cff;
+            background: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 24px rgba(20, 33, 63, 0.06);
+        }
+        .ts-case-card {
+            border-radius: 20px;
+            background: #0f1629;
+            color: #fff;
+            padding: 2.5rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .ts-case-card__metrics {
+            display: grid;
+            gap: 1rem;
+        }
+        .ts-case-card__metric {
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.25rem;
+        }
+        .ts-pricing-grid {
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        .ts-pricing-card {
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid rgba(16, 34, 67, 0.12);
+            padding: 1.75rem;
+            box-shadow: 0 12px 28px rgba(20, 33, 63, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .ts-pricing-card strong {
+            font-size: 1.5rem;
+        }
+        .ts-calculator {
+            margin-top: 2rem;
+            border-radius: 20px;
+            background: #f0f4ff;
+            padding: 2rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+        .ts-calculator__grid {
+            display: grid;
+            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        fieldset.ts-form-field {
+            border: 1px solid rgba(16, 34, 67, 0.15);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+        }
+        fieldset.ts-form-field legend {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .ts-form-checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+        }
+        .ts-calculator__result {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .ts-floating-cta-group {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: grid;
+            gap: 0.75rem;
+            z-index: 1000;
+        }
+        .ts-floating-cta-group a {
+            text-decoration: none;
+            background: #4f8cff;
+            color: #fff;
+            padding: 0.9rem 1.4rem;
+            border-radius: 999px;
+            font-weight: 600;
+            box-shadow: 0 14px 32px rgba(79, 140, 255, 0.4);
+            text-align: center;
+        }
+        .ts-floating-cta-group a:nth-child(2) {
+            background: #0f1629;
+        }
+        .ts-floating-cta-group a:nth-child(3) {
+            background: #10b981;
+        }
+        @media (max-width: 640px) {
+            .ts-hero-metric strong {
+                font-size: 1.25rem;
+            }
+            .ts-video-card {
+                grid-template-columns: 1fr;
+            }
+            .ts-case-card {
+                grid-template-columns: 1fr;
+            }
+            .ts-floating-cta-group {
+                left: 1rem;
+                right: 1rem;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body class="ts-page ts-subpage ts-solution-page">
     <header class="ts-subpage-hero ts-solution-hero" data-animate="hero">
@@ -35,7 +288,7 @@
                         <li><a href="/contacts">Контакты</a></li>
                         <li><a href="/cases">Кейсы наших клиентов</a></li>
                     </ul>
-                    <a class="ts-nav__cta" href="/contacts#ts-contact-form">Записаться на демо</a>
+                    <a class="ts-nav__cta" href="#ts-contact" data-analytics-event="nav_cta">Запросить пилот</a>
                 </nav>
             </div>
         </div>
@@ -43,165 +296,413 @@
         <div class="ts-subpage-hero__inner">
             <div class="ts-container">
                 <div class="ts-subpage-hero__content ts-solution-hero__content" data-animate="fade-up">
-                    <h1>Автоматизируйте сверку и консолидацию финансовой отчетности с помощью RPA-робота</h1>
+                    <h1>Свод БДДС/БДР и управленческих отчётов без ручной работы в 1С — от 1 юрлица и выше</h1>
                     <h2 class="ts-solution-hero__subtitle">
-                        Робот сам получает, проверяет и загружает отчеты БДДС и БДР в 1С — без ручной работы и ошибок.
+                        Робот сам собирает файлы, приводит их к шаблону, проверяет, загружает в 1С и формирует своды — экономя десятки часов и снижая ошибки.
                     </h2>
                     <div class="ts-solution-hero__cta">
-                        <a class="ts-button ts-button--primary" href="#ts-contact">Получить демо-версию робота</a>
-                        <p class="ts-solution-hero__note">Узнайте, как автоматизация отчетности экономит десятки часов работы в месяц.</p>
+                        <a class="ts-button ts-button--primary" href="#ts-video" data-analytics-event="hero_video">Смотреть 90-сек. видео</a>
+                        <a class="ts-button ts-button--secondary" href="#ts-pricing" data-analytics-event="hero_pricing">Рассчитать стоимость</a>
                     </div>
+                    <ul class="ts-hero-metrics">
+                        <li class="ts-hero-metric">
+                            <strong>−90%</strong>
+                            <span>Ручных ошибок по данным кейса «10 филиалов»</span>
+                        </li>
+                        <li class="ts-hero-metric">
+                            <strong>3 часа</strong>
+                            <span>На подготовку свода вместо 2 рабочих дней</span>
+                        </li>
+                        <li class="ts-hero-metric">
+                            <strong>24/7</strong>
+                            <span>Контроль и логи всех загрузок в 1С</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </header>
 
     <main class="ts-subpage__main">
-        <section class="ts-solution-section" data-animate="section">
-            <div class="ts-container">
-                <div class="ts-solution-section__layout" data-animate="fade-up">
-                    <div class="ts-solution-section__content">
-                        <h2>Ваши филиалы присылают отчеты в разных форматах?</h2>
-                        <ul class="ts-solution-list">
-                            <li>Каждый филиал заполняет таблицы по-своему — форматы, названия, формулы различаются.</li>
-                            <li>Сводить данные по БДДС и БДР вручную — долго и утомительно.</li>
-                            <li>Ошибки при копировании приводят к искажению бюджета.</li>
-                            <li>Проверка и сверка занимают часы, а иногда и дни.</li>
-                        </ul>
-                    </div>
-                    <figure class="ts-solution-figure">
-                        <img src="/assets/images/service-optimization.svg" alt="Распределенные таблицы в разных форматах" />
-                        <figcaption>До автоматизации — хаос в Excel и бесконечные правки.</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <section class="ts-solution-section ts-solution-section--alt" data-animate="section">
-            <div class="ts-container">
-                <div class="ts-solution-section__layout" data-animate="fade-up">
-                    <figure class="ts-solution-figure">
-                        <img src="/assets/images/service-integration.svg" alt="Робот приводит данные к единому стандарту" />
-                        <figcaption>После автоматизации — всё в едином формате, без ошибок и ручных проверок.</figcaption>
-                    </figure>
-                    <div class="ts-solution-section__content">
-                        <h2>Робот решает эти задачи автоматически</h2>
-                        <p>RPA-робот берет на себя рутину:</p>
-                        <ul class="ts-solution-list">
-                            <li>Получает отчеты от филиалов — из почты, сетевых папок или 1С.</li>
-                            <li>Проверяет форму и приводит все данные к корпоративному шаблону.</li>
-                            <li>Создает документы бюджетных операций в 1С.</li>
-                            <li>Сверяет данные с прошлым периодом, отмечает расхождения и добавляет комментарии.</li>
-                            <li>Формирует итоговый отчет и отправляет уведомление на почту или в мессенджер.</li>
-                        </ul>
-                        <div class="ts-solution-cta">
-                            <a class="ts-button ts-button--primary" href="#ts-contact">Посмотреть, как работает робот</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="ts-solution-section ts-solution-section--benefits" data-animate="section">
+        <section class="ts-solution-section" id="ts-modules" data-animate="section">
             <div class="ts-container">
                 <div class="ts-section-header" data-animate="fade-up">
-                    <h2>Что получает компания</h2>
+                    <h2>Из чего состоит решение</h2>
+                    <p>Выбирайте нужные модули — робот масштабируется от пилота до корпоративного контура.</p>
                 </div>
-                <ul class="ts-solution-benefits" data-animate="fade-up" data-animate-delay="0.05">
-                    <li class="ts-solution-benefit">
-                        <span class="ts-solution-benefit__icon" aria-hidden="true">⏱</span>
-                        <h3>Сокращение времени обработки отчетов в 5–10 раз</h3>
-                    </li>
-                    <li class="ts-solution-benefit">
-                        <span class="ts-solution-benefit__icon" aria-hidden="true">❌</span>
-                        <h3>Исключение ручных ошибок</h3>
-                    </li>
-                    <li class="ts-solution-benefit">
-                        <span class="ts-solution-benefit__icon" aria-hidden="true">📊</span>
-                        <h3>Единый стандарт отчетности по всем филиалам</h3>
-                    </li>
-                    <li class="ts-solution-benefit">
-                        <span class="ts-solution-benefit__icon" aria-hidden="true">🔎</span>
-                        <h3>Полный контроль данных в 1С</h3>
-                    </li>
-                    <li class="ts-solution-benefit">
-                        <span class="ts-solution-benefit__icon" aria-hidden="true">💰</span>
-                        <h3>Быстрая окупаемость — менее 3 месяцев</h3>
-                    </li>
-                </ul>
+                <div class="ts-modules-grid" data-animate="fade-up" data-animate-delay="0.05">
+                    <article class="ts-module-card">
+                        <h3>Сбор и нормализация файлов</h3>
+                        <p>Подключаем почту, папки, ЭДО и 1С. Робот сам забирает входящие файлы, переименовывает и приводит к единому формату.</p>
+                    </article>
+                    <article class="ts-module-card">
+                        <h3>Проверки и контрольные соотношения</h3>
+                        <p>Десятки правил: подсветка расхождений, контроль сумм, соответствие план-факт, сверка с предыдущими периодами.</p>
+                    </article>
+                    <article class="ts-module-card">
+                        <h3>Консолидация и единый шаблон</h3>
+                        <p>Нормализуем статьи и ЦФО, объединяем в управленческий шаблон, сохраняем версионность.</p>
+                    </article>
+                    <article class="ts-module-card">
+                        <h3>Загрузка документов в 1С</h3>
+                        <p>Автоматически создаём документы в 1С:ERP, УХ, Бухгалтерии и Консолидации, оставляя журнал действий.</p>
+                    </article>
+                    <article class="ts-module-card">
+                        <h3>Отчёты и оповещения</h3>
+                        <p>Рассылаем уведомления и своды на почту, в мессенджеры или BI-системы. Настраиваем расписание.</p>
+                    </article>
+                    <article class="ts-module-card">
+                        <h3>Логи и аудит</h3>
+                        <p>Подробный журнал операций, песочница для тестовых прогонов и экспорт протоколов сверки для аудиторов.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-solution-section ts-solution-section--alt" id="ts-video" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-video-card" data-animate="fade-up">
+                    <div class="ts-video-card__media">
+                        <iframe
+                            src="https://player.vimeo.com/video/000000000"
+                            title="Сценарий: как робот собирает отчеты"
+                            loading="lazy"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            data-video-src="https://player.vimeo.com/video/000000000"
+                        ></iframe>
+                    </div>
+                    <div class="ts-video-card__body">
+                        <h3>90 секунд «до → после»</h3>
+                        <p>Показываем, как робот собирает разноформатные файлы, проверяет контрольные соотношения, загружает документы в 1С и формирует сводный отчёт.</p>
+                        <ul class="ts-solution-list">
+                            <li>4 шага сценария: сбор → проверка → загрузка → уведомления.</li>
+                            <li>Финальные цифры по экономии времени и сокращению ошибок.</li>
+                            <li>Без звонков и форм — смотрите сразу.</li>
+                        </ul>
+                        <a class="ts-button ts-button--primary" href="https://player.vimeo.com/video/000000000" target="_blank" rel="noopener" data-analytics-event="video_watch">Открыть видео в новой вкладке</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-solution-section" id="ts-gallery" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Как выглядит робот</h2>
+                    <p>Галерея экранов с аннотациями — все данные обезличены, конфиденциальные поля размыты.</p>
+                </div>
+                <div class="ts-gallery" data-animate="fade-up" data-animate-delay="0.05">
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-optimization.svg" alt="Состояние до: хаос входящих файлов" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">«До»: хаос входящих файлов и ручное копирование.</figcaption>
+                    </figure>
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-implementation.svg" alt="Приведение к шаблону" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">«После»: файлы приведены к корпоративному шаблону.</figcaption>
+                    </figure>
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-discovery.svg" alt="Подсветка расхождений" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">Подсветка расхождений и контрольных соотношений.</figcaption>
+                    </figure>
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-support.svg" alt="Журнал действий" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">Журнал действий робота и протоколы для аудита.</figcaption>
+                    </figure>
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-integration.svg" alt="Документы в 1С" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">Созданные документы в 1С и статусы загрузки.</figcaption>
+                    </figure>
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-development.svg" alt="Сводный отчёт" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">Сводный отчёт и план-факт панель.</figcaption>
+                    </figure>
+                    <figure class="ts-gallery__item">
+                        <img src="/assets/images/service-icon.svg" alt="Настройка правил" loading="lazy" />
+                        <figcaption class="ts-gallery__caption">Настройки правил и шаблонов под вашу методологию.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-solution-section ts-solution-section--alt" id="ts-reports" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Какие отчёты поддерживаем</h2>
+                    <p>Базовые шаблоны подключаем сразу, дополнительные отчёты добавляем по запросу.</p>
+                </div>
+                <div class="ts-reports-grid" data-animate="fade-up" data-animate-delay="0.05">
+                    <article class="ts-report-card">БДДС (кассовый метод, косвенный метод)</article>
+                    <article class="ts-report-card">БДР и P&amp;L с разрезами ЦФО/проектов</article>
+                    <article class="ts-report-card">Оборотно-сальдовая ведомость (ОСВ)</article>
+                    <article class="ts-report-card">Платёжный календарь и заявки на оплату</article>
+                    <article class="ts-report-card">План-факт и сценарии «что если»</article>
+                    <article class="ts-report-card">Консолидация статей и управленческий баланс</article>
+                    <article class="ts-report-card">Свод по центрам финансовой ответственности</article>
+                    <article class="ts-report-card">И другие управленческие отчёты по ТЗ</article>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-solution-section" id="ts-suitability" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Подходит компаниям…</h2>
+                    <p>Робот одинаково полезен для малого бизнеса и холдингов с распределёнными командами.</p>
+                </div>
+                <div class="ts-suitability-grid" data-animate="fade-up" data-animate-delay="0.05">
+                    <article class="ts-suitability-card">
+                        <h3>1–2 юридических лица</h3>
+                        <ul class="ts-solution-list">
+                            <li>Быстрое закрытие месяца без ночных смен.</li>
+                            <li>План-факт, платёжный календарь и сверка заявок.</li>
+                            <li>Готовый протокол для управленца и аудитора.</li>
+                        </ul>
+                        <p class="ts-solution-section__note">Старт за 5–10 дней, опция «разовый прогон» для проверки гипотезы.</p>
+                    </article>
+                    <article class="ts-suitability-card">
+                        <h3>Холдинги и группы</h3>
+                        <ul class="ts-solution-list">
+                            <li>Множественные шаблоны, валюты, ЦФО и сценарии.</li>
+                            <li>Консолидация разрозненных источников в 1С/BI.</li>
+                            <li>Гранулированные права, песочница и логи.</li>
+                        </ul>
+                        <p class="ts-solution-section__note">Масштабируемость до десятков контуров и регламентных проверок.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="ts-solution-section ts-solution-section--alt" id="ts-diff" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Чем мы отличаемся от 1С/ЭДО</h2>
+                    <p>Мы надстраиваемся над привычными системами, не заменяя их.</p>
+                </div>
+                <div class="ts-diff-table" data-animate="fade-up" data-animate-delay="0.05">
+                    <article class="ts-diff-card">
+                        <h3>Сбор из разных источников</h3>
+                        <p>1С и ЭДО работают в рамках своего контура. Наш робот объединяет почту, папки, Excel, ЭДО и API в единый стандарт.</p>
+                    </article>
+                    <article class="ts-diff-card">
+                        <h3>Автосверка и консолидация</h3>
+                        <p>Сквозная проверка план-факт, подсветка расхождений, автозагрузка в 1С и BI. Меньше ручных сверок и выгрузок.</p>
+                    </article>
+                    <article class="ts-diff-card">
+                        <h3>Журналы и протоколы</h3>
+                        <p>Детальные логи, версия файла, откат изменений, песочница для тестов. Аудиторы видят полный протокол действий.</p>
+                    </article>
+                </div>
+                <p class="ts-solution-section__note" data-animate="fade-up" data-animate-delay="0.1">Мы не заменяем 1С/ЭДО — мы склеиваем разрозненные файлы, проверяем и консолидируем, чтобы в 1С попадали чистые данные.</p>
+            </div>
+        </section>
+
+        <section class="ts-solution-section" id="ts-trust" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Доверие к корректности</h2>
+                    <p>Прозрачный контроль данных и возможность откатить любое действие.</p>
+                </div>
+                <div class="ts-trust-list" data-animate="fade-up" data-animate-delay="0.05">
+                    <div class="ts-trust-item">Контрольные соотношения и подсветка критичных отклонений.</div>
+                    <div class="ts-trust-item">Двойная проверка план-факт и сценариев.</div>
+                    <div class="ts-trust-item">Тестовый прогон и «песочница» перед промышленной загрузкой.</div>
+                    <div class="ts-trust-item">Журнал изменений и подробные логи действий робота.</div>
+                    <div class="ts-trust-item">Обратимая загрузка: откат документа по кнопке.</div>
+                    <div class="ts-trust-item">Разграничение прав и ролей, шифрование и локальная обработка.</div>
+                </div>
                 <p class="ts-solution-section__note" data-animate="fade-up" data-animate-delay="0.1">
-                    Робот работает 24/7, не ошибается, не устает и всегда соблюдает корпоративный стандарт.
+                    <a href="/assets/docs/sample-reconciliation-report.pdf" target="_blank" rel="noopener">Смотреть пример отчёта о расхождениях (PDF)</a>
                 </p>
             </div>
         </section>
 
-        <section class="ts-solution-section" data-animate="section">
-            <div class="ts-container">
-                <div class="ts-solution-card" data-animate="fade-up">
-                    <h2>Кому особенно полезно</h2>
-                    <ul class="ts-solution-list">
-                        <li>Холдингам с несколькими юрлицами.</li>
-                        <li>Финансовым директорам и главным бухгалтерам.</li>
-                        <li>Отделам внутреннего контроля и аудита.</li>
-                        <li>Руководителям по автоматизации и цифровой трансформации.</li>
-                    </ul>
-                    <p class="ts-solution-card__note">
-                        Если ваши филиалы присылают отчеты в разных форматах, этот робот избавит вас от ручной сверки и контроля.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="ts-solution-section ts-solution-section--case" data-animate="section">
-            <div class="ts-container">
-                <div class="ts-solution-case" data-animate="fade-up">
-                    <h2>Как это работает на практике</h2>
-                    <div class="ts-solution-case__body ts-richtext">
-                        <p>В одном из наших проектов — холдинг с 10 филиалами, где каждый использовал свою форму БДДС.</p>
-                        <p>Раньше свод отчетов занимал 2 рабочих дня и требовал участия двух бухгалтеров.</p>
-                        <p>После внедрения робота процесс занимает 3 часа, а данные автоматически загружаются в 1С.</p>
-                        <p>Ошибки при своде сократились на 90%.</p>
-                    </div>
-                    <a class="ts-button ts-button--primary" href="#ts-contact">Хочу так же</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="ts-contact" id="ts-contact" data-animate="section">
+        <section class="ts-solution-section ts-solution-section--alt" id="ts-case" data-animate="section">
             <div class="ts-container">
                 <div class="ts-section-header" data-animate="fade-up">
-                    <h2>Записаться на демо</h2>
+                    <h2>Кейс: холдинг с 10 филиалами</h2>
+                    <p>Конкретные цифры и подтверждающие материалы по запросу.</p>
                 </div>
-                <form class="ts-contact__form" action="send_mail_financial_reporting_automation.php" method="POST" data-animate="fade-up" data-animate-delay="0.1">
+                <article class="ts-case-card" data-animate="fade-up" data-animate-delay="0.05">
+                    <div class="ts-case-card__story ts-richtext">
+                        <h3>Было → стало</h3>
+                        <p><strong>До:</strong> 2 рабочих дня, 2 бухгалтера, ручная сверка БДДС и согласование платежей по почте.</p>
+                        <p><strong>После:</strong> 3 часа на полный свод, автоматическое создание документов в 1С, уведомления в Telegram и -90% ручных ошибок.</p>
+                        <p>Показали экономию 28 часов в месяц и окупаемость проекта за 2,7 месяца. Методика расчёта доступна в ROI-калькуляторе.</p>
+                    </div>
+                    <div class="ts-case-card__metrics">
+                        <div class="ts-case-card__metric">
+                            <strong>−28 ч/мес</strong>
+                            <span>Освобождено времени команды</span>
+                        </div>
+                        <div class="ts-case-card__metric">
+                            <strong>3 часа</strong>
+                            <span>На свод и загрузку в 1С</span>
+                        </div>
+                        <div class="ts-case-card__metric">
+                            <strong>−90%</strong>
+                            <span>Ошибок при консолидации</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="ts-solution-section" id="ts-pricing" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Сколько стоит</h2>
+                    <p>Выбирайте формат — от разового пилота до корпоративной подписки. Цены обновляются через CMS.</p>
+                </div>
+                <div class="ts-pricing-grid" data-animate="fade-up" data-animate-delay="0.05">
+                    <article class="ts-pricing-card">
+                        <h3>Пилот 14 дней / разовая сверка</h3>
+                        <strong data-cms="pricing_pilot">от 120 000 ₽</strong>
+                        <p>Подключаем 1–2 юрлица, тестируем сбор и проверки на ваших данных. Включена документация по настройкам.</p>
+                    </article>
+                    <article class="ts-pricing-card">
+                        <h3>Подписка (аренда робота)</h3>
+                        <strong data-cms="pricing_subscription">от 85 000 ₽/мес</strong>
+                        <p>Включает до 3 юрлиц и 5 отчётов. Поддержка, обновления правил, мониторинг логов.</p>
+                    </article>
+                    <article class="ts-pricing-card">
+                        <h3>Корпоративный</h3>
+                        <strong data-cms="pricing_enterprise">по ТЗ</strong>
+                        <p>Гибкая интеграция, расширенные права, SLA и выделенная команда внедрения.</p>
+                    </article>
+                </div>
+                <p class="ts-solution-section__note" data-animate="fade-up" data-animate-delay="0.1">Опционально докупаются модули, юридические лица и отчёты. Возможна краткосрочная аренда от 5 дней.</p>
+
+                <form class="ts-calculator" data-calculator>
+                    <h3>Калькулятор предварительной оценки</h3>
+                    <div class="ts-calculator__grid">
+                        <label class="ts-form-field">
+                            <span class="ts-form-label">Количество юрлиц</span>
+                            <input type="number" name="entities" min="1" value="3" required />
+                        </label>
+                        <fieldset class="ts-form-field">
+                            <legend class="ts-form-label">Источники данных</legend>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="sources" value="mail" checked />
+                                <span class="ts-checkbox"></span>
+                                <span>Почта</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="sources" value="edo" />
+                                <span class="ts-checkbox"></span>
+                                <span>ЭДО</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="sources" value="folders" checked />
+                                <span class="ts-checkbox"></span>
+                                <span>Папки/FTP</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="sources" value="api" />
+                                <span class="ts-checkbox"></span>
+                                <span>API/1С</span>
+                            </label>
+                        </fieldset>
+                        <label class="ts-form-field">
+                            <span class="ts-form-label">Отчёты</span>
+                            <select name="reports" required>
+                                <option value="basic">БДДС + БДР</option>
+                                <option value="extended" selected>БДДС + БДР + платёжный календарь</option>
+                                <option value="full">Полный пакет (5+ отчётов)</option>
+                            </select>
+                        </label>
+                        <label class="ts-form-field">
+                            <span class="ts-form-label">Частота свода</span>
+                            <select name="frequency" required>
+                                <option value="monthly">Ежемесячно</option>
+                                <option value="weekly" selected>Еженедельно</option>
+                                <option value="daily">Ежедневно</option>
+                            </select>
+                        </label>
+                    </div>
+                    <p class="ts-calculator__result" data-calc-result>Диапазон: 145 000 – 175 000 ₽ за внедрение</p>
+                    <div class="ts-calculator__cta">
+                        <label class="ts-form-field ts-form-field--full">
+                            <span class="ts-form-label">Как с вами связаться?</span>
+                            <input type="text" name="contact" placeholder="Телефон или @Telegram/WhatsApp" required />
+                        </label>
+                        <div class="ts-form-checkbox-group">
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="request" value="kp" checked />
+                                <span class="ts-checkbox"></span>
+                                <span>Получить КП</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="request" value="video" />
+                                <span class="ts-checkbox"></span>
+                                <span>Видео-демо на почту</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="request" value="pilot" />
+                                <span class="ts-checkbox"></span>
+                                <span>Запросить пилот</span>
+                            </label>
+                        </div>
+                        <input type="hidden" name="calc_range" />
+                        <button class="ts-button ts-button--primary" type="submit" data-analytics-event="calculator_submit">Отправить запрос</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="ts-solution-section ts-solution-section--alt" id="ts-contact" data-animate="section">
+            <div class="ts-container">
+                <div class="ts-section-header" data-animate="fade-up">
+                    <h2>Готовы обсудить ваш сценарий?</h2>
+                    <p>Оставьте контакт — пришлём КП, видео и доступ к тестовой песочнице.</p>
+                </div>
+                <form class="ts-contact__form" action="send_mail_financial_reporting_automation.php" method="POST" data-animate="fade-up" data-animate-delay="0.05">
                     <div class="ts-form-grid">
                         <label class="ts-form-field">
                             <span class="ts-form-label">Имя*</span>
                             <input type="text" name="name" placeholder="Имя*" required />
                         </label>
                         <label class="ts-form-field">
-                            <span class="ts-form-label">Телефон*</span>
-                            <input type="tel" name="phone" placeholder="Телефон*" required />
+                            <span class="ts-form-label">Компания</span>
+                            <input type="text" name="company" placeholder="Компания" />
                         </label>
                         <label class="ts-form-field">
-                            <span class="ts-form-label">E-mail</span>
-                            <input type="email" name="email" placeholder="E-mail" />
+                            <span class="ts-form-label">Контакт для связи*</span>
+                            <input type="text" name="contact" placeholder="Телефон или @Telegram/WhatsApp" required />
                         </label>
                         <label class="ts-form-field ts-form-field--full">
-                            <span class="ts-form-label">Сообщение</span>
-                            <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
+                            <span class="ts-form-label">Комментарий</span>
+                            <textarea name="message" rows="4" placeholder="Какие отчёты хотите автоматизировать?"></textarea>
                         </label>
+                        <div class="ts-form-checkbox-group ts-form-field--full">
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="contact_options" value="kp" checked />
+                                <span class="ts-checkbox"></span>
+                                <span>Получить КП</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="contact_options" value="video" />
+                                <span class="ts-checkbox"></span>
+                                <span>Видео-демо на почту</span>
+                            </label>
+                            <label class="ts-form-checkbox">
+                                <input type="checkbox" name="contact_options" value="pilot" />
+                                <span class="ts-checkbox"></span>
+                                <span>Запросить пилот</span>
+                            </label>
+                        </div>
                         <label class="ts-form-checkbox ts-form-field--full">
                             <input type="checkbox" required />
                             <span class="ts-checkbox"></span>
                             <span>Даю согласие на <a href="/privacy_policy">обработку персональных данных</a></span>
                         </label>
+                        <input type="hidden" name="utm_source" />
                     </div>
-                    <button type="submit" class="ts-button ts-button--primary">Отправить</button>
+                    <button type="submit" class="ts-button ts-button--primary" data-analytics-event="contact_submit">Отправить</button>
                 </form>
             </div>
         </section>
 
-        <section class="ts-solution-section ts-solution-section--faq" data-animate="section">
+        <section class="ts-solution-section ts-solution-section--faq" id="ts-faq" data-animate="section">
             <div class="ts-container">
                 <div class="ts-section-header" data-animate="fade-up">
                     <h2>Часто задаваемые вопросы</h2>
@@ -209,34 +710,42 @@
                 <div class="ts-accordion" role="tablist" data-animate="fade-up" data-animate-delay="0.05">
                     <article class="ts-accordion__item">
                         <button class="ts-accordion__trigger" aria-expanded="true">
-                            С какими версиями 1С работает робот?
+                            Подходит ли робот компаниям без филиалов?
                         </button>
                         <div class="ts-accordion__content" role="region">
-                            <p>Поддерживаются версии 1С:ERP, 1С:УХ, 1С:Бухгалтерия, 1С:Консолидация. Настраивается под любую конфигурацию через API.</p>
+                            <p>Да, решение работает от 1 юридического лица. Часто начинаем с быстрого запуска для малого бизнеса, а затем масштабируем.</p>
                         </div>
                     </article>
                     <article class="ts-accordion__item">
                         <button class="ts-accordion__trigger" aria-expanded="false">
-                            Можно ли адаптировать под наш шаблон отчетности?
+                            Кроме БДДС/БДР что ещё можно автоматизировать?
                         </button>
                         <div class="ts-accordion__content" role="region">
-                            <p>Да, робот обучается структуре вашего файла и шаблону компании.</p>
+                            <p>Поддерживаем ОСВ, платёжный календарь, план-факт, отчёты по ЦФО, консолидацию статей и другие управленческие формы. См. раздел «Какие отчёты поддерживаем».</p>
                         </div>
                     </article>
                     <article class="ts-accordion__item">
                         <button class="ts-accordion__trigger" aria-expanded="false">
-                            Сколько времени занимает внедрение?
+                            Можно ли купить только часть функционала?
                         </button>
                         <div class="ts-accordion__content" role="region">
-                            <p>От 5 до 10 рабочих дней, в зависимости от количества форм и источников.</p>
+                            <p>Да, робот модульный. Можно стартовать со сбора и проверок, а позже подключить загрузку в 1С и уведомления.</p>
                         </div>
                     </article>
                     <article class="ts-accordion__item">
                         <button class="ts-accordion__trigger" aria-expanded="false">
-                            Как обеспечивается безопасность данных?
+                            Насколько это безопасно?
                         </button>
                         <div class="ts-accordion__content" role="region">
-                            <p>Все файлы обрабатываются локально. Передача данных шифруется.</p>
+                            <p>Обработка данных происходит локально, каналы связи шифруются. Логи хранятся в защищённом хранилище с разграничением прав.</p>
+                        </div>
+                    </article>
+                    <article class="ts-accordion__item">
+                        <button class="ts-accordion__trigger" aria-expanded="false">
+                            Как рассчитываете окупаемость < 3 месяцев?
+                        </button>
+                        <div class="ts-accordion__content" role="region">
+                            <p>Используем методику ROI-калькулятора: учитываем часы команды, стоимость ошибки и стоимость робота. Ссылку на расчёт отправляем вместе с кейсом.</p>
                         </div>
                     </article>
                 </div>
@@ -248,7 +757,7 @@
         <div class="ts-container ts-grid ts-grid--footer">
             <div>
                 <h2 class="ts-footer__logo">Technostation: AI-RPA</h2>
-                <p>Наши виртуальные роботы подстраиваются под ваши процессы, устраняя рутину и эмулируя действия сотрудников. Ваша система остается неизменной, а бизнес фокусируется на росте и увеличении эффективности.</p>
+                <p>Наши виртуальные роботы подстраиваются под ваши процессы, устраняя рутину и эмулируя действия сотрудников. Ваша система остаётся неизменной, а бизнес фокусируется на росте и увеличении эффективности.</p>
                 <div class="ts-footer__socials">
                     <a href="https://wa.me/79296159054/" aria-label="WhatsApp"><span>WhatsApp</span></a>
                     <a href="https://t.me/Yaroslav_TechnoStation" aria-label="Telegram"><span>Telegram</span></a>
@@ -270,7 +779,7 @@
                 <ul>
                     <li><a href="/information">Все статьи</a></li>
                     <li><a href="/rpa-benefits-smb">Преимущества RPA</a></li>
-                    <li><a href="/financial_reporting_automation" aria-current="page">Автоматизация финансовой отчетности</a></li>
+                    <li><a href="/financial_reporting_automation" aria-current="page">Автоматизация финансовой отчётности</a></li>
                     <li><a href="/information/examples_of_successful_implementations">Кейсы внедрений</a></li>
                     <li><a href="/information/our_stack">Стек технологий</a></li>
                 </ul>
@@ -289,8 +798,114 @@
         </div>
     </footer>
 
-    <a class="ts-floating-cta" href="#ts-contact">Записаться на демо</a>
+    <nav class="ts-floating-cta-group" aria-label="Быстрые действия">
+        <a href="#ts-video" data-analytics-event="sticky_video">Видео</a>
+        <a href="#ts-pricing" data-analytics-event="sticky_calculator">Рассчитать стоимость</a>
+        <a href="#ts-contact" data-analytics-event="sticky_pilot">Запросить пилот</a>
+    </nav>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calcForm = document.querySelector('[data-calculator]');
+            if (calcForm) {
+                const entitiesInput = calcForm.querySelector('input[name="entities"]');
+                const sourceInputs = Array.from(calcForm.querySelectorAll('input[name="sources"]'));
+                const reportsSelect = calcForm.querySelector('select[name="reports"]');
+                const frequencySelect = calcForm.querySelector('select[name="frequency"]');
+                const resultNode = calcForm.querySelector('[data-calc-result]');
+                const rangeInput = calcForm.querySelector('input[name="calc_range"]');
+
+                const updateCalc = () => {
+                    const entities = Math.max(1, parseInt(entitiesInput.value, 10) || 1);
+                    const sourcesCount = sourceInputs.filter((input) => input.checked).length;
+                    const reportsValue = reportsSelect.value;
+                    const frequencyValue = frequencySelect.value;
+
+                    let base = 95000;
+                    base += (entities - 1) * 15000;
+                    base += Math.max(0, sourcesCount - 1) * 8000;
+
+                    const reportsMultiplier = {
+                        basic: 1,
+                        extended: 1.25,
+                        full: 1.55,
+                    }[reportsValue] || 1;
+
+                    const frequencyMultiplier = {
+                        monthly: 1,
+                        weekly: 1.15,
+                        daily: 1.35,
+                    }[frequencyValue] || 1;
+
+                    const estimate = base * reportsMultiplier * frequencyMultiplier;
+                    const min = Math.round(estimate * 0.9 / 1000) * 1000;
+                    const max = Math.round(estimate * 1.1 / 1000) * 1000;
+
+                    const formatCurrency = (value) => value.toLocaleString('ru-RU');
+                    resultNode.textContent = `Диапазон: ${formatCurrency(min)} – ${formatCurrency(max)} ₽ за внедрение`;
+                    rangeInput.value = `${min}-${max}`;
+                };
+
+                ['change', 'input'].forEach((eventName) => {
+                    calcForm.addEventListener(eventName, updateCalc);
+                });
+                updateCalc();
+            }
+
+            const utmInput = document.querySelector('input[name="utm_source"]');
+            if (utmInput) {
+                utmInput.value = window.location.search.slice(0, 2000);
+            }
+        });
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Подходит ли робот компаниям без филиалов?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Да, решение работает от одного юридического лица и масштабируется по мере роста."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Кроме БДДС/БДР что ещё можно автоматизировать?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Поддерживаем ОСВ, платёжный календарь, план-факт, отчёты по ЦФО, консолидацию статей и другие управленческие формы."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Можно ли купить только часть функционала?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Да, робот модульный: можно стартовать со сбора и проверок и позже подключить остальные блоки."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Насколько это безопасно?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Обработка данных локальная, каналы связи шифруются, логи хранятся в защищённом хранилище."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Как рассчитывается окупаемость менее трёх месяцев?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Используется методика ROI-калькулятора: учитываются часы команды, стоимость ошибок и стоимость робота."
+                    }
+                }
+            ]
+        }
+    </script>
     <script src="/assets/js/main.js"></script>
 </body>
 </html>
