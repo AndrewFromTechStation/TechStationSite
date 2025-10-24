@@ -538,6 +538,19 @@ body.ts-page.ts-modal-open {
     transform: translateY(-2px);
 }
 
+.ts-button--green {
+    background: #7c8650;
+    color: #ffffff;
+    border: 2px solid #6d7745;
+}
+
+.ts-button--green:hover,
+.ts-button--green:focus {
+    background: #89945b;
+    border-color: #7c8650;
+    transform: translateY(-2px);
+}
+
 .ts-button--ghost {
     background: rgba(255, 255, 255, 0.6);
     border: 2px solid rgba(85, 107, 47, 0.18);
