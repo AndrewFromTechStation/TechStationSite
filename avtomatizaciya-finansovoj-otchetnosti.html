@@ -15,28 +15,60 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <style>
         .ts-hero-metrics {
-            display: grid;
-            gap: 1rem;
-            margin-top: 2rem;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding: 0;
+            list-style: none;
         }
         .ts-hero-metric {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(16, 34, 67, 0.1);
-            border-radius: 18px;
-            padding: 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+            min-width: 180px;
             color: #102243;
-            box-shadow: 0 12px 32px rgba(16, 34, 67, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .ts-hero-metric:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 38px rgba(16, 34, 67, 0.12);
         }
         .ts-hero-metric strong {
-            display: block;
+            display: grid;
+            place-items: center;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
             font-size: 1.5rem;
-            margin-bottom: 0.25rem;
+            background: linear-gradient(135deg, #4f8cff, #7cb0ff);
+            color: #fff;
+            box-shadow: 0 16px 36px rgba(79, 140, 255, 0.28);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ts-hero-metric:nth-child(2) strong {
+            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+            box-shadow: 0 16px 36px rgba(14, 165, 233, 0.28);
+        }
+        .ts-hero-metric:nth-child(3) strong {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            box-shadow: 0 16px 36px rgba(245, 158, 11, 0.28);
+        }
+        .ts-hero-metric span {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            max-width: 220px;
+        }
+        .ts-hero-metric:hover strong,
+        .ts-hero-metric:focus-within strong {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 44px rgba(79, 140, 255, 0.35);
+        }
+        .ts-hero-metric:nth-child(2):hover strong,
+        .ts-hero-metric:nth-child(2):focus-within strong {
+            box-shadow: 0 22px 44px rgba(14, 165, 233, 0.35);
+        }
+        .ts-hero-metric:nth-child(3):hover strong,
+        .ts-hero-metric:nth-child(3):focus-within strong {
+            box-shadow: 0 22px 44px rgba(245, 158, 11, 0.35);
         }
         .ts-button--secondary {
             background: rgba(255, 255, 255, 0.95);
@@ -283,7 +315,15 @@
             background: #0ea5e9;
         }
         @media (max-width: 640px) {
+            .ts-hero-metrics {
+                gap: 1rem;
+            }
+            .ts-hero-metric {
+                min-width: 140px;
+            }
             .ts-hero-metric strong {
+                width: 100px;
+                height: 100px;
                 font-size: 1.25rem;
             }
             .ts-video-card {
